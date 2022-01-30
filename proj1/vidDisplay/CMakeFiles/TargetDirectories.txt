@@ -1,0 +1,3 @@
+/Users/yueyangwu/Desktop/CS5330/hw/proj1/vidDisplay/CMakeFiles/vidDisplay.dir
+/Users/yueyangwu/Desktop/CS5330/hw/proj1/vidDisplay/CMakeFiles/edit_cache.dir
+/Users/yueyangwu/Desktop/CS5330/hw/proj1/vidDisplay/CMakeFiles/rebuild_cache.dir
