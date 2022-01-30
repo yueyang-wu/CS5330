@@ -28,7 +28,12 @@ int main(int argc, char *argv[]) {
     namedWindow("Video", 1); // identifies a window
     Mat frame, processedFrame;
 
+    // create VideoWriter object
+    VideoWriter savedVideo("savedVideo.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'), 20, Size(refS.width, refS.height));
+
     char mode = ' ';
+    bool videoWrite = false;
+    string videoMeme;
 
     int count = 0; // the number of 's' typed
     for (;;) {
@@ -91,6 +96,24 @@ int main(int argc, char *argv[]) {
         cout << mode << endl; // print the current mode in terminal
         imshow("Video", processedFrame);
 
+        // if user types 'v', start to save video sequence
+        // if user types 'v' again, stop saving video sequence
+        if (key == 'v' && videoWrite == false) {
+            // start to save video sequence and ask user for a meme
+            videoWrite = true;
+            cout << "Write your meme here: " << endl;
+            cin >> videoMeme;
+        } else if (key == 'v' && videoWrite == false) {
+            // stop saving video sequence
+            videoWrite = false;
+        }
+
+        if (videoWrite) {
+            cout << "saving video sequence" << endl;
+            putText(processedFrame, videoMeme, Point(refS.width / 2, refS.height / 2), FONT_HERSHEY_COMPLEX_SMALL, 2, Scalar(0, 0, 255, 255));
+            savedVideo.write(processedFrame);
+        }
+
         // if user types 'q', quit.
         if (key == 'q') {
             break;
@@ -99,13 +122,21 @@ int main(int argc, char *argv[]) {
         // if user types 's', save the original image and processed image
         // to the same directory of the executable
         if (key == 's') {
-            cout << "image saved\n";
+            cout << "image saved" << endl;
+            // ask for a meme for the saved processed image
+            string photoMeme;
+            cout << "Write your meme here: " << endl;
+            cin >> photoMeme;
+            putText(processedFrame, photoMeme, Point(refS.width / 2, refS.height / 2), FONT_HERSHEY_COMPLEX_SMALL, 2, Scalar(0, 0, 255, 255));
             imwrite("original.jpg", frame);
             imwrite("processed.jpg", processedFrame);
         }
     }
 
-    destroyAllWindows();
+    // clean up
     delete capdev;
+    savedVideo.release();
+    destroyAllWindows();
+
     return 0;
 }
