@@ -27,13 +27,13 @@ int main(int argc, char *argv[]) {
     cout << "Expected size: " << refS.width << " " << refS.height << "\n";
 
     namedWindow("Video", 1); // identifies a window
-    Mat frame, processedFrame;
+    Mat frame, processedFrame; // original image and image after applying any filters/effects
 
     // create VideoWriter object
     VideoWriter savedVideo("savedVideo.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, Size(refS.width, refS.height));
-    char mode = ' ';
-    bool videoWrite = false;
-    string videoMeme;
+    char mode = ' '; // identify the filter/effects applied on the frame
+    bool videoWrite = false; // identify whether the program should write the image into the video sequence
+    string videoMeme; // meme added to the saved video
 
     for (;;) {
         auto baseStart = chrono::steady_clock::now();
@@ -42,7 +42,6 @@ int main(int argc, char *argv[]) {
             cout << "frame is empty\n";
             break;
         }
-
         auto baseEnd = chrono::steady_clock::now();
         int baseTimeMS = chrono::duration_cast<chrono::milliseconds>(baseEnd - baseStart).count();
 
@@ -52,6 +51,7 @@ int main(int argc, char *argv[]) {
             mode = key;
         }
 
+        // apply filters/effects to the stream
         auto start = chrono::steady_clock::now();
         if (mode == ' ') {
             // if user types space, display the original version of the image
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
             Mat sobelX, sobelY;
             sobelX3x3(frame, sobelX);
             sobelY3x3(frame, sobelY);
-            Mat resultFrame;
+            Mat resultFrame; // CV_16SC3
             magnitude(sobelX, sobelY, resultFrame);
             convertScaleAbs(resultFrame, processedFrame);
         } else if (mode == 'l') {
@@ -99,6 +99,7 @@ int main(int argc, char *argv[]) {
         }
         auto end = chrono::steady_clock::now();
         int processingTimeMS = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+
         cout << mode << endl; // print the current mode in terminal
         imshow("Video", processedFrame);
 
@@ -107,20 +108,19 @@ int main(int argc, char *argv[]) {
         if (key == 'v' && !videoWrite) {
             // start to save video sequence and ask user for a meme
             videoWrite = true;
-//            cout << "Write your meme here: " << endl;
-//            cin >> videoMeme;
+            cout << "Write your meme here: " << endl;
+            cin >> videoMeme;
         } else if (key == 'v' && videoWrite) {
             // stop saving video sequence
             videoWrite = false;
         }
-
         if (videoWrite) {
             cout << "saving video sequence" << endl;
-//            putText(processedFrame, videoMeme, Point(refS.width / 2, refS.height / 2), FONT_HERSHEY_COMPLEX_SMALL, 2, Scalar(0, 0, 255, 255));
+            // add meme to video
+            putText(processedFrame, videoMeme, Point(refS.width / 2, refS.height / 2), FONT_HERSHEY_COMPLEX_SMALL, 2, Scalar(0, 0, 255, 255));
             if (processedFrame.channels() == 1) {
                 cvtColor(processedFrame, processedFrame, COLOR_GRAY2BGR); // video writer requires 3-channel images
             }
-            cout << processingTimeMS << "   " << baseTimeMS << endl;
             int numOfFrames = (processingTimeMS + baseTimeMS) / baseTimeMS;
             for (int i = 0; i < numOfFrames; i++) {
                 savedVideo.write(processedFrame);

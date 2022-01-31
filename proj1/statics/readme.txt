@@ -22,3 +22,14 @@
         - press keys to see different filters and effects
 
 - Instructions for testing any extensions you completed.
+    Both of my extensions are in vidDisplay.cpp.
+    - run the executable for vidDisplay.cpp
+    - when you press 's' to save an image, the program will ask you to write a meme for the image
+    - write the meme in terminal and press the return key to save an image with a meme
+    - if you don't want to write a meme, just press the return key
+
+    - when you press 'v' key, the program will start to save a video sequence
+    - if you press 'v' key again, the program will stop saving the video sequence
+    - the program will also ask for a meme before starting to save the video sequence
+
+    - the image and video will be saved in the same directory of the executables
