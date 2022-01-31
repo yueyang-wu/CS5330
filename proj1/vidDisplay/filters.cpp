@@ -20,7 +20,7 @@ int greyscale(const Mat &src, Mat &dst) {
 
 int blur5x5(const Mat &src, Mat &dst) {
     /*
-     * This function treats pixels off the edge as having a symmetric reflection over that edge.
+     * This function treats pixels off the edge as having asymmetric reflection over that edge.
      */
 
     // build the filter
@@ -165,7 +165,7 @@ int filter1xN(const Mat &src, Mat &dst, Mat &filter, int normalizer) {
     CV_Assert(src.type() == CV_32FC3 && dst.type() == CV_32FC3);
 
     // apply the 1xN filter and normalize the result
-    // treat pixels off the edge as having a symmetric reflection over that edge
+    // treat pixels off the edge as having asymmetric reflection over that edge
     int radius = filter.cols / 2;
     for (int i = 0; i < src.rows; i++) {
         for (int j = 0; j < src.cols; j++) {
@@ -198,7 +198,7 @@ int filterNx1(const Mat &src, Mat &dst, Mat &filter, int normalizer) {
     CV_Assert(src.type() == CV_32FC3 && dst.type() == CV_32FC3);
 
     // apply the Nx1 filter and normalize the result
-    // treat pixels off the edge as having a symmetric reflection over that edge
+    // treat pixels off the edge as having asymmetric reflection over that edge
     int radius = filter.cols / 2;
     for (int i = 0; i < src.rows; i++) {
         for (int j = 0; j < src.cols; j++) {
