@@ -23,7 +23,7 @@
 
 - Instructions for testing any extensions you completed.
     Both of my extensions are in vidDisplay.cpp.
-    - run the executable for vidDisplay.cpp
+
     - when you press 's' to save an image, the program will ask you to write a meme for the image
     - write the meme in terminal and press the return key to save an image with a meme
     - if you don't want to write a meme, just press the return key

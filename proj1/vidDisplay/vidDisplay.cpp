@@ -34,6 +34,7 @@ int main(int argc, char *argv[]) {
     char mode = ' '; // identify the filter/effects applied on the frame
     bool videoWrite = false; // identify whether the program should write the image into the video sequence
     string videoMeme; // meme added to the saved video
+    int brightness = 0; // brightness of the video, default to be the actual brightness
 
     for (;;) {
         auto baseStart = chrono::steady_clock::now();
@@ -97,6 +98,18 @@ int main(int argc, char *argv[]) {
             bilateralFilter(frame, dst, 15, 80, 80);
             processedFrame = dst;
         }
+        // change the brightness of the video
+        if (key == '1') {
+            // increase brightness by 20
+            brightness += 20;
+        } else if (key == '2') {
+            // decrease brightness by 20
+            brightness -= 20;
+        } else if (key == '3') {
+            // reset to actual brightness
+            brightness = 0;
+        }
+        processedFrame.convertTo(processedFrame, -1, 1, brightness);
         auto end = chrono::steady_clock::now();
         int processingTimeMS = chrono::duration_cast<chrono::milliseconds>(end - start).count();
 
