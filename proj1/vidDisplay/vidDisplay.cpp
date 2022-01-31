@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
             // start to save video sequence and ask user for a meme
             videoWrite = true;
             cout << "Write your meme here: " << endl;
-            cin >> videoMeme;
+            getline(cin, videoMeme);
         } else if (key == 'v' && videoWrite) {
             // stop saving video sequence
             videoWrite = false;
@@ -152,8 +152,9 @@ int main(int argc, char *argv[]) {
             // ask for a meme for the saved processed image
             string photoMeme;
             cout << "Write your meme here: " << endl;
-            cin >> photoMeme;
+            getline(cin, photoMeme);
             putText(processedFrame, photoMeme, Point(refS.width / 2, refS.height / 2), FONT_HERSHEY_COMPLEX_SMALL, 2, Scalar(0, 0, 255, 255));
+
             imwrite("original.jpg", frame);
             imwrite("processed.jpg", processedFrame);
         }
