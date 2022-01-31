@@ -5,6 +5,7 @@
 #include "filters.h"
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
+#include <chrono>
 
 
 using namespace cv;
@@ -29,19 +30,21 @@ int main(int argc, char *argv[]) {
     Mat frame, processedFrame;
 
     // create VideoWriter object
-    VideoWriter savedVideo("savedVideo.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'), 20, Size(refS.width, refS.height));
-
+    VideoWriter savedVideo("savedVideo.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, Size(refS.width, refS.height));
     char mode = ' ';
     bool videoWrite = false;
     string videoMeme;
 
-    int count = 0; // the number of 's' typed
     for (;;) {
+        auto baseStart = chrono::steady_clock::now();
         *capdev >> frame; // get a new frame from the camera, treat as a stream
         if (frame.empty()) {
             cout << "frame is empty\n";
             break;
         }
+
+        auto baseEnd = chrono::steady_clock::now();
+        int baseTimeMS = chrono::duration_cast<chrono::milliseconds>(baseEnd - baseStart).count();
 
         // see if there is a waiting keystroke
         char key = waitKey(10);
@@ -49,6 +52,7 @@ int main(int argc, char *argv[]) {
             mode = key;
         }
 
+        auto start = chrono::steady_clock::now();
         if (mode == ' ') {
             // if user types space, display the original version of the image
             processedFrame = frame;
@@ -93,25 +97,34 @@ int main(int argc, char *argv[]) {
             bilateralFilter(frame, dst, 15, 80, 80);
             processedFrame = dst;
         }
+        auto end = chrono::steady_clock::now();
+        int processingTimeMS = chrono::duration_cast<chrono::milliseconds>(end - start).count();
         cout << mode << endl; // print the current mode in terminal
         imshow("Video", processedFrame);
 
         // if user types 'v', start to save video sequence
         // if user types 'v' again, stop saving video sequence
-        if (key == 'v' && videoWrite == false) {
+        if (key == 'v' && !videoWrite) {
             // start to save video sequence and ask user for a meme
             videoWrite = true;
-            cout << "Write your meme here: " << endl;
-            cin >> videoMeme;
-        } else if (key == 'v' && videoWrite == false) {
+//            cout << "Write your meme here: " << endl;
+//            cin >> videoMeme;
+        } else if (key == 'v' && videoWrite) {
             // stop saving video sequence
             videoWrite = false;
         }
 
         if (videoWrite) {
             cout << "saving video sequence" << endl;
-            putText(processedFrame, videoMeme, Point(refS.width / 2, refS.height / 2), FONT_HERSHEY_COMPLEX_SMALL, 2, Scalar(0, 0, 255, 255));
-            savedVideo.write(processedFrame);
+//            putText(processedFrame, videoMeme, Point(refS.width / 2, refS.height / 2), FONT_HERSHEY_COMPLEX_SMALL, 2, Scalar(0, 0, 255, 255));
+            if (processedFrame.channels() == 1) {
+                cvtColor(processedFrame, processedFrame, COLOR_GRAY2BGR); // video writer requires 3-channel images
+            }
+            cout << processingTimeMS << "   " << baseTimeMS << endl;
+            int numOfFrames = (processingTimeMS + baseTimeMS) / baseTimeMS;
+            for (int i = 0; i < numOfFrames; i++) {
+                savedVideo.write(processedFrame);
+            }
         }
 
         // if user types 'q', quit.
