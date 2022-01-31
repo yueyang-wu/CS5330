@@ -1,5 +1,5 @@
 .DS_Store
 *.avi
-.idea
-bin
-CMakeFiles
+.idea/
+bin/
+CMakeFiles/
