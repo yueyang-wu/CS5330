@@ -1,4 +1,0 @@
-Cannot generate into /Users/yueyangwu/Desktop/CS5330/hw/proj1
-It was created with incompatible generator 'Unix Makefiles'
-
-Please either delete it manually or select another generation directory
