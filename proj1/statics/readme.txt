@@ -2,6 +2,7 @@
 // Yueyang Wu
 
 - Links/URLs to any videos you created and want to submit as part of your report.
+    Demo of a saved video sequence with effects: https://drive.google.com/file/d/1SBnRlHvLVfztqg9cmsJL5NudX_1_epCI/view?usp=sharing
 
 - The URL for your wiki report for this project.
     https://wiki.khoury.northeastern.edu/display/~yueyangwu/CS5330_Project1
