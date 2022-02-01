@@ -25,6 +25,9 @@
 - Instructions for testing any extensions you completed.
     All of my extensions are in vidDisplay.cpp.
 
+    - switch between the original video and effected video
+        - press space key to display the original version
+
     - bilateral blur filter(for task 10)
         - press 'f' to apply the filter to the video
 
