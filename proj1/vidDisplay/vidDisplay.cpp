@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
         auto start = chrono::steady_clock::now();
         if (mode == ' ') {
             // if user types space, display the original version of the image
-            processedFrame = frame;
+            frame.copyTo(processedFrame);
         } else if (mode == 'g') {
             // if user types 'g', display a greyscale version of the image
             // using openCV cvtColor function
