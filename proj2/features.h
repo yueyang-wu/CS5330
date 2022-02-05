@@ -15,6 +15,6 @@ using namespace std;
  * Use the 9x9 square in the middle of the image as a feature vector.
  * Return the feature vector.
  */
-Mat baseline(Mat &image);
+vector<float> baseline(Mat &image);
 
 #endif //PROJ2_FEATURES_H

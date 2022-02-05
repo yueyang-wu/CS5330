@@ -7,6 +7,9 @@
 
 using namespace cv;
 
+/*
+ * Compute the sum of square difference of two images.
+ */
 int sumOfSquareDifference(Mat &target, Mat &image) {
     int sum = 0;
     for (int i = 0; i < target.cols; i ++) {

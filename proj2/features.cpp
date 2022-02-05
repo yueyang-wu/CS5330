@@ -13,12 +13,15 @@ using namespace std;
  * Use the 9x9 square in the middle of the image as a feature vector.
  * Return the feature vector.
  */
-Mat baseline(Mat &image) {
-    Mat featureVector;
+vector<float> baseline(Mat &image) {
+    Mat middle9X9;
+    vector<float> featureVector;
     int x = image.cols / 2 - 4, y = image.rows / 2 - 4;
-    featureVector = image(Rect(x, y, 9, 9)).clone(); // ????
+    middle9X9 = image(Rect(x, y, 9, 9)).clone();
 
-    featureVector = featureVector.reshape(1, featureVector.total() * featureVector.channels());
+    Mat flat = middle9X9.reshape(1, middle9X9.total() * middle9X9.channels());
+    flat.convertTo(flat, CV_32F);
+    featureVector = middle9X9.isContinuous() ? flat : flat.clone();
 
     return featureVector;
 }

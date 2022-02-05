@@ -20,7 +20,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # include header files
 include_directories(${PROJ2_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS})
 
-add_executable(featureExtractor featureExtractor.cpp features.cpp distanceMetrics.cpp)
+add_executable(featureExtractor featureExtractor.cpp features.cpp distanceMetrics.cpp csv_util.cpp)
 #add_executable(imageRetriever imageRetriever.cpp features.cpp distanceMetrics.cpp)
 
 # link dynamic libraries to this executable

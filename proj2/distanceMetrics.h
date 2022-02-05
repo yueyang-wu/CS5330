@@ -9,7 +9,9 @@
 
 using namespace cv;
 
-
+/*
+ * Compute the sum of square difference of two images.
+ */
 int sumOfSquareDifference(Mat &target, Mat &image);
 
 
