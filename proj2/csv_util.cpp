@@ -158,7 +158,7 @@ int append_image_data_csv( char *filename, char *image_filename, std::vector<flo
 
   The function returns a non-zero value if something goes wrong.
  */
-int read_image_data_csv( char *filename, std::vector<char *> &filenames, std::vector<std::vector<float>> &data, int echo_file ) {
+int read_image_data_csv(const char *filename, std::vector<char *> &filenames, std::vector<std::vector<float>> &data, int echo_file ) {
   FILE *fp;
   float fval;
 
@@ -169,12 +169,13 @@ int read_image_data_csv( char *filename, std::vector<char *> &filenames, std::ve
   }
 
   printf("Reading %s\n", filename);
+  char imagename[100];
   for(;;) {
     std::vector<float> dvec;
     
     
     // read the filename
-    if( getstring( fp, filename ) ) {
+    if( getstring( fp, imagename ) ) {
       break;
     }
     // printf("Evaluting %s\n", filename);
@@ -190,8 +191,8 @@ int read_image_data_csv( char *filename, std::vector<char *> &filenames, std::ve
 
     data.push_back(dvec);
 
-    char *fname = new char[strlen(filename)+1];
-    strcpy(fname, filename);
+    char *fname = new char[strlen(imagename)+1];
+    strcpy(fname, imagename);
     filenames.push_back( fname );
   }
   fclose(fp);

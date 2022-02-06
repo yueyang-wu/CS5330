@@ -10,10 +10,10 @@ using namespace cv;
 /*
  * Compute the sum of square difference of two images.
  */
-int sumOfSquareDifference(Mat &target, Mat &image) {
-    int sum = 0;
-    for (int i = 0; i < target.cols; i ++) {
-        sum += (target.at<uchar>(0, i) - image.at<uchar>(0,  i)) * (target.at<uchar>(0, i) - image.at<uchar>(0,  i));
+float sumOfSquareDifference(vector<float> &target, vector<float> &image) {
+    float sum = 0;
+    for (int i = 0; i < target.size(); i ++) {
+        sum += (target[i] - image[i]) * (target[i] - image[i]);
     }
     return sum;
 }

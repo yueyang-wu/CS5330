@@ -17,6 +17,8 @@ using namespace std;
  * The first is the path to a directory of images.
  * The second is the feature set.
  * The third is a path to the csv file where the feature vector for each image is written.
+ *
+ * Write the feature vector for each image to a file
  */
 int main(int argc, char *argv[]) {
     char dirname[256];
@@ -25,6 +27,13 @@ int main(int argc, char *argv[]) {
     struct dirent *dp;
     Mat image;
 
+    // check for sufficient arguments
+    if (argc < 4) {
+        cout << "Wrong input." << endl;
+        exit(-1);
+    }
+
+    // If the csv file already exists, no need to recompute the feature vectors
     FILE *fp = fopen( argv[3], "r" );
     if(fp) {
         cout << "csv file already exists." << endl;

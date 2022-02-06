@@ -8,11 +8,12 @@
 #include <opencv2/opencv.hpp>
 
 using namespace cv;
+using namespace std;
 
 /*
  * Compute the sum of square difference of two images.
  */
-int sumOfSquareDifference(Mat &target, Mat &image);
+float sumOfSquareDifference(vector<float> &target, vector<float> &image);
 
 
 #endif //PROJ2_DISTANCEMETRICS_H
