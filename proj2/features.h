@@ -25,6 +25,14 @@ vector<float> baseline(Mat &image);
 vector<float> histogram(Mat &image);
 
 /*
+ * Given an image.
+ * Split it into 2 x 2 grids
+ * Calculate the histogram for each part, using RGB histogram with 8 bins for each of RGB
+ * return the result as a single 1D vector
+ */
+vector<float> multiHistogram(Mat &image);
+
+/*
  * Convert a Mat to a 1D vector
  */
 vector<float> matToVector(Mat &m);

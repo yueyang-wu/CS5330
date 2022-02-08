@@ -66,6 +66,8 @@ int main(int argc, char *argv[]) {
                 imageFeature = baseline(image);
             } else if (!strcmp(argv[2], "histogram")) {
                 imageFeature = histogram(image);
+            } else if (!strcmp(argv[2], "multihisto")) {
+                imageFeature = multiHistogram(image);
             } else {
                 cout << "No such feature type." << endl;
                 exit(-1);

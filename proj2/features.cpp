@@ -43,13 +43,34 @@ vector<float> histogram(Mat &image) {
             feature.at<int>(b, g, r)++;
         }
     }
-
+    
     // convert the 3D histogram into a 1D vector
     return matToVector(feature);
 }
 
 /*
- * Convert a Mat to a 1D vector
+ * Given an image.
+ * Split it into 2 x 2 grids
+ * Calculate the histogram for each part, using RGB histogram with 8 bins for each of RGB
+ * concatenate the result of each part into a singel 1D vector and return the vector
+ */
+vector<float> multiHistogram(Mat &image) {
+    vector<float> feature;
+    int x = image.cols / 2, y = image.rows / 2;
+    int topX[] = {0, x};
+    int topY[] = {0, y};
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            Mat m = image(Rect(topX[i], topY[j], x, y)).clone(); // get ROI
+            vector<float> v = histogram(m); // calculate feature vector
+            feature.insert(feature.end(), v.begin(), v.end()); // concatenate
+        }
+    }
+    return feature;
+}
+
+/*
+ * Convert a Mat to a 1D vector<float>
  */
 vector<float> matToVector(Mat &m) {
     Mat flat = m.reshape(1, m.total() * m.channels());
