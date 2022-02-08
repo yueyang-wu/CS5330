@@ -6,6 +6,7 @@
 #include <opencv2/opencv.hpp>
 
 using namespace cv;
+using namespace std;
 
 /*
  * Compute the sum of square difference of two images.
@@ -16,4 +17,15 @@ float sumOfSquareDifference(vector<float> &target, vector<float> &image) {
         sum += (target[i] - image[i]) * (target[i] - image[i]);
     }
     return sum;
+}
+
+/*
+ * Compute the histogram intersection of two images.
+ */
+float histogramIntersection(vector<float> &target, vector<float> &image) {
+    float intersection = 0;
+    for (int i = 0; i < target.size(); i++) {
+        intersection += (min(target[i], image[i]));
+    }
+    return intersection;
 }

@@ -15,5 +15,10 @@ using namespace std;
  */
 float sumOfSquareDifference(vector<float> &target, vector<float> &image);
 
+/*
+ * Compute the histogram intersection of two images.
+ */
+float histogramIntersection(vector<float> &target, vector<float> &image);
+
 
 #endif //PROJ2_DISTANCEMETRICS_H

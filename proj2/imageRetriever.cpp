@@ -44,6 +44,8 @@ int main(int argc, char *argv[]) {
     // compute features for the target image
     if (!strcmp(argv[2], "baseline")) {
         targetFeature = baseline(target);
+    } else if (!strcmp(argv[2], "histogram")) {
+        targetFeature = histogram(target);
     } else {
         cout << "No such feature type." << endl;
         exit(-1);
@@ -66,17 +68,25 @@ int main(int argc, char *argv[]) {
             d = sumOfSquareDifference(targetFeature, imageFeatures[i]);
             imageAndDistance = make_pair(imageNames[i], d);
             distances.push_back(imageAndDistance);
+            // sort the vector of distances in ascending order
+            sort(distances.begin(), distances.end(), [](auto &left, auto &right) {
+            return left.second < right.second;
+            });
+        } else if (!strcmp(argv[4], "hisinter")) {
+            d = histogramIntersection(targetFeature, imageFeatures[i]);
+            imageAndDistance = make_pair(imageNames[i], d);
+            distances.push_back(imageAndDistance);
+            // sort the vector of distances in descending order
+            sort(distances.begin(), distances.end(), [](auto &left, auto &right) {
+            return left.second > right.second;
+            });
         } else {
             cout << "No such distance metrics." << endl;
             exit(-1);
         }
     }
 
-    // sort the vector of distances in ascending order and get the first N matches
-    // target itself is excluded
-    sort(distances.begin(), distances.end(), [](auto &left, auto &right) {
-        return left.second < right.second;
-    });
+    // get the first N matches, exclude the target itself
     int N = 0, i = 0;
     while (N < stoi(argv[5])) {
         Mat image = imread(distances[i].first);

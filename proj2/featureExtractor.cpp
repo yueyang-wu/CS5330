@@ -64,6 +64,8 @@ int main(int argc, char *argv[]) {
             vector<float> imageFeature;
             if (!strcmp(argv[2], "baseline")) {
                 imageFeature = baseline(image);
+            } else if (!strcmp(argv[2], "histogram")) {
+                imageFeature = histogram(image);
             } else {
                 cout << "No such feature type." << endl;
                 exit(-1);

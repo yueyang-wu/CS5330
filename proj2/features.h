@@ -17,4 +17,16 @@ using namespace std;
  */
 vector<float> baseline(Mat &image);
 
+/*
+ * Given an image.
+ * Use the whole image RGB histogram with 8 bins for each of RGB as the feature vector.
+ * Return the feature vector.
+ */
+vector<float> histogram(Mat &image);
+
+/*
+ * Convert a Mat to a 1D vector
+ */
+vector<float> matToVector(Mat &m);
+
 #endif //PROJ2_FEATURES_H
