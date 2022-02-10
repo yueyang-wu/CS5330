@@ -22,10 +22,9 @@ using namespace std;
  */
 int main(int argc, char *argv[]) {
     char dirname[256];
-    char buffer[256];
+    // char buffer[256];
     DIR *dirp;
     struct dirent *dp;
-    Mat image;
 
     // check for sufficient arguments
     if (argc < 4) {
@@ -55,12 +54,14 @@ int main(int argc, char *argv[]) {
         // check if the file is an image
         if(strstr(dp->d_name, ".jpg") || strstr(dp->d_name, ".png") ||
             strstr(dp->d_name, ".ppm") || strstr(dp->d_name, ".tif") ) {
+            char buffer[256];
             // build the overall filename
             strcpy(buffer, dirname);
             strcat(buffer, "/");
             strcat(buffer, dp->d_name);
 
-            image = imread(buffer);
+            cout << buffer << endl;
+            Mat image = imread(buffer);
             vector<float> imageFeature;
             if (!strcmp(argv[2], "baseline")) {
                 imageFeature = baseline(image);
@@ -68,6 +69,8 @@ int main(int argc, char *argv[]) {
                 imageFeature = histogram(image);
             } else if (!strcmp(argv[2], "multihisto")) {
                 imageFeature = multiHistogram(image);
+            } else if (!strcmp(argv[2], "texturecolor")) {
+                imageFeature = textureAndColor(image);
             } else {
                 cout << "No such feature type." << endl;
                 exit(-1);

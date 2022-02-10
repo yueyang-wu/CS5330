@@ -4,6 +4,9 @@
 
 #include "features.h"
 #include <opencv2/opencv.hpp>
+#include <math.h>
+
+#define PI 3.14
 
 using namespace cv;
 using namespace std;
@@ -30,7 +33,7 @@ vector<float> baseline(Mat &image) {
 vector<float> histogram(Mat &image) {
     int range = 256 / 8; // calculate the range in each bin
 
-    // initialize a 3D mat
+    // initialize a 3D histogram
     int histSize[] = {8, 8, 8};
     Mat feature = Mat::zeros(3, histSize, CV_32S);
 
@@ -43,6 +46,8 @@ vector<float> histogram(Mat &image) {
             feature.at<int>(b, g, r)++;
         }
     }
+    // L2 normalize the histogram
+//    normalize(feature, feature);
 
     // convert the 3D histogram into a 1D vector
     return matToVector(feature);
@@ -52,7 +57,7 @@ vector<float> histogram(Mat &image) {
  * Given an image.
  * Split it into 2 x 2 grids
  * Calculate the histogram for each part, using RGB histogram with 8 bins for each of RGB
- * concatenate the result of each part into a singel 1D vector and return the vector
+ * concatenate the result of each part into a single 1D vector and return the vector
  */
 vector<float> multiHistogram(Mat &image) {
     vector<float> feature;
@@ -70,147 +75,185 @@ vector<float> multiHistogram(Mat &image) {
 }
 
 /*
+ * Given an image.
+ * Convert it to grayscale and compute a 2D histogram of gradient magnitude and orientation
+ * Using 8 bins for each dimension
+ * the max value for magnitude is sqrt(2) * max(sx, sy) which is approximately 1.4 * 255 = 400
+ * the max value for orientation is 2PI
+ */
+vector<float> texture(Mat &image) {
+    // convert image to grayscale
+    Mat grayscale;
+    cvtColor(image, grayscale, COLOR_BGR2GRAY);
+
+    // calculate gradient magnitude on grayscale
+    Mat imageMagnitude = magnitude(grayscale);
+
+    // calculate gradient orientation on grayscale
+    Mat imageOrientation = orientation(grayscale);
+
+    // initialize a 2D histogram
+    int histSize[] = {8, 8};
+    Mat feature = Mat::zeros(2, histSize, CV_32S);
+
+    // calculate the range in each bin
+    float rangeMagnitude = 400 / 8.0;
+    float rangeOrientation = 2 * PI / 8.0;
+
+//    cout << "orientation size: " << imageOrientation.size() << endl;
+//    cout << "magnitude size: " << imageMagnitude.size() << endl;
+
+    // loop the magnitude and orientation and build the 2D histogram
+    for (int i = 0; i < imageMagnitude.rows; i++) {
+        for (int j = 0; j < imageMagnitude.cols; j++) {
+            int m = imageMagnitude.at<float>(i, j) / rangeMagnitude;
+            int o = (imageOrientation.at<float>(i, j) + PI) / rangeOrientation;
+//            cout << "i: " << i << "j: " << j << endl;
+//            cout << "m: " << m << "o: " << o << endl;
+//            cout << "imageOrientation.at<float>(i, j): " << imageOrientation.at<float>(i, j) << endl;
+//            cout << "PI: " << PI << endl;
+//            cout << "rangeOrientation: " << rangeOrientation << endl;
+//            cout << "imageMagnitude.at<float>(i, j): " << imageMagnitude.at<float>(i, j) << endl;
+//            cout << "rangeMagnitude: " << rangeMagnitude << endl;
+            feature.at<int>(m, o)++;
+        }
+    }
+
+//    cout << "after loop" << endl;
+
+    // L2 normalize the histogram
+//    normalize(feature, feature);
+
+    // convert the 2D histogram into a 1D vector
+    return matToVector(feature);
+}
+
+/*
+ * Given an image.
+ * Calculate a histogram of gradient orientation and magnitude and another histogram of BGR color
+ * concatenate the result of each part into a single 1D vector and return the vector
+ */
+vector<float> textureAndColor(Mat &image) {
+    vector<float> feature = texture(image);
+    vector<float> color = histogram(image);
+    feature.insert(feature.end(), color.begin(), color.end());
+    return feature;
+}
+
+/*
+ * Take a single-channel image
+ * Compute sobelX, treat pixels off the edge as having asymmetric reflection over that edge
+ * horizontal filter [-1, 0, 1], vertical filter [1, 2, 1]
+ */
+Mat sobelX(Mat &image) {
+//    Mat dst(image.size(), CV_32F);
+//    Mat temp(image.size(), CV_32F);
+    Mat dst = Mat::zeros(image.size(), CV_32F);
+    Mat temp = Mat::zeros(image.size(), CV_32F);
+    for (int i = 0; i < image.rows; i++) {
+        for (int j = 0; j < image.cols; j++) {
+            if (j > 0 && j < image.cols - 1) {
+                temp.at<float>(i, j) = -image.at<uchar>(i, j - 1) + image.at<uchar>(i, j + 1);
+            }
+        }
+    }
+    for (int i = 0; i < temp.rows; i++) {
+        for (int j = 0; j < temp.cols; j++) {
+            if (i == 0) {
+                dst.at<float>(i, j) = (temp.at<float>(i + 1, j) + 2 * temp.at<float>(i, j) + temp.at<float>(i + 1, j)) / 4;
+            } else if (i == temp.rows - 1) {
+                dst.at<float>(i, j) = (temp.at<float>(i - 1, j) + 2 * temp.at<float>(i, j) + temp.at<float>(i - 1, j)) / 4;
+            } else {
+                dst.at<float>(i, j) = (temp.at<float>(i - 1, j) + 2 * temp.at<float>(i, j) + temp.at<float>(i + 1, j)) / 4;
+            }
+        }
+    }
+    return dst;
+}
+
+/*
+ * Take a single-channel image
+ * Compute sobelY, treat pixels off the edge as having asymmetric reflection over that edge
+ * horizontal [1, 2, 1], vertical [-1, 0, 1]
+ */
+Mat sobelY(Mat &image) {
+//    Mat dst(image.size(), CV_32F);
+//    Mat temp(image.size(), CV_32F);
+    Mat dst = Mat::zeros(image.size(), CV_32F);
+    Mat temp = Mat::zeros(image.size(), CV_32F);
+
+    for (int i = 0; i < image.rows; i++) {
+        for (int j = 0; j < image.cols; j++) {
+            if (j == 0) {
+                temp.at<float>(i, j) = (image.at<uchar>(i, j + 1) + 2 * image.at<uchar>(i, j) + image.at<uchar>(i, j + 1)) / 4;
+            } else if (j == image.cols - 1) {
+                temp.at<float>(i, j) = (image.at<uchar>(i, j - 1) + 2 * image.at<uchar>(i, j) + image.at<uchar>(i, j - 1)) / 4;
+            } else {
+                temp.at<float>(i, j) = (image.at<uchar>(i, j - 1) + 2 * image.at<uchar>(i, j) + image.at<uchar>(i, j + 1)) / 4;
+            }
+        }
+    }
+    for (int i = 0; i < temp.rows; i++) {
+        for (int j = 0; j < temp.cols; j++) {
+            if (i > 0 && i < temp.rows - 1) {
+                dst.at<float>(i, j) = -temp.at<float>(i - 1, j) + temp.at<float>(i + 1, j);
+            }
+//
+//            if (isnan(dst.at<float>(i, j))) {
+//                cout << "i: " << i << ", j: " << j << endl;
+//                cout << "dst: " << dst.at<float>(i, j) << endl;
+//            }
+        }
+    }
+    return dst;
+}
+
+/*
+ * Take a single-channel image,
+ * calculate the gradient magnitude of it.
+ */
+Mat magnitude(Mat &image) {
+    // calculate sobelX and sobelY
+    Mat sx = sobelX(image);
+    Mat sy = sobelY(image);
+
+    // calculate gradient magnitude
+    Mat dst;
+    sqrt(sx.mul(sx) + sy.mul(sy), dst);
+
+    return dst;
+}
+
+/*
+ * Take a single-channel image,
+ * calculate the gradient orientation of it.
+ */
+Mat orientation(Mat &image) {
+    // calculate sobelX and sobelY
+    Mat sx = sobelX(image);
+    Mat sy = sobelY(image);
+
+    Mat dst(image.size(), CV_32F);
+    for (int i = 0; i < image.rows; i++) {
+        for (int j = 0; j < image.cols; j++) {
+            dst.at<float>(i, j) = atan2(sy.at<float>(i, j), sx.at<float>(i, j));
+//            if (isnan(dst.at<float>(i, j))) {
+//                cout << "i: " << i << ", j: " << j << endl;
+//                cout << "sy: " << sy.at<float>(i, j) << endl;
+//                cout << "sx: " << sx.at<float>(i, j) << endl;
+//                cout << "dst: " << dst.at<float>(i, j) << endl;
+//            }
+        }
+    }
+
+    return dst;
+}
+
+/*
  * Convert a Mat to a 1D vector<float>
  */
 vector<float> matToVector(Mat &m) {
     Mat flat = m.reshape(1, m.total() * m.channels());
     flat.convertTo(flat, CV_32F);
     return m.isContinuous() ? flat : flat.clone();
-}
-
-
-// codes from project1
-int sobelX3x3(const Mat &src, Mat &dst) {
-    // build the filters
-    int horizontalFilterArray[] = {-1, 0, 1};
-    int verticalFilterArray[] = {1, 2, 1};
-    Mat horizontalFilter(1, 3, CV_16SC1, horizontalFilterArray);
-    Mat verticalFilter(1, 3, CV_8UC1, verticalFilterArray);
-
-    // both src and dst of filter1xN and filterNx1 should be type CV_32FC3
-    Mat src32FC3;
-    src.convertTo(src32FC3, CV_32FC3);
-    Mat temp(src.size(), CV_32FC3);
-    Mat dst32FC3(src.size(), CV_32FC3);
-
-    // apply horizontal filter
-    filter1xN(src32FC3, temp, horizontalFilter, 1);
-    // apply vertical filter
-    filterNx1(temp, dst32FC3, verticalFilter, 4);
-
-    // convert the dst type to CV_16SC3 otherwise there be problem with the pointer
-    dst32FC3.convertTo(dst, CV_16SC3);
-
-    return 0;
-}
-
-int sobelY3x3(const Mat &src, Mat &dst) {
-    // build the filters
-    int horizontalFilterArray[] = {1, 2, 1};
-    int verticalFilterArray[] = {1, 0, -1};
-    Mat horizontalFilter(1, 3, CV_16SC1, horizontalFilterArray);
-    Mat verticalFilter(1, 3, CV_8UC1, verticalFilterArray);
-
-    // both src and dst of filter1xN and filterNx1 should be type CV_32FC3
-    Mat src32FC3;
-    src.convertTo(src32FC3, CV_32FC3);
-    Mat temp(src.size(), CV_32FC3);
-    Mat dst32FC3(src.size(), CV_32FC3);
-
-    // apply horizontal filter
-    filter1xN(src32FC3, temp, horizontalFilter, 4);
-    // apply vertical filter
-    filterNx1(temp, dst32FC3, verticalFilter, 1);
-
-    // convert the dst type to CV_16SC3 otherwise there be problem with the pointer
-    dst32FC3.convertTo(dst, CV_16SC3);
-
-    return 0;
-}
-
-int magnitude(const Mat &sx, const Mat &sy, Mat &dst) {
-    // to use cv::sqrt, the input and output type need to be CV_32FC3
-    Mat sx32FC3, sy32FC3, dst32FC3;
-    sx.convertTo(sx32FC3, CV_32FC3);
-    sy.convertTo(sy32FC3, CV_32FC3);
-
-    sqrt(sx32FC3.mul(sx32FC3) + sy32FC3.mul(sy32FC3), dst32FC3);
-
-    // convert the dst type back to CV_16SC3
-    dst32FC3.convertTo(dst, CV_16SC3);
-
-    return 0;
-}
-
-/*
- * filter1xN and filterNx1 are two helper functions
- * Since the filters will contain both positive and negative integers and
- * there will be different types of src and dst from the functions using these helper functions,
- * the two helper functions will only input/output CV_32FC3 type, which is a more general type
- * the functions using these helpers should convert the src and dst types according to the actual needs
- */
-int filter1xN(const Mat &src, Mat &dst, Mat &filter, int normalizer) {
-    // validate input
-    CV_Assert(filter.channels() == 1);
-    CV_Assert(filter.rows == 1); // assume filter is 1d array
-    CV_Assert(dst.size() == src.size());
-    CV_Assert(src.type() == CV_32FC3 && dst.type() == CV_32FC3);
-
-    // apply the 1xN filter and normalize the result
-    // treat pixels off the edge as having asymmetric reflection over that edge
-    int radius = filter.cols / 2;
-    for (int i = 0; i < src.rows; i++) {
-        for (int j = 0; j < src.cols; j++) {
-            int blue = 0, green = 0, red = 0;
-            for (int k = -radius; k <= radius; k++) {
-                if (j + k < 0 || j + k >= src.cols) {
-                    blue += filter.at<int>(radius + k) * src.at<Vec3f>(i, j - k)[0];
-                    green += filter.at<int>(radius + k) * src.at<Vec3f>(i, j - k)[1];
-                    red += filter.at<int>(radius + k) * src.at<Vec3f>(i, j - k)[2];
-                } else {
-                    blue += filter.at<int>(radius + k) * src.at<Vec3f>(i, j + k)[0];
-                    green += filter.at<int>(radius + k) * src.at<Vec3f>(i, j + k)[1];
-                    red += filter.at<int>(radius + k) * src.at<Vec3f>(i, j + k)[2];
-                }
-            }
-            dst.at<Vec3f>(i, j)[0] = blue / normalizer;
-            dst.at<Vec3f>(i, j)[1] = green / normalizer;
-            dst.at<Vec3f>(i, j)[2] = red / normalizer;
-        }
-    }
-
-    return 0;
-}
-
-int filterNx1(const Mat &src, Mat &dst, Mat &filter, int normalizer) {
-    // validate input
-    CV_Assert(filter.channels() == 1);
-    CV_Assert(filter.rows == 1); // assume filter is 1d array
-    CV_Assert(dst.size() == src.size());
-    CV_Assert(src.type() == CV_32FC3 && dst.type() == CV_32FC3);
-
-    // apply the Nx1 filter and normalize the result
-    // treat pixels off the edge as having asymmetric reflection over that edge
-    int radius = filter.cols / 2;
-    for (int i = 0; i < src.rows; i++) {
-        for (int j = 0; j < src.cols; j++) {
-            int blue = 0, green = 0, red = 0;
-            for (int k = -radius; k <= radius; k++) {
-                if (i + k < 0 || i + k > src.rows) {
-                    blue += filter.at<int>(radius + k) * src.at<Vec3f>(i - k, j)[0];
-                    green += filter.at<int>(radius + k) * src.at<Vec3f>(i - k, j)[1];
-                    red += filter.at<int>(radius + k) * src.at<Vec3f>(i - k, j)[2];
-                } else {
-                    blue += filter.at<int>(radius + k) * src.at<Vec3f>(i + k, j)[0];
-                    green += filter.at<int>(radius + k) * src.at<Vec3f>(i + k, j)[1];
-                    red += filter.at<int>(radius + k) * src.at<Vec3f>(i + k, j)[2];
-                }
-            }
-            dst.at<Vec3f>(i, j)[0] = blue / normalizer;
-            dst.at<Vec3f>(i, j)[1] = green / normalizer;
-            dst.at<Vec3f>(i, j)[2] = red / normalizer;
-        }
-    }
-
-    return 0;
 }
