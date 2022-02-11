@@ -60,7 +60,6 @@ int main(int argc, char *argv[]) {
             strcat(buffer, "/");
             strcat(buffer, dp->d_name);
 
-            cout << buffer << endl;
             Mat image = imread(buffer);
             vector<float> imageFeature;
             if (!strcmp(argv[2], "baseline")) {
@@ -71,6 +70,13 @@ int main(int argc, char *argv[]) {
                 imageFeature = multiHistogram(image);
             } else if (!strcmp(argv[2], "texturecolor")) {
                 imageFeature = textureAndColor(image);
+            } else if (!strcmp(argv[2], "texture")) {
+                imageFeature = texture(image);
+            } else if (!strcmp(argv[2], "midtexturecolor")) {
+                imageFeature = middleTextureAndColor(image);
+            } else if (!strcmp(argv[2], "midcolor")) {
+                Mat middle = getMiddle(image);
+                imageFeature = histogram(middle);
             } else {
                 cout << "No such feature type." << endl;
                 exit(-1);

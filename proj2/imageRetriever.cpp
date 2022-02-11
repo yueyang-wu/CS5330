@@ -50,6 +50,13 @@ int main(int argc, char *argv[]) {
         targetFeature = multiHistogram(target);
     } else if (!strcmp(argv[2], "texturecolor")) {
         targetFeature = textureAndColor(target);
+    } else if (!strcmp(argv[2], "texture")) {
+        targetFeature = texture(target);
+    } else if (!strcmp(argv[2], "midtexturecolor")) {
+        targetFeature = middleTextureAndColor(target);
+    } else if (!strcmp(argv[2], "midcolor")) {
+        Mat middle = getMiddle(target);
+        targetFeature = histogram(middle);
     } else {
         cout << "No such feature type." << endl;
         exit(-1);

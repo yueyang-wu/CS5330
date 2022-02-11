@@ -35,7 +35,7 @@ vector<float> histogram(Mat &image) {
 
     // initialize a 3D histogram
     int histSize[] = {8, 8, 8};
-    Mat feature = Mat::zeros(3, histSize, CV_32S);
+    Mat feature = Mat::zeros(3, histSize, CV_32F);
 
     // loop the image and build a 3D histogram
     for (int i = 0; i < image.rows; i++) {
@@ -43,11 +43,13 @@ vector<float> histogram(Mat &image) {
             int b = image.at<Vec3b>(i, j)[0] / range;
             int g = image.at<Vec3b>(i, j)[1] / range;
             int r = image.at<Vec3b>(i, j)[2] / range;
-            feature.at<int>(b, g, r)++;
+            feature.at<float>(b, g, r)++;
         }
     }
     // L2 normalize the histogram
-//    normalize(feature, feature);
+    normalize(feature, feature, 1, 0, NORM_L2, -1, Mat());
+//    Mat normalizedFeature(feature, CV_32F);
+//    normalize(feature, normalizedFeature);
 
     // convert the 3D histogram into a 1D vector
     return matToVector(feature);
@@ -94,7 +96,7 @@ vector<float> texture(Mat &image) {
 
     // initialize a 2D histogram
     int histSize[] = {8, 8};
-    Mat feature = Mat::zeros(2, histSize, CV_32S);
+    Mat feature = Mat::zeros(2, histSize, CV_32F);
 
     // calculate the range in each bin
     float rangeMagnitude = 400 / 8.0;
@@ -115,17 +117,31 @@ vector<float> texture(Mat &image) {
 //            cout << "rangeOrientation: " << rangeOrientation << endl;
 //            cout << "imageMagnitude.at<float>(i, j): " << imageMagnitude.at<float>(i, j) << endl;
 //            cout << "rangeMagnitude: " << rangeMagnitude << endl;
-            feature.at<int>(m, o)++;
+            feature.at<float>(m, o)++;
         }
     }
 
 //    cout << "after loop" << endl;
 
     // L2 normalize the histogram
-//    normalize(feature, feature);
+    normalize(feature, feature, 1, 0, NORM_L2, -1, Mat());
+//    Mat normalizedFeature = Mat::zeros(2, histSize, CV_32F);
+//    normalize(feature, normalizedFeature, 0, 1, NORM_L2, CV_32F);
+
 
     // convert the 2D histogram into a 1D vector
     return matToVector(feature);
+}
+
+Mat getMiddle(Mat &image) {
+    int x = image.cols / 3, y = image.rows / 10;
+    Mat middle = image(Rect(x, 4 * y, x, y)).clone();
+    return middle;
+}
+
+vector<float> middleTextureAndColor(Mat &image) {
+    Mat middle = getMiddle(image);
+    return textureAndColor(middle);
 }
 
 /*
