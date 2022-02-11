@@ -77,6 +77,11 @@ int main(int argc, char *argv[]) {
             } else if (!strcmp(argv[2], "midcolor")) {
                 Mat middle = getMiddle(image);
                 imageFeature = histogram(middle);
+            } else if (!strcmp(argv[2], "midtexture")) {
+                Mat middle = getMiddle(image);
+                imageFeature = texture(middle);
+            } else if (!strcmp(argv[2], "test")) {
+                imageFeature = custom(image);
             } else {
                 cout << "No such feature type." << endl;
                 exit(-1);

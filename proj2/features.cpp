@@ -125,17 +125,14 @@ vector<float> texture(Mat &image) {
 
     // L2 normalize the histogram
     normalize(feature, feature, 1, 0, NORM_L2, -1, Mat());
-//    Mat normalizedFeature = Mat::zeros(2, histSize, CV_32F);
-//    normalize(feature, normalizedFeature, 0, 1, NORM_L2, CV_32F);
-
 
     // convert the 2D histogram into a 1D vector
     return matToVector(feature);
 }
 
 Mat getMiddle(Mat &image) {
-    int x = image.cols / 3, y = image.rows / 10;
-    Mat middle = image(Rect(x, 4 * y, x, y)).clone();
+    int x = image.cols / 3, y = image.rows / 3;
+    Mat middle = image(Rect(x, y, x, y)).clone();
     return middle;
 }
 
@@ -152,7 +149,27 @@ vector<float> middleTextureAndColor(Mat &image) {
 vector<float> textureAndColor(Mat &image) {
     vector<float> feature = texture(image);
     vector<float> color = histogram(image);
+    for (int i = 0; i < color.size(); i++) {
+        color[i] /= 2;
+    }
     feature.insert(feature.end(), color.begin(), color.end());
+    return feature;
+}
+
+vector<float> custom(Mat &image) {
+    vector<float> feature;
+    Mat hsv, hsvThreshold;
+    cvtColor(image, hsv, COLOR_BGR2HSV);
+
+    namedWindow("image", WINDOW_AUTOSIZE);
+    imshow("image", image);
+
+    inRange(hsv, Scalar(20, 100, 100), Scalar(30, 255,  255), hsvThreshold);
+
+    namedWindow("hsvThreshold", WINDOW_AUTOSIZE);
+    imshow("hsvThreshold", hsvThreshold);
+    waitKey(0);
+    destroyAllWindows();
     return feature;
 }
 

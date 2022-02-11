@@ -51,6 +51,8 @@ vector<float> textureAndColor(Mat &image);
 vector<float> middleTextureAndColor(Mat &image);
 Mat getMiddle(Mat &image);
 
+vector<float> custom(Mat &image);
+
 /*
  * Take a single-channel image
  * Compute sobelX, treat pixels off the edge as having asymmetric reflection over that edge
