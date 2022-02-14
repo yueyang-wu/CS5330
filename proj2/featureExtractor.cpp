@@ -2,12 +2,12 @@
 // Created by Yueyang Wu on 2/4/22.
 //
 
+#include <string.h>
+#include <dirent.h>
+#include <opencv2/opencv.hpp>
 #include "features.h"
 #include "distanceMetrics.h"
-#include <opencv2/opencv.hpp>
-#include <dirent.h>
 #include "csv_util.h"
-#include <string.h>
 
 using namespace cv;
 using namespace std;
@@ -18,11 +18,11 @@ using namespace std;
  * The second is the feature set.
  * The third is a path to the csv file where the feature vector for each image is written.
  *
- * Write the feature vector for each image to a file
+ * Create a file in the same directory of this program
+ * Write the feature vector for each image to the file
  */
 int main(int argc, char *argv[]) {
     char dirname[256];
-    // char buffer[256];
     DIR *dirp;
     struct dirent *dp;
 
@@ -54,37 +54,42 @@ int main(int argc, char *argv[]) {
         // check if the file is an image
         if(strstr(dp->d_name, ".jpg") || strstr(dp->d_name, ".png") ||
             strstr(dp->d_name, ".ppm") || strstr(dp->d_name, ".tif") ) {
-            char buffer[256];
             // build the overall filename
+            char buffer[256];
             strcpy(buffer, dirname);
             strcat(buffer, "/");
             strcat(buffer, dp->d_name);
 
             Mat image = imread(buffer);
             vector<float> imageFeature;
-            if (!strcmp(argv[2], "baseline")) {
+            if (!strcmp(argv[2], "b")) { // baseline
                 imageFeature = baseline(image);
-            } else if (!strcmp(argv[2], "histogram")) {
+            } else if (!strcmp(argv[2], "c")) { // color
                 imageFeature = histogram(image);
-            } else if (!strcmp(argv[2], "multihisto")) {
+            } else if (!strcmp(argv[2], "mc")) { // multi histograms of color
                 imageFeature = multiHistogram(image);
-            } else if (!strcmp(argv[2], "texturecolor")) {
-                imageFeature = textureAndColor(image);
-            } else if (!strcmp(argv[2], "texture")) {
+            } else if (!strcmp(argv[2], "t")) { // texture
                 imageFeature = texture(image);
-            } else if (!strcmp(argv[2], "midtexturecolor")) {
-                imageFeature = middleTextureAndColor(image);
-            } else if (!strcmp(argv[2], "midcolor")) {
+            } else if (!strcmp(argv[2], "tc")) { // texture and color
+                imageFeature = textureAndColor(image);
+            } else if (!strcmp(argv[2], "midc")) { // color on middle part
                 Mat middle = getMiddle(image);
                 imageFeature = histogram(middle);
-            } else if (!strcmp(argv[2], "midtexture")) {
+            } else if (!strcmp(argv[2], "midt")) { // texture on middle part
                 Mat middle = getMiddle(image);
                 imageFeature = texture(middle);
-            } else if (!strcmp(argv[2], "test")) {
-                imageFeature = custom(image);
-            } else if (!strcmp(argv[2], "gabortexture")) {
+            } else if (!strcmp(argv[2], "midtc")) { // texture and color on middle part
                 Mat middle = getMiddle(image);
-                imageFeature = multiGaborTextureAndColor(middle);
+                imageFeature = textureAndColor(middle);
+            } else if (!strcmp(argv[2], "gt")) { // Gabor texture
+                imageFeature = gaborTexture(image);
+            } else if (!strcmp(argv[2], "gtc")) { // Gabor texture and color
+                imageFeature = gaborTextureAndColor(image);
+            } else if (!strcmp(argv[2], "mgtc")) { // multi histograms of Gabor texture and color
+                imageFeature = multiGaborTextureAndColor(image);
+            } else if (!strcmp(argv[2], "midgtc")) { // Gabor texture and color on middle part
+                Mat middle = getMiddle(image);
+                imageFeature = gaborTextureAndColor(middle);
             } else {
                 cout << "No such feature type." << endl;
                 exit(-1);

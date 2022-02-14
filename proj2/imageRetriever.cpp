@@ -1,13 +1,14 @@
 //
 // Created by Yueyang Wu on 2/5/22.
 //
-#include "features.h"
-#include "distanceMetrics.h"
-#include <opencv2/opencv.hpp>
+
 #include <dirent.h>
-#include "csv_util.h"
 #include <string.h>
 #include <utility>
+#include <opencv2/opencv.hpp>
+#include "csv_util.h"
+#include "features.h"
+#include "distanceMetrics.h"
 
 using namespace cv;
 using namespace std;
@@ -27,7 +28,6 @@ int main(int argc, char *argv[]) {
     Mat target;
     vector<float> targetFeature;
 
-
     // check for sufficient arguments
         if (argc < 6) {
             cout << "Wrong input." << endl;
@@ -42,27 +42,34 @@ int main(int argc, char *argv[]) {
     }
 
     // compute features for the target image
-    if (!strcmp(argv[2], "baseline")) {
+    if (!strcmp(argv[2], "b")) { // baseline
         targetFeature = baseline(target);
-    } else if (!strcmp(argv[2], "histogram")) {
+    } else if (!strcmp(argv[2], "c")) { // color
         targetFeature = histogram(target);
-    } else if (!strcmp(argv[2], "multihisto")) {
+    } else if (!strcmp(argv[2], "mc")) { // multi histograms of color
         targetFeature = multiHistogram(target);
-    } else if (!strcmp(argv[2], "texturecolor")) {
-        targetFeature = textureAndColor(target);
-    } else if (!strcmp(argv[2], "texture")) {
+    } else if (!strcmp(argv[2], "t")) { // texture
         targetFeature = texture(target);
-    } else if (!strcmp(argv[2], "midtexturecolor")) {
-        targetFeature = middleTextureAndColor(target);
-    } else if (!strcmp(argv[2], "midcolor")) {
+    } else if (!strcmp(argv[2], "tc")) { // texture and color
+        targetFeature = textureAndColor(target);
+    } else if (!strcmp(argv[2], "midc")) { // color on middle part
         Mat middle = getMiddle(target);
         targetFeature = histogram(middle);
-    } else if (!strcmp(argv[2], "midtexture")) {
+    } else if (!strcmp(argv[2], "midt")) { // texture on middle part
         Mat middle = getMiddle(target);
         targetFeature = texture(middle);
-    } else if (!strcmp(argv[2], "gabortexture")) {
+    } else if (!strcmp(argv[2], "midtc")) { // texture and color on middle part
         Mat middle = getMiddle(target);
-        targetFeature = multiGaborTextureAndColor(middle);
+        targetFeature = textureAndColor(middle);
+    } else if (!strcmp(argv[2], "gt")) { // Gabor texture
+        targetFeature = gaborTexture(target);
+    } else if (!strcmp(argv[2], "gtc")) { // Gabor texture and color
+        targetFeature = gaborTextureAndColor(target);
+    } else if (!strcmp(argv[2], "mgtc")) { // multi histograms of Gabor texture and color
+        targetFeature = multiGaborTextureAndColor(target);
+    } else if (!strcmp(argv[2], "midgtc")) { // Gabor texture and color on middle part
+        Mat middle = getMiddle(target);
+        targetFeature = gaborTextureAndColor(middle);
     } else {
         cout << "No such feature type." << endl;
         exit(-1);
@@ -81,7 +88,8 @@ int main(int argc, char *argv[]) {
     float d;
     pair<string, float> imageAndDistance;
     for (int i = 0; i < imageNames.size(); i++) {
-        if (!strcmp(argv[4], "sumofsd")) {
+        if (!strcmp(argv[4], "sd")) {
+            // sum of square difference
             d = sumOfSquareDifference(targetFeature, imageFeatures[i]);
             imageAndDistance = make_pair(imageNames[i], d);
             distances.push_back(imageAndDistance);
@@ -89,7 +97,8 @@ int main(int argc, char *argv[]) {
             sort(distances.begin(), distances.end(), [](auto &left, auto &right) {
             return left.second < right.second;
             });
-        } else if (!strcmp(argv[4], "hisinter")) {
+        } else if (!strcmp(argv[4], "hi")) {
+            // histogram intersection
             d = histogramIntersection(targetFeature, imageFeatures[i]);
             imageAndDistance = make_pair(imageNames[i], d);
             distances.push_back(imageAndDistance);
