@@ -82,6 +82,9 @@ int main(int argc, char *argv[]) {
                 imageFeature = texture(middle);
             } else if (!strcmp(argv[2], "test")) {
                 imageFeature = custom(image);
+            } else if (!strcmp(argv[2], "gabortexture")) {
+                Mat middle = getMiddle(image);
+                imageFeature = multiGaborTextureAndColor(middle);
             } else {
                 cout << "No such feature type." << endl;
                 exit(-1);

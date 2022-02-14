@@ -9,7 +9,7 @@ using namespace cv;
 using namespace std;
 
 /*
- * Compute the sum of square difference of two images.
+ * Compute the sum of square difference of the two feature vectors.
  */
 float sumOfSquareDifference(vector<float> &target, vector<float> &image) {
     float sum = 0;
@@ -20,7 +20,7 @@ float sumOfSquareDifference(vector<float> &target, vector<float> &image) {
 }
 
 /*
- * Compute the histogram intersection of two images.
+ * Compute the histogram intersection of the two feature vectors.
  */
 float histogramIntersection(vector<float> &target, vector<float> &image) {
     float intersection = 0;

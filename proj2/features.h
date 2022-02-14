@@ -53,6 +53,12 @@ Mat getMiddle(Mat &image);
 
 vector<float> custom(Mat &image);
 
+vector<float> gaborTexture(Mat &image);
+
+vector<float> gaborTextureAndColor(Mat &image);
+
+vector<float> multiGaborTextureAndColor(Mat &image);
+
 /*
  * Take a single-channel image
  * Compute sobelX, treat pixels off the edge as having asymmetric reflection over that edge

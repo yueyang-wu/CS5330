@@ -60,6 +60,9 @@ int main(int argc, char *argv[]) {
     } else if (!strcmp(argv[2], "midtexture")) {
         Mat middle = getMiddle(target);
         targetFeature = texture(middle);
+    } else if (!strcmp(argv[2], "gabortexture")) {
+        Mat middle = getMiddle(target);
+        targetFeature = multiGaborTextureAndColor(middle);
     } else {
         cout << "No such feature type." << endl;
         exit(-1);

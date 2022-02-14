@@ -6,8 +6,6 @@
 #include <opencv2/opencv.hpp>
 #include <math.h>
 
-#define PI 3.14
-
 using namespace cv;
 using namespace std;
 
@@ -100,7 +98,7 @@ vector<float> texture(Mat &image) {
 
     // calculate the range in each bin
     float rangeMagnitude = 400 / 8.0;
-    float rangeOrientation = 2 * PI / 8.0;
+    float rangeOrientation = 2 * CV_PI / 8.0;
 
 //    cout << "orientation size: " << imageOrientation.size() << endl;
 //    cout << "magnitude size: " << imageMagnitude.size() << endl;
@@ -109,7 +107,7 @@ vector<float> texture(Mat &image) {
     for (int i = 0; i < imageMagnitude.rows; i++) {
         for (int j = 0; j < imageMagnitude.cols; j++) {
             int m = imageMagnitude.at<float>(i, j) / rangeMagnitude;
-            int o = (imageOrientation.at<float>(i, j) + PI) / rangeOrientation;
+            int o = (imageOrientation.at<float>(i, j) + CV_PI) / rangeOrientation;
 //            cout << "i: " << i << "j: " << j << endl;
 //            cout << "m: " << m << "o: " << o << endl;
 //            cout << "imageOrientation.at<float>(i, j): " << imageOrientation.at<float>(i, j) << endl;
@@ -170,6 +168,78 @@ vector<float> custom(Mat &image) {
     imshow("hsvThreshold", hsvThreshold);
     waitKey(0);
     destroyAllWindows();
+    return feature;
+}
+
+vector<float> gaborTexture(Mat &image) {
+    vector<float> feature;
+    Mat grayscale;
+    cvtColor(image, grayscale, COLOR_BGR2GRAY);
+
+    float sigmaValue[] = {1.0, 2.0, 4.0};
+//    float thetaValue[] = {-3 * CV_PI / 4, -CV_PI / 2, -CV_PI / 4, 0, CV_PI / 4, CV_PI / 2, 3 * CV_PI / 4, CV_PI};
+    for (auto s : sigmaValue) {
+        for (int k = 0; k < 16; k++) {
+            float t = k * CV_PI / 8;
+//            cout << s << ", " << t << endl;
+            Mat gaborKernel = getGaborKernel( Size(31,31), s, t, 10.0, 0.5, 0, CV_32F );
+            Mat filteredImage;
+            vector<float> hist(9, 0);
+            filter2D(grayscale, filteredImage, CV_32F, gaborKernel);
+
+            Scalar mean, stddev;
+            meanStdDev(filteredImage, mean, stddev);
+            feature.push_back(mean[0]);
+            feature.push_back(stddev[0]);
+
+            // apply non-linear transformation tanh(a * value), the result will be -1 to 1
+            // Reference: https://www.ee.columbia.edu/~sfchang/course/dip-S06/handout/jain-texture.pdf
+//            for (int i = 0; i < filteredImage.rows; i++) {
+//                for (int j = 0; j < filteredImage.cols; j++) {
+//                    filteredImage.at<float>(i, j) = tanh(0.01 * filteredImage.at<float>(i, j));
+////                    cout << "tanh: " << filteredImage.at<float>(i, j) << endl;
+//                    int pos = (filteredImage.at<float>(i, j) + 1) / 0.25; // range -1 to 1, 9 bins
+////                    cout << pos << endl;
+//                    hist[pos]++;
+//                }
+//            }
+//            cout << "hist" << endl;
+//            for (int i = 0; i < hist.size(); i++) {
+//                cout << hist[i] << ",";
+//            }
+//            cout << endl;
+//            feature.insert(feature.end(), hist.begin(), hist.end()); // concatenate
+        }
+    }
+    // L2 normalize the vector
+    normalize(feature, feature, 1, 0, NORM_L2, -1, Mat());
+
+    return feature;
+}
+
+vector<float> gaborTextureAndColor(Mat &image) {
+    vector<float> feature = gaborTexture(image);
+    vector<float> color = histogram(image);
+//    for (int i = 0; i < color.size(); i++) {
+//        color[i] /= 2;
+//    }
+    feature.insert(feature.end(), color.begin(), color.end());
+    return feature;
+
+}
+
+vector<float> multiGaborTextureAndColor(Mat &image) {
+    vector<float> feature;
+    int x = image.cols / 2, y = image.rows / 2;
+    int topX[] = {0, x};
+    int topY[] = {0, y};
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            Mat m = image(Rect(topX[i], topY[j], x, y)).clone(); // get ROI
+            vector<float> v = gaborTextureAndColor(m); // calculate feature vector
+            feature.insert(feature.end(), v.begin(), v.end()); // concatenate
+        }
+    }
     return feature;
 }
 
