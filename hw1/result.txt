@@ -1,0 +1,6004 @@
+*** compare integer ***
+1. number: 1345682837
+pTime - mTime: 0.000508785
+
+2. number: 1741138096
+pTime - mTime: 0.00050807
+
+3. number: 1695788644
+pTime - mTime: 0.000507832
+
+4. number: 1864243565
+pTime - mTime: 0.00050807
+
+5. number: 555170419
+pTime - mTime: 0.000507832
+
+6. number: 2080252759
+pTime - mTime: 0.000437975
+
+7. number: 1774330547
+pTime - mTime: 0.000437975
+
+8. number: 1215564381
+pTime - mTime: 0.000437021
+
+9. number: 978600750
+pTime - mTime: 0.000438213
+
+10. number: 1913019718
+pTime - mTime: 0.000437975
+
+11. number: 2144704383
+pTime - mTime: 0.000437975
+
+12. number: 533533380
+pTime - mTime: 0.000437975
+
+13. number: 1351274629
+pTime - mTime: 0.000437975
+
+14. number: 1233105772
+pTime - mTime: 0.000439882
+
+15. number: 1591499648
+pTime - mTime: 0.000438213
+
+16. number: 1425743745
+pTime - mTime: 0.000436068
+
+17. number: 852572183
+pTime - mTime: 0.000468016
+
+18. number: 1169770091
+pTime - mTime: 0.000437975
+
+19. number: 113114346
+pTime - mTime: 0.000437975
+
+20. number: 589768821
+pTime - mTime: 0.000437975
+
+21. number: 1607526836
+pTime - mTime: 0.000437975
+
+22. number: 211752939
+pTime - mTime: 0.000438929
+
+23. number: 551225888
+pTime - mTime: 0.000437975
+
+24. number: 209029652
+pTime - mTime: 0.000437021
+
+25. number: 2025581513
+pTime - mTime: 0.000439882
+
+26. number: 2037699941
+pTime - mTime: 0.000437021
+
+27. number: 1701172872
+pTime - mTime: 0.000439167
+
+28. number: 15166740
+pTime - mTime: 0.000422955
+
+29. number: 1504312028
+pTime - mTime: 0.000423193
+
+30. number: 647261659
+pTime - mTime: 0.000423908
+
+31. number: 1522013952
+pTime - mTime: 0.000422716
+
+32. number: 1810755041
+pTime - mTime: 0.000422001
+
+33. number: 1369195644
+pTime - mTime: 0.000423908
+
+34. number: 1783894297
+pTime - mTime: 0.000422716
+
+35. number: 892237106
+pTime - mTime: 0.000423908
+
+36. number: 2098200382
+pTime - mTime: 0.000422955
+
+37. number: 624836081
+pTime - mTime: 0.000425816
+
+38. number: 424962731
+pTime - mTime: 0.000424147
+
+39. number: 1965476836
+pTime - mTime: 0.000423908
+
+40. number: 1175707692
+pTime - mTime: 0.000423193
+
+41. number: 1122126591
+pTime - mTime: 0.000423908
+
+42. number: 380210177
+pTime - mTime: 0.000423193
+
+43. number: 1428578208
+pTime - mTime: 0.000422955
+
+44. number: 1246751590
+pTime - mTime: 0.000424385
+
+45. number: 1156012545
+pTime - mTime: 0.000422955
+
+46. number: 818272600
+pTime - mTime: 0.000423908
+
+47. number: 222296006
+pTime - mTime: 0.000423193
+
+48. number: 1654893903
+pTime - mTime: 0.000422955
+
+49. number: 1741098618
+pTime - mTime: 0.000423908
+
+50. number: 1032281898
+pTime - mTime: 0.000423193
+
+51. number: 41458767
+pTime - mTime: 0.000423908
+
+52. number: 1012778535
+pTime - mTime: 0.000421762
+
+53. number: 813434817
+pTime - mTime: 0.000423908
+
+54. number: 518055711
+pTime - mTime: 0.000422955
+
+55. number: 1063613033
+pTime - mTime: 0.000424147
+
+56. number: 490351197
+pTime - mTime: 0.000423908
+
+57. number: 1437797634
+pTime - mTime: 0.000422239
+
+58. number: 1578821788
+pTime - mTime: 0.000425816
+
+59. number: 949831778
+pTime - mTime: 0.000422001
+
+60. number: 1576727889
+pTime - mTime: 0.000424862
+
+61. number: 117409637
+pTime - mTime: 0.000423908
+
+62. number: 1913764307
+pTime - mTime: 0.000422001
+
+63. number: 1774109824
+pTime - mTime: 0.000423193
+
+64. number: 1800840214
+pTime - mTime: 0.000422001
+
+65. number: 86939074
+pTime - mTime: 0.000423908
+
+66. number: 896119952
+pTime - mTime: 0.000423193
+
+67. number: 785200047
+pTime - mTime: 0.000423908
+
+68. number: 570162308
+pTime - mTime: 0.000408173
+
+69. number: 645860836
+pTime - mTime: 0.000408888
+
+70. number: 1600701908
+pTime - mTime: 0.000410795
+
+71. number: 1469304981
+pTime - mTime: 0.00041008
+
+72. number: 694342008
+pTime - mTime: 0.000409842
+
+73. number: 379973852
+pTime - mTime: 0.000409365
+
+74. number: 1751631227
+pTime - mTime: 0.000408888
+
+75. number: 1960182307
+pTime - mTime: 0.000425816
+
+76. number: 237388316
+pTime - mTime: 0.000396967
+
+77. number: 1908277727
+pTime - mTime: 0.000397205
+
+78. number: 1902956585
+pTime - mTime: 0.000396729
+
+79. number: 517352518
+pTime - mTime: 0.000413895
+
+80. number: 2129950164
+pTime - mTime: 0.000411034
+
+81. number: 1667477699
+pTime - mTime: 0.000410318
+
+82. number: 636076937
+pTime - mTime: 0.000397205
+
+83. number: 371468587
+pTime - mTime: 0.000396729
+
+84. number: 537563074
+pTime - mTime: 0.000397205
+
+85. number: 358864983
+pTime - mTime: 0.000396729
+
+86. number: 1309671699
+pTime - mTime: 0.000396967
+
+87. number: 2092330184
+pTime - mTime: 0.000397205
+
+88. number: 748666057
+pTime - mTime: 0.000406742
+
+89. number: 723715420
+pTime - mTime: 0.000384808
+
+90. number: 137670526
+pTime - mTime: 0.000383854
+
+91. number: 988625857
+pTime - mTime: 0.000383854
+
+92. number: 753784954
+pTime - mTime: 0.000383854
+
+93. number: 857671419
+pTime - mTime: 0.000385046
+
+94. number: 973283663
+pTime - mTime: 0.000384808
+
+95. number: 595568036
+pTime - mTime: 0.000394106
+
+96. number: 290685579
+pTime - mTime: 0.000374079
+
+97. number: 27212522
+pTime - mTime: 0.000373125
+
+98. number: 2094307284
+pTime - mTime: 0.000374079
+
+99. number: 1765531052
+pTime - mTime: 0.000372887
+
+100. number: 1498823559
+pTime - mTime: 0.000374079
+
+101. number: 744359997
+pTime - mTime: 0.000372887
+
+102. number: 1366208998
+pTime - mTime: 0.000384092
+
+103. number: 979458856
+pTime - mTime: 0.000363827
+
+104. number: 1302821731
+pTime - mTime: 0.000362158
+
+105. number: 781551299
+pTime - mTime: 0.000363111
+
+106. number: 1522680435
+pTime - mTime: 0.000362158
+
+107. number: 127432940
+pTime - mTime: 0.000363827
+
+108. number: 724209715
+pTime - mTime: 0.000361681
+
+109. number: 2002835650
+pTime - mTime: 0.000363111
+
+110. number: 2000069666
+pTime - mTime: 0.000362158
+
+111. number: 609333165
+pTime - mTime: 0.000364065
+
+112. number: 1860458453
+pTime - mTime: 0.000371933
+
+113. number: 1363302445
+pTime - mTime: 0.000352144
+
+114. number: 1521146466
+pTime - mTime: 0.000353098
+
+115. number: 115819721
+pTime - mTime: 0.000353098
+
+116. number: 961849859
+pTime - mTime: 0.000353098
+
+117. number: 1701152438
+pTime - mTime: 0.000353098
+
+118. number: 1819216149
+pTime - mTime: 0.000352144
+
+119. number: 1841117098
+pTime - mTime: 0.000352144
+
+120. number: 563179657
+pTime - mTime: 0.000353098
+
+121. number: 1400046064
+pTime - mTime: 0.000353098
+
+122. number: 595860663
+pTime - mTime: 0.000364065
+
+123. number: 913900274
+pTime - mTime: 0.000342607
+
+124. number: 1118844968
+pTime - mTime: 0.0003438
+
+125. number: 1060547238
+pTime - mTime: 0.000347853
+
+126. number: 503142160
+pTime - mTime: 0.000334978
+
+127. number: 1667148075
+pTime - mTime: 0.000345945
+
+128. number: 1538537310
+pTime - mTime: 0.00032711
+
+129. number: 345958837
+pTime - mTime: 0.000324965
+
+130. number: 1291924224
+pTime - mTime: 0.000334978
+
+131. number: 163261145
+pTime - mTime: 0.000315905
+
+132. number: 1593429990
+pTime - mTime: 0.000317812
+
+133. number: 1656747034
+pTime - mTime: 0.000324965
+
+134. number: 674416630
+pTime - mTime: 0.000310183
+
+135. number: 501594738
+pTime - mTime: 0.000323057
+
+136. number: 1429430285
+pTime - mTime: 0.000302792
+
+137. number: 535224200
+pTime - mTime: 0.000302792
+
+138. number: 1851598958
+pTime - mTime: 0.000317812
+
+139. number: 638141623
+pTime - mTime: 0.00029707
+
+140. number: 712907837
+pTime - mTime: 0.000297308
+
+141. number: 1030733040
+pTime - mTime: 0.000307798
+
+142. number: 1927089772
+pTime - mTime: 0.000287771
+
+143. number: 249417144
+pTime - mTime: 0.000287771
+
+144. number: 65843458
+pTime - mTime: 0.000301123
+
+145. number: 676903595
+pTime - mTime: 0.000281811
+
+146. number: 1497826200
+pTime - mTime: 0.000282049
+
+147. number: 1161616460
+pTime - mTime: 0.000296831
+
+148. number: 513991537
+pTime - mTime: 0.000277281
+
+149. number: 1476517319
+pTime - mTime: 0.000276089
+
+150. number: 1653022542
+pTime - mTime: 0.000277042
+
+151. number: 353905349
+pTime - mTime: 0.00027585
+
+152. number: 1704965294
+pTime - mTime: 0.00027585
+
+153. number: 1477377531
+pTime - mTime: 0.000275135
+
+154. number: 1078220097
+pTime - mTime: 0.000275135
+
+155. number: 1178140087
+pTime - mTime: 0.000274897
+
+156. number: 1201200063
+pTime - mTime: 0.000274897
+
+157. number: 75676588
+pTime - mTime: 0.000275135
+
+158. number: 586078686
+pTime - mTime: 0.000347853
+
+159. number: 1864453654
+pTime - mTime: 0.000276804
+
+160. number: 1938652595
+pTime - mTime: 0.000277996
+
+161. number: 1312255075
+pTime - mTime: 0.000277042
+
+162. number: 413974029
+pTime - mTime: 0.000277042
+
+163. number: 1961955964
+pTime - mTime: 0.000274897
+
+164. number: 2129954104
+pTime - mTime: 0.000274897
+
+165. number: 1733697279
+pTime - mTime: 0.000275135
+
+166. number: 1192028851
+pTime - mTime: 0.000275135
+
+167. number: 553939088
+pTime - mTime: 0.000274897
+
+168. number: 712625465
+pTime - mTime: 0.000274897
+
+169. number: 579874130
+pTime - mTime: 0.000275135
+
+170. number: 663696018
+pTime - mTime: 0.000275135
+
+171. number: 708895202
+pTime - mTime: 0.000274897
+
+172. number: 162369652
+pTime - mTime: 0.000276804
+
+173. number: 1642492668
+pTime - mTime: 0.000277042
+
+174. number: 1619455732
+pTime - mTime: 0.000277042
+
+175. number: 984728840
+pTime - mTime: 0.000277042
+
+176. number: 1828613292
+pTime - mTime: 0.000276804
+
+177. number: 865109621
+pTime - mTime: 0.000277281
+
+178. number: 1433093151
+pTime - mTime: 0.000277042
+
+179. number: 1967470946
+pTime - mTime: 0.000277042
+
+180. number: 330976110
+pTime - mTime: 0.000276804
+
+181. number: 732818234
+pTime - mTime: 0.000380278
+
+182. number: 657326487
+pTime - mTime: 0.000275135
+
+183. number: 1030370035
+pTime - mTime: 0.000274897
+
+184. number: 121032031
+pTime - mTime: 0.000274897
+
+185. number: 518314502
+pTime - mTime: 0.000275135
+
+186. number: 1118146076
+pTime - mTime: 0.000275135
+
+187. number: 51687629
+pTime - mTime: 0.000274897
+
+188. number: 1130570409
+pTime - mTime: 0.000274897
+
+189. number: 561538601
+pTime - mTime: 0.000278234
+
+190. number: 1736105283
+pTime - mTime: 0.00027585
+
+191. number: 861162786
+pTime - mTime: 0.000274897
+
+192. number: 1670630363
+pTime - mTime: 0.000276089
+
+193. number: 2083293257
+pTime - mTime: 0.000275135
+
+194. number: 1336372905
+pTime - mTime: 0.000276804
+
+195. number: 2035417203
+pTime - mTime: 0.000277281
+
+196. number: 1989900952
+pTime - mTime: 0.000277042
+
+197. number: 1502448727
+pTime - mTime: 0.000277042
+
+198. number: 1543016457
+pTime - mTime: 0.000276804
+
+199. number: 465054821
+pTime - mTime: 0.000277281
+
+200. number: 1483368308
+pTime - mTime: 0.000276089
+
+201. number: 833477727
+pTime - mTime: 0.000277042
+
+202. number: 224311502
+pTime - mTime: 0.00027585
+
+203. number: 1169596823
+pTime - mTime: 0.000275135
+
+204. number: 1495966364
+pTime - mTime: 0.000275135
+
+205. number: 2115607513
+pTime - mTime: 0.000274897
+
+206. number: 1128710806
+pTime - mTime: 0.000274897
+
+207. number: 1519445685
+pTime - mTime: 0.000447273
+
+208. number: 1595564512
+pTime - mTime: 0.000276804
+
+209. number: 1024436289
+pTime - mTime: 0.000277281
+
+210. number: 1324294418
+pTime - mTime: 0.000277042
+
+211. number: 895749012
+pTime - mTime: 0.000349045
+
+212. number: 993262408
+pTime - mTime: 0.000276804
+
+213. number: 1370886319
+pTime - mTime: 0.00027585
+
+214. number: 134297964
+pTime - mTime: 0.000276089
+
+215. number: 140551145
+pTime - mTime: 0.000277042
+
+216. number: 11065509
+pTime - mTime: 0.000274897
+
+217. number: 1294399315
+pTime - mTime: 0.000274897
+
+218. number: 959926289
+pTime - mTime: 0.000275135
+
+219. number: 1583966153
+pTime - mTime: 0.000275135
+
+220. number: 1511828453
+pTime - mTime: 0.000276804
+
+221. number: 274281461
+pTime - mTime: 0.000278234
+
+222. number: 1348591759
+pTime - mTime: 0.000276089
+
+223. number: 1239266269
+pTime - mTime: 0.000276804
+
+224. number: 2051757671
+pTime - mTime: 0.000275135
+
+225. number: 1746239812
+pTime - mTime: 0.000275135
+
+226. number: 1540983576
+pTime - mTime: 0.000274897
+
+227. number: 658162206
+pTime - mTime: 0.000274897
+
+228. number: 43913739
+pTime - mTime: 0.000275135
+
+229. number: 1471303646
+pTime - mTime: 0.000275135
+
+230. number: 2073649958
+pTime - mTime: 0.000274897
+
+231. number: 322720137
+pTime - mTime: 0.000274897
+
+232. number: 1561117078
+pTime - mTime: 0.000277042
+
+233. number: 1886997741
+pTime - mTime: 0.000277042
+
+234. number: 732517285
+pTime - mTime: 0.000277042
+
+235. number: 2041727585
+pTime - mTime: 0.000276804
+
+236. number: 674308876
+pTime - mTime: 0.000277281
+
+237. number: 838056907
+pTime - mTime: 0.000277042
+
+238. number: 2024662117
+pTime - mTime: 0.000277042
+
+239. number: 1617796898
+pTime - mTime: 0.00027585
+
+240. number: 1021993213
+pTime - mTime: 0.000275135
+
+241. number: 1065705379
+pTime - mTime: 0.000274897
+
+242. number: 1296672067
+pTime - mTime: 0.000275135
+
+243. number: 503363507
+pTime - mTime: 0.000275135
+
+244. number: 1092359810
+pTime - mTime: 0.000274897
+
+245. number: 453611661
+pTime - mTime: 0.000308275
+
+246. number: 284222771
+pTime - mTime: 0.000277042
+
+247. number: 928464463
+pTime - mTime: 0.000276804
+
+248. number: 1086033733
+pTime - mTime: 0.000277281
+
+249. number: 1505417872
+pTime - mTime: 0.000277042
+
+250. number: 2053312591
+pTime - mTime: 0.00027585
+
+251. number: 2109976488
+pTime - mTime: 0.00027585
+
+252. number: 977354099
+pTime - mTime: 0.000275135
+
+253. number: 287909184
+pTime - mTime: 0.000276089
+
+254. number: 608981991
+pTime - mTime: 0.000276804
+
+255. number: 253244329
+pTime - mTime: 0.000278234
+
+256. number: 2112315990
+pTime - mTime: 0.000277042
+
+257. number: 1642658567
+pTime - mTime: 0.000276804
+
+258. number: 112752931
+pTime - mTime: 0.000277281
+
+259. number: 957917857
+pTime - mTime: 0.000275135
+
+260. number: 40504234
+pTime - mTime: 0.000274897
+
+261. number: 2327933
+pTime - mTime: 0.000274897
+
+262. number: 470847479
+pTime - mTime: 0.000274897
+
+263. number: 56323552
+pTime - mTime: 0.000275135
+
+264. number: 1737116978
+pTime - mTime: 0.000277042
+
+265. number: 684851475
+pTime - mTime: 0.000276804
+
+266. number: 1933859246
+pTime - mTime: 0.000277281
+
+267. number: 207333371
+pTime - mTime: 0.000277042
+
+268. number: 1433474157
+pTime - mTime: 0.000277042
+
+269. number: 1928587847
+pTime - mTime: 0.000276804
+
+270. number: 1805243552
+pTime - mTime: 0.000277281
+
+271. number: 1079396842
+pTime - mTime: 0.000277042
+
+272. number: 1628340479
+pTime - mTime: 0.00027585
+
+273. number: 2134300026
+pTime - mTime: 0.00027585
+
+274. number: 1761164335
+pTime - mTime: 0.00027585
+
+275. number: 1121854938
+pTime - mTime: 0.000275135
+
+276. number: 109505500
+pTime - mTime: 0.000307798
+
+277. number: 65436215
+pTime - mTime: 0.000275135
+
+278. number: 274821435
+pTime - mTime: 0.000275135
+
+279. number: 1834000189
+pTime - mTime: 0.000274897
+
+280. number: 1208374326
+pTime - mTime: 0.000274897
+
+281. number: 394430597
+pTime - mTime: 0.000276089
+
+282. number: 2060492331
+pTime - mTime: 0.000277042
+
+283. number: 373298789
+pTime - mTime: 0.000276804
+
+284. number: 1232997030
+pTime - mTime: 0.000276804
+
+285. number: 1911356501
+pTime - mTime: 0.000278234
+
+286. number: 2108303675
+pTime - mTime: 0.000274897
+
+287. number: 779673419
+pTime - mTime: 0.000274897
+
+288. number: 25922333
+pTime - mTime: 0.000283003
+
+289. number: 1884937231
+pTime - mTime: 0.000276089
+
+290. number: 461264067
+pTime - mTime: 0.000277042
+
+291. number: 49191593
+pTime - mTime: 0.000277042
+
+292. number: 2129366297
+pTime - mTime: 0.000276804
+
+293. number: 444359618
+pTime - mTime: 0.000276327
+
+294. number: 1551442301
+pTime - mTime: 0.000275135
+
+295. number: 344294227
+pTime - mTime: 0.000274897
+
+296. number: 1232111365
+pTime - mTime: 0.000274897
+
+297. number: 2058370375
+pTime - mTime: 0.000274897
+
+298. number: 1216806296
+pTime - mTime: 0.000275135
+
+299. number: 376629685
+pTime - mTime: 0.000275135
+
+300. number: 1380791280
+pTime - mTime: 0.000274897
+
+301. number: 1250736672
+pTime - mTime: 0.000274897
+
+302. number: 1561292662
+pTime - mTime: 0.000275135
+
+303. number: 543070735
+pTime - mTime: 0.000275135
+
+304. number: 584326589
+pTime - mTime: 0.000274897
+
+305. number: 334246786
+pTime - mTime: 0.000274897
+
+306. number: 2015978591
+pTime - mTime: 0.000275135
+
+307. number: 1702663412
+pTime - mTime: 0.000341177
+
+308. number: 1444352403
+pTime - mTime: 0.000275135
+
+309. number: 75674727
+pTime - mTime: 0.000274897
+
+310. number: 554800859
+pTime - mTime: 0.000406265
+
+311. number: 164025133
+pTime - mTime: 0.000310898
+
+312. number: 1548874424
+pTime - mTime: 0.000274897
+
+313. number: 135658428
+pTime - mTime: 0.000274658
+
+314. number: 1531033123
+pTime - mTime: 0.000275135
+
+315. number: 924623101
+pTime - mTime: 0.000275135
+
+316. number: 948772009
+pTime - mTime: 0.00027585
+
+317. number: 945059482
+pTime - mTime: 0.000277042
+
+318. number: 825643956
+pTime - mTime: 0.000277042
+
+319. number: 1706108419
+pTime - mTime: 0.000277758
+
+320. number: 1362526583
+pTime - mTime: 0.000276089
+
+321. number: 1366135714
+pTime - mTime: 0.000276804
+
+322. number: 1895258315
+pTime - mTime: 0.000275135
+
+323. number: 2129031095
+pTime - mTime: 0.000275135
+
+324. number: 1253070545
+pTime - mTime: 0.000274897
+
+325. number: 2131990527
+pTime - mTime: 0.000276089
+
+326. number: 1600120288
+pTime - mTime: 0.000276089
+
+327. number: 283952229
+pTime - mTime: 0.000277042
+
+328. number: 676432363
+pTime - mTime: 0.000276804
+
+329. number: 20280917
+pTime - mTime: 0.000277281
+
+330. number: 1558938987
+pTime - mTime: 0.000277042
+
+331. number: 1787044303
+pTime - mTime: 0.00027585
+
+332. number: 147296773
+pTime - mTime: 0.000274897
+
+333. number: 1715685661
+pTime - mTime: 0.000274658
+
+334. number: 1265959352
+pTime - mTime: 0.000275135
+
+335. number: 1858321429
+pTime - mTime: 0.000275135
+
+336. number: 1953562076
+pTime - mTime: 0.000274897
+
+337. number: 640315543
+pTime - mTime: 0.000274897
+
+338. number: 742759278
+pTime - mTime: 0.000275135
+
+339. number: 232728529
+pTime - mTime: 0.000275135
+
+340. number: 900648910
+pTime - mTime: 0.000274897
+
+341. number: 1741469508
+pTime - mTime: 0.000277281
+
+342. number: 823379187
+pTime - mTime: 0.000277042
+
+343. number: 149357835
+pTime - mTime: 0.000277042
+
+344. number: 1996216343
+pTime - mTime: 0.000276804
+
+345. number: 271042914
+pTime - mTime: 0.00027585
+
+346. number: 605423505
+pTime - mTime: 0.000277042
+
+347. number: 575312243
+pTime - mTime: 0.000277042
+
+348. number: 1301472501
+pTime - mTime: 0.000276804
+
+349. number: 1727362806
+pTime - mTime: 0.000277281
+
+350. number: 2102723490
+pTime - mTime: 0.000275135
+
+351. number: 1482784592
+pTime - mTime: 0.00027585
+
+352. number: 1760381150
+pTime - mTime: 0.000277042
+
+353. number: 843766525
+pTime - mTime: 0.000277042
+
+354. number: 1349447728
+pTime - mTime: 0.000276804
+
+355. number: 593151723
+pTime - mTime: 0.000276804
+
+356. number: 481902281
+pTime - mTime: 0.000277281
+
+357. number: 1170787124
+pTime - mTime: 0.000277042
+
+358. number: 26518801
+pTime - mTime: 0.000277042
+
+359. number: 1172356672
+pTime - mTime: 0.000276804
+
+360. number: 636108273
+pTime - mTime: 0.000277281
+
+361. number: 898132739
+pTime - mTime: 0.000309706
+
+362. number: 254372804
+pTime - mTime: 0.000276804
+
+363. number: 1751242492
+pTime - mTime: 0.000277042
+
+364. number: 1869164103
+pTime - mTime: 0.000277042
+
+365. number: 1650273999
+pTime - mTime: 0.000276804
+
+366. number: 1403783382
+pTime - mTime: 0.00027585
+
+367. number: 1131938526
+pTime - mTime: 0.000275135
+
+368. number: 2080644550
+pTime - mTime: 0.000275135
+
+369. number: 1916710943
+pTime - mTime: 0.000274897
+
+370. number: 1906097195
+pTime - mTime: 0.000274897
+
+371. number: 1761977260
+pTime - mTime: 0.000275135
+
+372. number: 1899783531
+pTime - mTime: 0.000277042
+
+373. number: 874925115
+pTime - mTime: 0.000274897
+
+374. number: 1045859990
+pTime - mTime: 0.000276804
+
+375. number: 615184429
+pTime - mTime: 0.000277042
+
+376. number: 1418404739
+pTime - mTime: 0.000277042
+
+377. number: 2059949867
+pTime - mTime: 0.000276804
+
+378. number: 1993524576
+pTime - mTime: 0.000276804
+
+379. number: 127671532
+pTime - mTime: 0.000275135
+
+380. number: 439258165
+pTime - mTime: 0.000276089
+
+381. number: 1710667610
+pTime - mTime: 0.00027585
+
+382. number: 679438428
+pTime - mTime: 0.000277042
+
+383. number: 1151091491
+pTime - mTime: 0.000277996
+
+384. number: 1861980255
+pTime - mTime: 0.000276804
+
+385. number: 1170424895
+pTime - mTime: 0.000275135
+
+386. number: 380986939
+pTime - mTime: 0.000275135
+
+387. number: 1598715260
+pTime - mTime: 0.000274897
+
+388. number: 291966750
+pTime - mTime: 0.000274897
+
+389. number: 85017049
+pTime - mTime: 0.000277042
+
+390. number: 804900482
+pTime - mTime: 0.000277042
+
+391. number: 962891715
+pTime - mTime: 0.000276804
+
+392. number: 2031757054
+pTime - mTime: 0.000276804
+
+393. number: 603318825
+pTime - mTime: 0.000277042
+
+394. number: 1709177482
+pTime - mTime: 0.000275135
+
+395. number: 1404660896
+pTime - mTime: 0.000341892
+
+396. number: 847930795
+pTime - mTime: 0.000274897
+
+397. number: 471373267
+pTime - mTime: 0.000275135
+
+398. number: 303307880
+pTime - mTime: 0.000275135
+
+399. number: 1716828023
+pTime - mTime: 0.000274897
+
+400. number: 1138284663
+pTime - mTime: 0.000277281
+
+401. number: 1365986759
+pTime - mTime: 0.000274897
+
+402. number: 1539255277
+pTime - mTime: 0.000277281
+
+403. number: 1675411971
+pTime - mTime: 0.000277042
+
+404. number: 843400327
+pTime - mTime: 0.000277042
+
+405. number: 1637208883
+pTime - mTime: 0.00027585
+
+406. number: 861710764
+pTime - mTime: 0.000275135
+
+407. number: 143078374
+pTime - mTime: 0.000275135
+
+408. number: 1684014019
+pTime - mTime: 0.000274897
+
+409. number: 1536616714
+pTime - mTime: 0.000274897
+
+410. number: 278756570
+pTime - mTime: 0.000274897
+
+411. number: 1399821077
+pTime - mTime: 0.000277042
+
+412. number: 1109471448
+pTime - mTime: 0.000277042
+
+413. number: 286102829
+pTime - mTime: 0.000451803
+
+414. number: 314344564
+pTime - mTime: 0.000276327
+
+415. number: 379298722
+pTime - mTime: 0.000277996
+
+416. number: 1142139552
+pTime - mTime: 0.00027585
+
+417. number: 1730596772
+pTime - mTime: 0.00027585
+
+418. number: 621415230
+pTime - mTime: 0.000275135
+
+419. number: 912778443
+pTime - mTime: 0.000275135
+
+420. number: 1591584174
+pTime - mTime: 0.000274897
+
+421. number: 698888580
+pTime - mTime: 0.000274897
+
+422. number: 1632281811
+pTime - mTime: 0.000275135
+
+423. number: 1804273893
+pTime - mTime: 0.000275135
+
+424. number: 1962207205
+pTime - mTime: 0.000274897
+
+425. number: 2057594297
+pTime - mTime: 0.000274897
+
+426. number: 1058165232
+pTime - mTime: 0.000277042
+
+427. number: 1270956611
+pTime - mTime: 0.000277042
+
+428. number: 2095391209
+pTime - mTime: 0.000276804
+
+429. number: 655705704
+pTime - mTime: 0.000276804
+
+430. number: 1707157565
+pTime - mTime: 0.000277042
+
+431. number: 1815654229
+pTime - mTime: 0.000277042
+
+432. number: 2105469774
+pTime - mTime: 0.000276804
+
+433. number: 394939546
+pTime - mTime: 0.000274897
+
+434. number: 2024463586
+pTime - mTime: 0.000275135
+
+435. number: 428570028
+pTime - mTime: 0.000275135
+
+436. number: 316291752
+pTime - mTime: 0.000274897
+
+437. number: 893432733
+pTime - mTime: 0.000274897
+
+438. number: 718266901
+pTime - mTime: 0.000277042
+
+439. number: 906208514
+pTime - mTime: 0.000277042
+
+440. number: 692453468
+pTime - mTime: 0.000276804
+
+441. number: 851536777
+pTime - mTime: 0.000276804
+
+442. number: 947570625
+pTime - mTime: 0.000277042
+
+443. number: 80751417
+pTime - mTime: 0.000277042
+
+444. number: 2126867456
+pTime - mTime: 0.000274897
+
+445. number: 1396011871
+pTime - mTime: 0.000276327
+
+446. number: 1512655616
+pTime - mTime: 0.000275135
+
+447. number: 1291508120
+pTime - mTime: 0.00027585
+
+448. number: 1759735805
+pTime - mTime: 0.000275135
+
+449. number: 734871345
+pTime - mTime: 0.000275135
+
+450. number: 804224712
+pTime - mTime: 0.000274897
+
+451. number: 342643560
+pTime - mTime: 0.000276804
+
+452. number: 1406638507
+pTime - mTime: 0.000277281
+
+453. number: 1873384167
+pTime - mTime: 0.000277042
+
+454. number: 1709929296
+pTime - mTime: 0.000277042
+
+455. number: 1155496912
+pTime - mTime: 0.00027585
+
+456. number: 741963357
+pTime - mTime: 0.000275135
+
+457. number: 1888069811
+pTime - mTime: 0.000276089
+
+458. number: 1570928599
+pTime - mTime: 0.000274897
+
+459. number: 1432990369
+pTime - mTime: 0.000274897
+
+460. number: 240013872
+pTime - mTime: 0.000275135
+
+461. number: 938840832
+pTime - mTime: 0.000277042
+
+462. number: 1535492109
+pTime - mTime: 0.000276804
+
+463. number: 704873158
+pTime - mTime: 0.000276804
+
+464. number: 1283352848
+pTime - mTime: 0.000277042
+
+465. number: 2133032709
+pTime - mTime: 0.000277042
+
+466. number: 1936203986
+pTime - mTime: 0.000277042
+
+467. number: 960672905
+pTime - mTime: 0.000418186
+
+468. number: 1247439383
+pTime - mTime: 0.000277042
+
+469. number: 1978331261
+pTime - mTime: 0.000276804
+
+470. number: 324180320
+pTime - mTime: 0.000276804
+
+471. number: 332608995
+pTime - mTime: 0.000277042
+
+472. number: 259429018
+pTime - mTime: 0.000276089
+
+473. number: 831685310
+pTime - mTime: 0.000274897
+
+474. number: 163930041
+pTime - mTime: 0.000274897
+
+475. number: 2098146827
+pTime - mTime: 0.000275135
+
+476. number: 1872220843
+pTime - mTime: 0.00027585
+
+477. number: 1485295651
+pTime - mTime: 0.000276804
+
+478. number: 1014076823
+pTime - mTime: 0.000277042
+
+479. number: 1158924763
+pTime - mTime: 0.000277042
+
+480. number: 371796645
+pTime - mTime: 0.000275135
+
+481. number: 1756266586
+pTime - mTime: 0.000276804
+
+482. number: 409766081
+pTime - mTime: 0.00027585
+
+483. number: 2105934279
+pTime - mTime: 0.00051403
+
+484. number: 1759424140
+pTime - mTime: 0.00027585
+
+485. number: 1939168631
+pTime - mTime: 0.000275135
+
+486. number: 1395337539
+pTime - mTime: 0.000277042
+
+487. number: 916575927
+pTime - mTime: 0.000276804
+
+488. number: 991388352
+pTime - mTime: 0.000276804
+
+489. number: 2085881832
+pTime - mTime: 0.000275135
+
+490. number: 1892879990
+pTime - mTime: 0.000275135
+
+491. number: 811228466
+pTime - mTime: 0.000274897
+
+492. number: 2090620100
+pTime - mTime: 0.000274897
+
+493. number: 2072055327
+pTime - mTime: 0.000275135
+
+494. number: 1439044331
+pTime - mTime: 0.000275135
+
+495. number: 1057221797
+pTime - mTime: 0.000274897
+
+496. number: 447030095
+pTime - mTime: 0.000276804
+
+497. number: 1336992653
+pTime - mTime: 0.000277042
+
+498. number: 1714103604
+pTime - mTime: 0.000277042
+
+499. number: 446131117
+pTime - mTime: 0.000276804
+
+500. number: 1260254936
+pTime - mTime: 0.000356913
+
+501. number: 473482185
+pTime - mTime: 0.000323772
+
+502. number: 1388154354
+pTime - mTime: 0.000276327
+
+503. number: 447869864
+pTime - mTime: 0.000275135
+
+504. number: 418604707
+pTime - mTime: 0.000274897
+
+505. number: 332866171
+pTime - mTime: 0.000274897
+
+506. number: 286818756
+pTime - mTime: 0.000274658
+
+507. number: 1609511418
+pTime - mTime: 0.000277042
+
+508. number: 1354367908
+pTime - mTime: 0.000277042
+
+509. number: 1682238397
+pTime - mTime: 0.000276804
+
+510. number: 1758508818
+pTime - mTime: 0.000278234
+
+511. number: 1587737306
+pTime - mTime: 0.000274897
+
+512. number: 469087514
+pTime - mTime: 0.000276804
+
+513. number: 541362855
+pTime - mTime: 0.000277042
+
+514. number: 1944758487
+pTime - mTime: 0.000276804
+
+515. number: 854766863
+pTime - mTime: 0.000375986
+
+516. number: 1548534852
+pTime - mTime: 0.000311852
+
+517. number: 870922765
+pTime - mTime: 0.000277042
+
+518. number: 350356597
+pTime - mTime: 0.000277042
+
+519. number: 43148899
+pTime - mTime: 0.000277042
+
+520. number: 1501539648
+pTime - mTime: 0.000276804
+
+521. number: 1296511233
+pTime - mTime: 0.000277281
+
+522. number: 2095193763
+pTime - mTime: 0.000275135
+
+523. number: 1632198076
+pTime - mTime: 0.000274897
+
+524. number: 396939748
+pTime - mTime: 0.000274897
+
+525. number: 1282120248
+pTime - mTime: 0.000275135
+
+526. number: 744077332
+pTime - mTime: 0.000275135
+
+527. number: 910425637
+pTime - mTime: 0.000274897
+
+528. number: 702679378
+pTime - mTime: 0.000274897
+
+529. number: 919714387
+pTime - mTime: 0.000274658
+
+530. number: 52394397
+pTime - mTime: 0.000276089
+
+531. number: 124318303
+pTime - mTime: 0.000277042
+
+532. number: 2063596831
+pTime - mTime: 0.000276804
+
+533. number: 1011022761
+pTime - mTime: 0.000277281
+
+534. number: 1368912257
+pTime - mTime: 0.000277042
+
+535. number: 1315976282
+pTime - mTime: 0.000277042
+
+536. number: 679274315
+pTime - mTime: 0.000276804
+
+537. number: 540327947
+pTime - mTime: 0.000277281
+
+538. number: 1730928907
+pTime - mTime: 0.000277042
+
+539. number: 1908640881
+pTime - mTime: 0.000277042
+
+540. number: 1564034922
+pTime - mTime: 0.000276804
+
+541. number: 1535077968
+pTime - mTime: 0.000276804
+
+542. number: 186856312
+pTime - mTime: 0.000277042
+
+543. number: 872927064
+pTime - mTime: 0.000277042
+
+544. number: 1824355185
+pTime - mTime: 0.000276804
+
+545. number: 166065623
+pTime - mTime: 0.000277281
+
+546. number: 1483651502
+pTime - mTime: 0.000276804
+
+547. number: 1298151991
+pTime - mTime: 0.000274897
+
+548. number: 1754126058
+pTime - mTime: 0.000275135
+
+549. number: 941133984
+pTime - mTime: 0.000276089
+
+550. number: 1421792127
+pTime - mTime: 0.000276804
+
+551. number: 1009721514
+pTime - mTime: 0.000276804
+
+552. number: 973690398
+pTime - mTime: 0.000277281
+
+553. number: 989112240
+pTime - mTime: 0.000277042
+
+554. number: 338489447
+pTime - mTime: 0.000276089
+
+555. number: 307938020
+pTime - mTime: 0.000276804
+
+556. number: 78696064
+pTime - mTime: 0.000345945
+
+557. number: 1942287937
+pTime - mTime: 0.000277281
+
+558. number: 134422306
+pTime - mTime: 0.000277042
+
+559. number: 82883492
+pTime - mTime: 0.000277042
+
+560. number: 1453429982
+pTime - mTime: 0.000277042
+
+561. number: 171206043
+pTime - mTime: 0.000276804
+
+562. number: 1979344562
+pTime - mTime: 0.000277281
+
+563. number: 174861051
+pTime - mTime: 0.000275135
+
+564. number: 1132038255
+pTime - mTime: 0.000274897
+
+565. number: 1609306206
+pTime - mTime: 0.000274897
+
+566. number: 52853471
+pTime - mTime: 0.000274658
+
+567. number: 1397524080
+pTime - mTime: 0.000275135
+
+568. number: 1158548515
+pTime - mTime: 0.000275135
+
+569. number: 490647450
+pTime - mTime: 0.000274897
+
+570. number: 2121954511
+pTime - mTime: 0.000274897
+
+571. number: 428523842
+pTime - mTime: 0.000275135
+
+572. number: 1687527297
+pTime - mTime: 0.000275135
+
+573. number: 454737944
+pTime - mTime: 0.000273943
+
+574. number: 2033791976
+pTime - mTime: 0.000275135
+
+575. number: 444514527
+pTime - mTime: 0.000275135
+
+576. number: 2007514217
+pTime - mTime: 0.000274897
+
+577. number: 1175850296
+pTime - mTime: 0.000310898
+
+578. number: 1371388372
+pTime - mTime: 0.000276089
+
+579. number: 2129851794
+pTime - mTime: 0.000277042
+
+580. number: 14173109
+pTime - mTime: 0.000274897
+
+581. number: 1984224987
+pTime - mTime: 0.000276089
+
+582. number: 595785440
+pTime - mTime: 0.000277042
+
+583. number: 1797110960
+pTime - mTime: 0.000277042
+
+584. number: 1833876506
+pTime - mTime: 0.000276804
+
+585. number: 1277117792
+pTime - mTime: 0.000276804
+
+586. number: 419661573
+pTime - mTime: 0.000277042
+
+587. number: 915743857
+pTime - mTime: 0.000277042
+
+588. number: 2039173391
+pTime - mTime: 0.000276804
+
+589. number: 695643258
+pTime - mTime: 0.000276804
+
+590. number: 775246132
+pTime - mTime: 0.000276089
+
+591. number: 778437369
+pTime - mTime: 0.000275135
+
+592. number: 726466453
+pTime - mTime: 0.000274897
+
+593. number: 1277125570
+pTime - mTime: 0.000326872
+
+594. number: 550386419
+pTime - mTime: 0.000274897
+
+595. number: 1132459698
+pTime - mTime: 0.000275135
+
+596. number: 102564119
+pTime - mTime: 0.000276089
+
+597. number: 1513246333
+pTime - mTime: 0.000274897
+
+598. number: 482270504
+pTime - mTime: 0.000274897
+
+599. number: 917060144
+pTime - mTime: 0.000275135
+
+600. number: 539688883
+pTime - mTime: 0.000275135
+
+601. number: 1727598494
+pTime - mTime: 0.000274897
+
+602. number: 1768964412
+pTime - mTime: 0.000276804
+
+603. number: 1221246610
+pTime - mTime: 0.000277042
+
+604. number: 1990543085
+pTime - mTime: 0.000277042
+
+605. number: 1557359823
+pTime - mTime: 0.000276804
+
+606. number: 1015838719
+pTime - mTime: 0.000326157
+
+607. number: 706339777
+pTime - mTime: 0.000274897
+
+608. number: 163014617
+pTime - mTime: 0.000274897
+
+609. number: 1745001188
+pTime - mTime: 0.000275135
+
+610. number: 50782831
+pTime - mTime: 0.000315189
+
+611. number: 956015952
+pTime - mTime: 0.000277042
+
+612. number: 287441604
+pTime - mTime: 0.000276804
+
+613. number: 1340299519
+pTime - mTime: 0.000277281
+
+614. number: 1458025644
+pTime - mTime: 0.000277042
+
+615. number: 101085985
+pTime - mTime: 0.000277042
+
+616. number: 292568312
+pTime - mTime: 0.000276804
+
+617. number: 1605534995
+pTime - mTime: 0.000405312
+
+618. number: 1094619604
+pTime - mTime: 0.00031209
+
+619. number: 1926747420
+pTime - mTime: 0.000277042
+
+620. number: 937958021
+pTime - mTime: 0.000310898
+
+621. number: 1730473161
+pTime - mTime: 0.000274897
+
+622. number: 691368800
+pTime - mTime: 0.000275135
+
+623. number: 1948874524
+pTime - mTime: 0.000275135
+
+624. number: 1313524018
+pTime - mTime: 0.000274897
+
+625. number: 266262560
+pTime - mTime: 0.000274897
+
+626. number: 1866392413
+pTime - mTime: 0.000275135
+
+627. number: 163636756
+pTime - mTime: 0.000275135
+
+628. number: 1463873126
+pTime - mTime: 0.000274897
+
+629. number: 1742951844
+pTime - mTime: 0.000274897
+
+630. number: 2114680222
+pTime - mTime: 0.000274658
+
+631. number: 576116498
+pTime - mTime: 0.000275135
+
+632. number: 1933684404
+pTime - mTime: 0.000275135
+
+633. number: 1563731171
+pTime - mTime: 0.000274897
+
+634. number: 724902205
+pTime - mTime: 0.000274897
+
+635. number: 756613198
+pTime - mTime: 0.000275135
+
+636. number: 1147328093
+pTime - mTime: 0.00027585
+
+637. number: 887575832
+pTime - mTime: 0.000274897
+
+638. number: 1065579556
+pTime - mTime: 0.000361919
+
+639. number: 1329448553
+pTime - mTime: 0.000274897
+
+640. number: 1621950077
+pTime - mTime: 0.000277042
+
+641. number: 2104995962
+pTime - mTime: 0.000277281
+
+642. number: 1021515850
+pTime - mTime: 0.000277042
+
+643. number: 1632600026
+pTime - mTime: 0.000276804
+
+644. number: 710062457
+pTime - mTime: 0.000274897
+
+645. number: 453071614
+pTime - mTime: 0.000275135
+
+646. number: 1945071077
+pTime - mTime: 0.000277042
+
+647. number: 1813499699
+pTime - mTime: 0.000276804
+
+648. number: 254022416
+pTime - mTime: 0.000276804
+
+649. number: 157238670
+pTime - mTime: 0.000277042
+
+650. number: 1305424074
+pTime - mTime: 0.000277042
+
+651. number: 1569457160
+pTime - mTime: 0.000277042
+
+652. number: 324835213
+pTime - mTime: 0.000276804
+
+653. number: 601977411
+pTime - mTime: 0.000277281
+
+654. number: 638868854
+pTime - mTime: 0.000277042
+
+655. number: 50577372
+pTime - mTime: 0.00027585
+
+656. number: 1797833833
+pTime - mTime: 0.00027585
+
+657. number: 1098301135
+pTime - mTime: 0.00034523
+
+658. number: 1525213174
+pTime - mTime: 0.00027585
+
+659. number: 1892988020
+pTime - mTime: 0.000277996
+
+660. number: 479405029
+pTime - mTime: 0.000277758
+
+661. number: 1662053
+pTime - mTime: 0.000276089
+
+662. number: 16820554
+pTime - mTime: 0.00027585
+
+663. number: 1382676515
+pTime - mTime: 0.000276089
+
+664. number: 723626612
+pTime - mTime: 0.00027585
+
+665. number: 792558117
+pTime - mTime: 0.000276327
+
+666. number: 1830676919
+pTime - mTime: 0.00027585
+
+667. number: 1188750258
+pTime - mTime: 0.000278234
+
+668. number: 1285201359
+pTime - mTime: 0.000277758
+
+669. number: 988702381
+pTime - mTime: 0.000277281
+
+670. number: 2039923822
+pTime - mTime: 0.000276804
+
+671. number: 423235193
+pTime - mTime: 0.000276327
+
+672. number: 848033081
+pTime - mTime: 0.000276089
+
+673. number: 43010422
+pTime - mTime: 0.000276327
+
+674. number: 1321640356
+pTime - mTime: 0.00027585
+
+675. number: 1386085565
+pTime - mTime: 0.000346899
+
+676. number: 37471493
+pTime - mTime: 0.000276327
+
+677. number: 570657474
+pTime - mTime: 0.00027585
+
+678. number: 378181210
+pTime - mTime: 0.000277281
+
+679. number: 1687468191
+pTime - mTime: 0.000277996
+
+680. number: 1608827049
+pTime - mTime: 0.000278234
+
+681. number: 589596360
+pTime - mTime: 0.000276804
+
+682. number: 856458456
+pTime - mTime: 0.00027585
+
+683. number: 2061850992
+pTime - mTime: 0.000276089
+
+684. number: 1733477746
+pTime - mTime: 0.00027585
+
+685. number: 1797305014
+pTime - mTime: 0.000276089
+
+686. number: 800374790
+pTime - mTime: 0.00027585
+
+687. number: 61513916
+pTime - mTime: 0.000278234
+
+688. number: 924735199
+pTime - mTime: 0.000277758
+
+689. number: 685319448
+pTime - mTime: 0.000278234
+
+690. number: 1209146869
+pTime - mTime: 0.000276804
+
+691. number: 493658916
+pTime - mTime: 0.00027585
+
+692. number: 1196056045
+pTime - mTime: 0.000276089
+
+693. number: 1666995589
+pTime - mTime: 0.00027585
+
+694. number: 1123188755
+pTime - mTime: 0.000276089
+
+695. number: 1052131349
+pTime - mTime: 0.00027585
+
+696. number: 791216439
+pTime - mTime: 0.000278234
+
+697. number: 755931243
+pTime - mTime: 0.000277758
+
+698. number: 423128643
+pTime - mTime: 0.000277281
+
+699. number: 1204730878
+pTime - mTime: 0.00027585
+
+700. number: 1436025824
+pTime - mTime: 0.000277281
+
+701. number: 1864782176
+pTime - mTime: 0.00027585
+
+702. number: 1017670908
+pTime - mTime: 0.000276327
+
+703. number: 1435169242
+pTime - mTime: 0.000277758
+
+704. number: 353110384
+pTime - mTime: 0.000278234
+
+705. number: 1228890421
+pTime - mTime: 0.00027585
+
+706. number: 1611055742
+pTime - mTime: 0.000276089
+
+707. number: 1540017612
+pTime - mTime: 0.00027585
+
+708. number: 1603074434
+pTime - mTime: 0.000278234
+
+709. number: 542160170
+pTime - mTime: 0.000277996
+
+710. number: 312846163
+pTime - mTime: 0.000278234
+
+711. number: 965476879
+pTime - mTime: 0.000257015
+
+712. number: 383451815
+pTime - mTime: 0.000292778
+
+713. number: 76213252
+pTime - mTime: 0.000276804
+
+714. number: 1015855946
+pTime - mTime: 0.000277042
+
+715. number: 995873966
+pTime - mTime: 0.000277042
+
+716. number: 166185038
+pTime - mTime: 0.00027585
+
+717. number: 1343175760
+pTime - mTime: 0.000274897
+
+718. number: 406884250
+pTime - mTime: 0.000275135
+
+719. number: 915640896
+pTime - mTime: 0.000275135
+
+720. number: 308707864
+pTime - mTime: 0.00041604
+
+721. number: 132562290
+pTime - mTime: 0.000313044
+
+722. number: 1033849285
+pTime - mTime: 0.000277281
+
+723. number: 614728312
+pTime - mTime: 0.000277042
+
+724. number: 194897261
+pTime - mTime: 0.00027585
+
+725. number: 725687146
+pTime - mTime: 0.000276089
+
+726. number: 1064214703
+pTime - mTime: 0.00027585
+
+727. number: 2012684299
+pTime - mTime: 0.000276089
+
+728. number: 22588943
+pTime - mTime: 0.00027585
+
+729. number: 1695226323
+pTime - mTime: 0.000276327
+
+730. number: 1003249106
+pTime - mTime: 0.000276089
+
+731. number: 1713595139
+pTime - mTime: 0.000277281
+
+732. number: 490294450
+pTime - mTime: 0.000277758
+
+733. number: 484050805
+pTime - mTime: 0.000278234
+
+734. number: 773807993
+pTime - mTime: 0.000277996
+
+735. number: 229955313
+pTime - mTime: 0.000277758
+
+736. number: 1535847832
+pTime - mTime: 0.000277758
+
+737. number: 241058678
+pTime - mTime: 0.000276327
+
+738. number: 1319026098
+pTime - mTime: 0.000276089
+
+739. number: 397924299
+pTime - mTime: 0.00027585
+
+740. number: 649599729
+pTime - mTime: 0.000277996
+
+741. number: 15767149
+pTime - mTime: 0.000277758
+
+742. number: 857967856
+pTime - mTime: 0.000277996
+
+743. number: 1660533028
+pTime - mTime: 0.000276804
+
+744. number: 2028592025
+pTime - mTime: 0.000277281
+
+745. number: 1095767597
+pTime - mTime: 0.000276804
+
+746. number: 1893712948
+pTime - mTime: 0.000276327
+
+747. number: 1925851690
+pTime - mTime: 0.00027585
+
+748. number: 915809440
+pTime - mTime: 0.00027585
+
+749. number: 993943225
+pTime - mTime: 0.000276089
+
+750. number: 2075959403
+pTime - mTime: 0.00027585
+
+751. number: 482856606
+pTime - mTime: 0.000277042
+
+752. number: 30258223
+pTime - mTime: 0.000277758
+
+753. number: 1743796463
+pTime - mTime: 0.000277281
+
+754. number: 1277806226
+pTime - mTime: 0.00027585
+
+755. number: 1252753576
+pTime - mTime: 0.000347853
+
+756. number: 1099659838
+pTime - mTime: 0.000275135
+
+757. number: 738614378
+pTime - mTime: 0.000275135
+
+758. number: 1436354580
+pTime - mTime: 0.000274897
+
+759. number: 947733327
+pTime - mTime: 0.000274897
+
+760. number: 667800284
+pTime - mTime: 0.000277042
+
+761. number: 969817160
+pTime - mTime: 0.000277042
+
+762. number: 316110584
+pTime - mTime: 0.000276804
+
+763. number: 2143509451
+pTime - mTime: 0.000276327
+
+764. number: 1925147726
+pTime - mTime: 0.000277042
+
+765. number: 1969188374
+pTime - mTime: 0.000276804
+
+766. number: 1278501095
+pTime - mTime: 0.000276804
+
+767. number: 46514977
+pTime - mTime: 0.000277281
+
+768. number: 93154125
+pTime - mTime: 0.000292063
+
+769. number: 125783406
+pTime - mTime: 0.000293016
+
+770. number: 917779188
+pTime - mTime: 0.00027585
+
+771. number: 1887243156
+pTime - mTime: 0.000276327
+
+772. number: 562239896
+pTime - mTime: 0.000275135
+
+773. number: 637868466
+pTime - mTime: 0.00027585
+
+774. number: 416925432
+pTime - mTime: 0.000276804
+
+775. number: 26578657
+pTime - mTime: 0.000276804
+
+776. number: 30872817
+pTime - mTime: 0.000277042
+
+777. number: 1335859586
+pTime - mTime: 0.000277042
+
+778. number: 1997999358
+pTime - mTime: 0.000276804
+
+779. number: 173404961
+pTime - mTime: 0.00027585
+
+780. number: 281853742
+pTime - mTime: 0.000276089
+
+781. number: 1914383353
+pTime - mTime: 0.000276089
+
+782. number: 1440997711
+pTime - mTime: 0.00027585
+
+783. number: 1675424752
+pTime - mTime: 0.00027585
+
+784. number: 1058210594
+pTime - mTime: 0.000277281
+
+785. number: 2033355745
+pTime - mTime: 0.000276089
+
+786. number: 1702714698
+pTime - mTime: 0.00027585
+
+787. number: 158832558
+pTime - mTime: 0.00027585
+
+788. number: 176612279
+pTime - mTime: 0.000277281
+
+789. number: 500156193
+pTime - mTime: 0.000277042
+
+790. number: 874124587
+pTime - mTime: 0.000277042
+
+791. number: 476287776
+pTime - mTime: 0.00027585
+
+792. number: 1297082057
+pTime - mTime: 0.000343084
+
+793. number: 951614496
+pTime - mTime: 0.000275135
+
+794. number: 1474098257
+pTime - mTime: 0.000274897
+
+795. number: 1798036801
+pTime - mTime: 0.000276327
+
+796. number: 214617017
+pTime - mTime: 0.000275135
+
+797. number: 1443144600
+pTime - mTime: 0.000274897
+
+798. number: 1250966176
+pTime - mTime: 0.000274897
+
+799. number: 1123599096
+pTime - mTime: 0.000275135
+
+800. number: 1506281595
+pTime - mTime: 0.000275135
+
+801. number: 1537519523
+pTime - mTime: 0.000275135
+
+802. number: 419881904
+pTime - mTime: 0.000276804
+
+803. number: 323879680
+pTime - mTime: 0.000276804
+
+804. number: 1722203456
+pTime - mTime: 0.000365257
+
+805. number: 1288873920
+pTime - mTime: 0.000277996
+
+806. number: 436409345
+pTime - mTime: 0.000277281
+
+807. number: 1075190104
+pTime - mTime: 0.00027585
+
+808. number: 1792655264
+pTime - mTime: 0.00027585
+
+809. number: 2108921479
+pTime - mTime: 0.000276089
+
+810. number: 425687012
+pTime - mTime: 0.000278234
+
+811. number: 1253565721
+pTime - mTime: 0.000277996
+
+812. number: 1864478971
+pTime - mTime: 0.000276804
+
+813. number: 216671767
+pTime - mTime: 0.000276089
+
+814. number: 1617589498
+pTime - mTime: 0.00027585
+
+815. number: 1831188707
+pTime - mTime: 0.000276327
+
+816. number: 1200436586
+pTime - mTime: 0.00027585
+
+817. number: 128820531
+pTime - mTime: 0.000344276
+
+818. number: 423131535
+pTime - mTime: 0.000277042
+
+819. number: 1253336722
+pTime - mTime: 0.000276804
+
+820. number: 163176425
+pTime - mTime: 0.000277281
+
+821. number: 169540950
+pTime - mTime: 0.000257015
+
+822. number: 1911413922
+pTime - mTime: 0.000416756
+
+823. number: 925894775
+pTime - mTime: 0.000276804
+
+824. number: 846960457
+pTime - mTime: 0.000277042
+
+825. number: 1342771677
+pTime - mTime: 0.000277042
+
+826. number: 57912210
+pTime - mTime: 0.000277758
+
+827. number: 520404573
+pTime - mTime: 0.000277281
+
+828. number: 1886231021
+pTime - mTime: 0.000276089
+
+829. number: 731156127
+pTime - mTime: 0.00027585
+
+830. number: 639581549
+pTime - mTime: 0.000276804
+
+831. number: 1291424002
+pTime - mTime: 0.000276089
+
+832. number: 345964579
+pTime - mTime: 0.000274897
+
+833. number: 1388430018
+pTime - mTime: 0.000274897
+
+834. number: 785987418
+pTime - mTime: 0.000274897
+
+835. number: 918604823
+pTime - mTime: 0.000277042
+
+836. number: 731305072
+pTime - mTime: 0.000277042
+
+837. number: 995416517
+pTime - mTime: 0.000276804
+
+838. number: 1067774283
+pTime - mTime: 0.000277281
+
+839. number: 1709003243
+pTime - mTime: 0.000276089
+
+840. number: 623709670
+pTime - mTime: 0.000277042
+
+841. number: 820725877
+pTime - mTime: 0.00027585
+
+842. number: 652333252
+pTime - mTime: 0.000276327
+
+843. number: 860931623
+pTime - mTime: 0.000275135
+
+844. number: 2080441116
+pTime - mTime: 0.000274897
+
+845. number: 645079352
+pTime - mTime: 0.000274897
+
+846. number: 1351202202
+pTime - mTime: 0.000274897
+
+847. number: 15825183
+pTime - mTime: 0.000275135
+
+848. number: 1833345294
+pTime - mTime: 0.000275135
+
+849. number: 938972296
+pTime - mTime: 0.000274897
+
+850. number: 1597523910
+pTime - mTime: 0.000277281
+
+851. number: 1743783770
+pTime - mTime: 0.000277042
+
+852. number: 1064474975
+pTime - mTime: 0.000277042
+
+853. number: 2092108509
+pTime - mTime: 0.000276804
+
+854. number: 1317941626
+pTime - mTime: 0.000277281
+
+855. number: 1498556218
+pTime - mTime: 0.000277042
+
+856. number: 546127104
+pTime - mTime: 0.000277042
+
+857. number: 413112844
+pTime - mTime: 0.000276804
+
+858. number: 372921551
+pTime - mTime: 0.000278234
+
+859. number: 1335208905
+pTime - mTime: 0.000277042
+
+860. number: 1799422026
+pTime - mTime: 0.000277042
+
+861. number: 2021257122
+pTime - mTime: 0.000276804
+
+862. number: 224620755
+pTime - mTime: 0.000277281
+
+863. number: 2072244700
+pTime - mTime: 0.00027585
+
+864. number: 326869048
+pTime - mTime: 0.000274897
+
+865. number: 424903904
+pTime - mTime: 0.000274658
+
+866. number: 976771447
+pTime - mTime: 0.000275135
+
+867. number: 1232695255
+pTime - mTime: 0.000275135
+
+868. number: 1134391370
+pTime - mTime: 0.000276804
+
+869. number: 355920718
+pTime - mTime: 0.000277281
+
+870. number: 1217533725
+pTime - mTime: 0.000277042
+
+871. number: 1865110653
+pTime - mTime: 0.000277042
+
+872. number: 95932906
+pTime - mTime: 0.000329256
+
+873. number: 1731599086
+pTime - mTime: 0.000281811
+
+874. number: 287437452
+pTime - mTime: 0.000281811
+
+875. number: 1270516855
+pTime - mTime: 0.000282764
+
+876. number: 1146863058
+pTime - mTime: 0.000282764
+
+877. number: 1661667175
+pTime - mTime: 0.000295162
+
+878. number: 1762847831
+pTime - mTime: 0.00027895
+
+879. number: 1499084799
+pTime - mTime: 0.000277042
+
+880. number: 840053383
+pTime - mTime: 0.000343084
+
+881. number: 1219695897
+pTime - mTime: 0.000276804
+
+882. number: 1697513458
+pTime - mTime: 0.000275135
+
+883. number: 788421405
+pTime - mTime: 0.000275135
+
+884. number: 1024435039
+pTime - mTime: 0.000274897
+
+885. number: 1303285668
+pTime - mTime: 0.000274897
+
+886. number: 2136489517
+pTime - mTime: 0.000275135
+
+887. number: 2052717573
+pTime - mTime: 0.000277042
+
+888. number: 699443550
+pTime - mTime: 0.000276804
+
+889. number: 222244366
+pTime - mTime: 0.000276804
+
+890. number: 786980423
+pTime - mTime: 0.000277042
+
+891. number: 428170682
+pTime - mTime: 0.000276804
+
+892. number: 46934471
+pTime - mTime: 0.000277281
+
+893. number: 701138842
+pTime - mTime: 0.000277042
+
+894. number: 797729599
+pTime - mTime: 0.000276804
+
+895. number: 700945366
+pTime - mTime: 0.000277042
+
+896. number: 1840945761
+pTime - mTime: 0.000277042
+
+897. number: 1978485992
+pTime - mTime: 0.000277042
+
+898. number: 777260590
+pTime - mTime: 0.000276804
+
+899. number: 275694623
+pTime - mTime: 0.000277281
+
+900. number: 1477285376
+pTime - mTime: 0.000277042
+
+901. number: 1676854659
+pTime - mTime: 0.00027585
+
+902. number: 1468337426
+pTime - mTime: 0.000274897
+
+903. number: 1612514299
+pTime - mTime: 0.000275135
+
+904. number: 284181347
+pTime - mTime: 0.000275135
+
+905. number: 232251295
+pTime - mTime: 0.000274897
+
+906. number: 1469711660
+pTime - mTime: 0.00037384
+
+907. number: 1086945020
+pTime - mTime: 0.000277042
+
+908. number: 1789032952
+pTime - mTime: 0.000277042
+
+909. number: 1358265811
+pTime - mTime: 0.00027585
+
+910. number: 622301061
+pTime - mTime: 0.000275135
+
+911. number: 768554531
+pTime - mTime: 0.000275135
+
+912. number: 2129332653
+pTime - mTime: 0.000274897
+
+913. number: 2026388557
+pTime - mTime: 0.000277281
+
+914. number: 569302920
+pTime - mTime: 0.000277042
+
+915. number: 1234512249
+pTime - mTime: 0.000277042
+
+916. number: 1607838470
+pTime - mTime: 0.000276804
+
+917. number: 1154418283
+pTime - mTime: 0.000276804
+
+918. number: 1940798577
+pTime - mTime: 0.000277042
+
+919. number: 872552550
+pTime - mTime: 0.000277042
+
+920. number: 1972349328
+pTime - mTime: 0.00027585
+
+921. number: 717563798
+pTime - mTime: 0.0003438
+
+922. number: 1974058275
+pTime - mTime: 0.000308752
+
+923. number: 1522548616
+pTime - mTime: 0.000275135
+
+924. number: 59434654
+pTime - mTime: 0.000417948
+
+925. number: 338317117
+pTime - mTime: 0.000577211
+
+926. number: 1706555004
+pTime - mTime: 0.000276089
+
+927. number: 278346090
+pTime - mTime: 0.00027585
+
+928. number: 943334658
+pTime - mTime: 0.000276089
+
+929. number: 1901298046
+pTime - mTime: 0.000254869
+
+930. number: 559574956
+pTime - mTime: 0.000599146
+
+931. number: 945378473
+pTime - mTime: 0.000276327
+
+932. number: 1891958399
+pTime - mTime: 0.000274897
+
+933. number: 354434058
+pTime - mTime: 0.000276804
+
+934. number: 2001042869
+pTime - mTime: 0.000277042
+
+935. number: 1933570457
+pTime - mTime: 0.000277042
+
+936. number: 1796107589
+pTime - mTime: 0.000274897
+
+937. number: 2605638
+pTime - mTime: 0.000274897
+
+938. number: 843268120
+pTime - mTime: 0.000275135
+
+939. number: 1562689481
+pTime - mTime: 0.000277042
+
+940. number: 397087551
+pTime - mTime: 0.000276804
+
+941. number: 1618761622
+pTime - mTime: 0.000277281
+
+942. number: 56240305
+pTime - mTime: 0.000277042
+
+943. number: 337984649
+pTime - mTime: 0.000277042
+
+944. number: 413732622
+pTime - mTime: 0.000274897
+
+945. number: 52112162
+pTime - mTime: 0.000274897
+
+946. number: 1823245599
+pTime - mTime: 0.000275135
+
+947. number: 844606544
+pTime - mTime: 0.000275135
+
+948. number: 435261532
+pTime - mTime: 0.000274897
+
+949. number: 1111249836
+pTime - mTime: 0.000274897
+
+950. number: 110698887
+pTime - mTime: 0.000276804
+
+951. number: 795338701
+pTime - mTime: 0.000277042
+
+952. number: 1319311973
+pTime - mTime: 0.000276804
+
+953. number: 907658130
+pTime - mTime: 0.000277281
+
+954. number: 1433829463
+pTime - mTime: 0.000276804
+
+955. number: 1457764848
+pTime - mTime: 0.000276804
+
+956. number: 12854907
+pTime - mTime: 0.000277281
+
+957. number: 1304040443
+pTime - mTime: 0.000277042
+
+958. number: 1937091060
+pTime - mTime: 0.000277042
+
+959. number: 837340094
+pTime - mTime: 0.000275135
+
+960. number: 714604261
+pTime - mTime: 0.00027585
+
+961. number: 1625243797
+pTime - mTime: 0.000275135
+
+962. number: 1627973180
+pTime - mTime: 0.000275135
+
+963. number: 256073027
+pTime - mTime: 0.000274897
+
+964. number: 262119395
+pTime - mTime: 0.000274897
+
+965. number: 951694962
+pTime - mTime: 0.000274658
+
+966. number: 679006672
+pTime - mTime: 0.000276089
+
+967. number: 337019340
+pTime - mTime: 0.000276089
+
+968. number: 1369653435
+pTime - mTime: 0.000276804
+
+969. number: 888053046
+pTime - mTime: 0.000277281
+
+970. number: 496180666
+pTime - mTime: 0.000277042
+
+971. number: 629435355
+pTime - mTime: 0.000277042
+
+972. number: 415549557
+pTime - mTime: 0.000276804
+
+973. number: 524567649
+pTime - mTime: 0.000277281
+
+974. number: 988089002
+pTime - mTime: 0.000277042
+
+975. number: 320797557
+pTime - mTime: 0.000277042
+
+976. number: 1460569723
+pTime - mTime: 0.000468254
+
+977. number: 2057232445
+pTime - mTime: 0.000275135
+
+978. number: 1418969609
+pTime - mTime: 0.000274897
+
+979. number: 816301722
+pTime - mTime: 0.000274897
+
+980. number: 1457487812
+pTime - mTime: 0.000274658
+
+981. number: 1799161796
+pTime - mTime: 0.000277042
+
+982. number: 1942538806
+pTime - mTime: 0.000277758
+
+983. number: 55810295
+pTime - mTime: 0.000276327
+
+984. number: 1700741167
+pTime - mTime: 0.000276089
+
+985. number: 1349435393
+pTime - mTime: 0.000274897
+
+986. number: 385837378
+pTime - mTime: 0.000277042
+
+987. number: 1515664947
+pTime - mTime: 0.000276089
+
+988. number: 329726709
+pTime - mTime: 0.000274897
+
+989. number: 1208972097
+pTime - mTime: 0.000274897
+
+990. number: 1851233206
+pTime - mTime: 0.000275135
+
+991. number: 933398700
+pTime - mTime: 0.000275135
+
+992. number: 263892759
+pTime - mTime: 0.000276804
+
+993. number: 691852652
+pTime - mTime: 0.000276804
+
+994. number: 1491040500
+pTime - mTime: 0.000277042
+
+995. number: 930989851
+pTime - mTime: 0.000277042
+
+996. number: 580556909
+pTime - mTime: 0.000276804
+
+997. number: 1401744436
+pTime - mTime: 0.00027585
+
+998. number: 1223111456
+pTime - mTime: 0.000275135
+
+999. number: 1120755102
+pTime - mTime: 0.000275135
+
+1000. number: 951914671
+pTime - mTime: 0.000274897
+
+result: -1000
+*** compare float number ***
+1. number: 6266.4
+pTime - mTime: 0.000161171
+
+2. number: 9423.18
+pTime - mTime: 0.000163078
+
+3. number: 5452.68
+pTime - mTime: 0.000161171
+
+4. number: 3267.56
+pTime - mTime: 0.00016284
+
+5. number: 7912.89
+pTime - mTime: 0.000161886
+
+6. number: 1876.52
+pTime - mTime: 0.000163078
+
+7. number: 8732.82
+pTime - mTime: 0.000163078
+
+8. number: 2449.06
+pTime - mTime: 0.000163078
+
+9. number: 1349.93
+pTime - mTime: 0.000161171
+
+10. number: 8255.12
+pTime - mTime: 0.000163078
+
+11. number: 3822.08
+pTime - mTime: 0.00016284
+
+12. number: 7678.62
+pTime - mTime: 0.00016284
+
+13. number: 4602.02
+pTime - mTime: 0.000161648
+
+14. number: 6087.82
+pTime - mTime: 0.000160694
+
+15. number: 7945.61
+pTime - mTime: 0.000163078
+
+16. number: 1936.14
+pTime - mTime: 0.000163078
+
+17. number: 681.592
+pTime - mTime: 0.000161171
+
+18. number: 5524.15
+pTime - mTime: 0.000163078
+
+19. number: 4360.89
+pTime - mTime: 0.00016284
+
+20. number: 3414.75
+pTime - mTime: 0.00016284
+
+21. number: 1660.49
+pTime - mTime: 0.000160694
+
+22. number: 7853.78
+pTime - mTime: 0.000163078
+
+23. number: 8456.61
+pTime - mTime: 0.000173092
+
+24. number: 277.735
+pTime - mTime: 0.00016284
+
+25. number: 7894.02
+pTime - mTime: 0.000160933
+
+26. number: 4758.07
+pTime - mTime: 0.000163078
+
+27. number: 8841.35
+pTime - mTime: 0.000163078
+
+28. number: 6609.81
+pTime - mTime: 0.000163078
+
+29. number: 1164.99
+pTime - mTime: 0.00016284
+
+30. number: 25.9529
+pTime - mTime: 0.00016284
+
+31. number: 6190.64
+pTime - mTime: 0.000163078
+
+32. number: 6053.97
+pTime - mTime: 0.000161171
+
+33. number: 9000.34
+pTime - mTime: 0.000163078
+
+34. number: 8781.55
+pTime - mTime: 0.000163078
+
+35. number: 1515.62
+pTime - mTime: 0.000161886
+
+36. number: 3052.85
+pTime - mTime: 0.00016284
+
+37. number: 9236
+pTime - mTime: 0.00016284
+
+38. number: 9542.99
+pTime - mTime: 0.000366926
+
+39. number: 9062.84
+pTime - mTime: 0.000338793
+
+40. number: 9128.2
+pTime - mTime: 0.000384331
+
+41. number: 7695.7
+pTime - mTime: 0.000161886
+
+42. number: 1595.99
+pTime - mTime: 0.000163078
+
+43. number: 3878.94
+pTime - mTime: 0.000163078
+
+44. number: 3339.2
+pTime - mTime: 0.000161886
+
+45. number: 1898.29
+pTime - mTime: 0.000160933
+
+46. number: 4537.24
+pTime - mTime: 0.00016284
+
+47. number: 7351.49
+pTime - mTime: 0.000163078
+
+48. number: 6553.27
+pTime - mTime: 0.000163078
+
+49. number: 834.722
+pTime - mTime: 0.000162125
+
+50. number: 9171.05
+pTime - mTime: 0.000161171
+
+51. number: 7858
+pTime - mTime: 0.000163078
+
+52. number: 9493.43
+pTime - mTime: 0.000163078
+
+53. number: 6165.6
+pTime - mTime: 0.000161886
+
+54. number: 5161.45
+pTime - mTime: 0.000160933
+
+55. number: 8545.48
+pTime - mTime: 0.000163078
+
+56. number: 3948.45
+pTime - mTime: 0.000163078
+
+57. number: 1560.44
+pTime - mTime: 0.000161171
+
+58. number: 6328.52
+pTime - mTime: 0.000161171
+
+59. number: 3515.08
+pTime - mTime: 0.000163078
+
+60. number: 7947.85
+pTime - mTime: 0.00016284
+
+61. number: 9593.26
+pTime - mTime: 0.000160933
+
+62. number: 3956.89
+pTime - mTime: 0.000160694
+
+63. number: 3424.26
+pTime - mTime: 0.000161886
+
+64. number: 1576.15
+pTime - mTime: 0.000163078
+
+65. number: 271.263
+pTime - mTime: 0.000163078
+
+66. number: 9112.65
+pTime - mTime: 0.000162125
+
+67. number: 6317.82
+pTime - mTime: 0.000163078
+
+68. number: 3562.35
+pTime - mTime: 0.00016284
+
+69. number: 2485.17
+pTime - mTime: 0.00016284
+
+70. number: 8191.34
+pTime - mTime: 0.00016427
+
+71. number: 1849.06
+pTime - mTime: 0.000163078
+
+72. number: 7074.7
+pTime - mTime: 0.000161171
+
+73. number: 4540.21
+pTime - mTime: 0.000163078
+
+74. number: 7294.84
+pTime - mTime: 0.000163078
+
+75. number: 4425.28
+pTime - mTime: 0.00016284
+
+76. number: 5749.88
+pTime - mTime: 0.000165224
+
+77. number: 8295.91
+pTime - mTime: 0.000163078
+
+78. number: 9362.17
+pTime - mTime: 0.000161171
+
+79. number: 24.253
+pTime - mTime: 0.000163078
+
+80. number: 7620.4
+pTime - mTime: 0.00016284
+
+81. number: 6042.97
+pTime - mTime: 0.00016284
+
+82. number: 4215.62
+pTime - mTime: 0.0001719
+
+83. number: 1888.46
+pTime - mTime: 0.000160694
+
+84. number: 9387.78
+pTime - mTime: 0.000163078
+
+85. number: 353.567
+pTime - mTime: 0.000162125
+
+86. number: 2394.07
+pTime - mTime: 0.000163078
+
+87. number: 7105.42
+pTime - mTime: 0.000163078
+
+88. number: 740.368
+pTime - mTime: 0.000161886
+
+89. number: 3364.64
+pTime - mTime: 0.00016284
+
+90. number: 9526.8
+pTime - mTime: 0.000163078
+
+91. number: 6935.6
+pTime - mTime: 0.000163078
+
+92. number: 6573.3
+pTime - mTime: 0.000162125
+
+93. number: 7504
+pTime - mTime: 0.000161171
+
+94. number: 9664.94
+pTime - mTime: 0.000162125
+
+95. number: 8684.47
+pTime - mTime: 0.00016284
+
+96. number: 9813.42
+pTime - mTime: 0.00016284
+
+97. number: 4247.53
+pTime - mTime: 0.000160694
+
+98. number: 8167.48
+pTime - mTime: 0.000160694
+
+99. number: 914.567
+pTime - mTime: 0.000163078
+
+100. number: 1133.39
+pTime - mTime: 0.000228167
+
+101. number: 8839.24
+pTime - mTime: 0.000163078
+
+102. number: 1041.08
+pTime - mTime: 0.000161886
+
+103. number: 7433.08
+pTime - mTime: 0.000160933
+
+104. number: 7850.01
+pTime - mTime: 0.00016284
+
+105. number: 5176.58
+pTime - mTime: 0.000161886
+
+106. number: 2807.08
+pTime - mTime: 0.000161171
+
+107. number: 8617.46
+pTime - mTime: 0.000162125
+
+108. number: 3702.9
+pTime - mTime: 0.000163078
+
+109. number: 4670.93
+pTime - mTime: 0.000162125
+
+110. number: 4298.35
+pTime - mTime: 0.00016284
+
+111. number: 2391.04
+pTime - mTime: 0.00016284
+
+112. number: 6146.36
+pTime - mTime: 0.00016284
+
+113. number: 1894.21
+pTime - mTime: 0.000160694
+
+114. number: 5990.76
+pTime - mTime: 0.000163078
+
+115. number: 6787.82
+pTime - mTime: 0.000163078
+
+116. number: 2899.36
+pTime - mTime: 0.000162125
+
+117. number: 9519.28
+pTime - mTime: 0.00016284
+
+118. number: 598.9
+pTime - mTime: 0.00016284
+
+119. number: 5720.47
+pTime - mTime: 0.000161886
+
+120. number: 3926.78
+pTime - mTime: 0.000161886
+
+121. number: 7429.38
+pTime - mTime: 0.000164032
+
+122. number: 5520.57
+pTime - mTime: 0.000161886
+
+123. number: 4285.68
+pTime - mTime: 0.00016284
+
+124. number: 9352.96
+pTime - mTime: 0.000161886
+
+125. number: 5207.32
+pTime - mTime: 0.000160694
+
+126. number: 9441.13
+pTime - mTime: 0.000164032
+
+127. number: 7142.24
+pTime - mTime: 0.000162125
+
+128. number: 9563.48
+pTime - mTime: 0.000161171
+
+129. number: 3419.96
+pTime - mTime: 0.000163078
+
+130. number: 9191.39
+pTime - mTime: 0.000161886
+
+131. number: 9630.15
+pTime - mTime: 0.000160933
+
+132. number: 3940.57
+pTime - mTime: 0.00016284
+
+133. number: 9218.18
+pTime - mTime: 0.000161886
+
+134. number: 9953.96
+pTime - mTime: 0.000161171
+
+135. number: 6193.88
+pTime - mTime: 0.000163078
+
+136. number: 533.557
+pTime - mTime: 0.000163078
+
+137. number: 7489.74
+pTime - mTime: 0.000163078
+
+138. number: 97.5096
+pTime - mTime: 0.000161886
+
+139. number: 8843.44
+pTime - mTime: 0.000160933
+
+140. number: 1775.49
+pTime - mTime: 0.00016284
+
+141. number: 700.811
+pTime - mTime: 0.000162125
+
+142. number: 8527.8
+pTime - mTime: 0.000161171
+
+143. number: 6722.9
+pTime - mTime: 0.000163078
+
+144. number: 1788.12
+pTime - mTime: 0.000163078
+
+145. number: 2985.13
+pTime - mTime: 0.000163078
+
+146. number: 1062.46
+pTime - mTime: 0.000163078
+
+147. number: 6827.4
+pTime - mTime: 0.000160933
+
+148. number: 8042.45
+pTime - mTime: 0.000160933
+
+149. number: 9396.83
+pTime - mTime: 0.000163078
+
+150. number: 2582.63
+pTime - mTime: 0.000163078
+
+151. number: 6288.31
+pTime - mTime: 0.000197172
+
+152. number: 7550.31
+pTime - mTime: 0.000163078
+
+153. number: 8139.88
+pTime - mTime: 0.000163078
+
+154. number: 7018.43
+pTime - mTime: 0.000160933
+
+155. number: 8678.64
+pTime - mTime: 0.00016284
+
+156. number: 1886.22
+pTime - mTime: 0.00016284
+
+157. number: 1619.52
+pTime - mTime: 0.000161886
+
+158. number: 9241.68
+pTime - mTime: 0.000161171
+
+159. number: 4898.38
+pTime - mTime: 0.000163078
+
+160. number: 7058.28
+pTime - mTime: 0.000163078
+
+161. number: 8589.08
+pTime - mTime: 0.000163078
+
+162. number: 6692.03
+pTime - mTime: 0.000160933
+
+163. number: 3029.21
+pTime - mTime: 0.00016284
+
+164. number: 1950.88
+pTime - mTime: 0.000163078
+
+165. number: 8356.91
+pTime - mTime: 0.000163078
+
+166. number: 4567.55
+pTime - mTime: 0.000162125
+
+167. number: 6844.45
+pTime - mTime: 0.000160933
+
+168. number: 4738.63
+pTime - mTime: 0.00016284
+
+169. number: 2175.12
+pTime - mTime: 0.00016284
+
+170. number: 7193.71
+pTime - mTime: 0.000161886
+
+171. number: 4612.94
+pTime - mTime: 0.000162125
+
+172. number: 9612.58
+pTime - mTime: 0.000163078
+
+173. number: 8570.19
+pTime - mTime: 0.000163078
+
+174. number: 9163.16
+pTime - mTime: 0.000161886
+
+175. number: 5296.14
+pTime - mTime: 0.00016284
+
+176. number: 2168.53
+pTime - mTime: 0.000163078
+
+177. number: 6559.05
+pTime - mTime: 0.000163078
+
+178. number: 8024.45
+pTime - mTime: 0.000163078
+
+179. number: 6993.28
+pTime - mTime: 0.000161886
+
+180. number: 6094.3
+pTime - mTime: 0.00016284
+
+181. number: 6907.69
+pTime - mTime: 0.000163078
+
+182. number: 7583.92
+pTime - mTime: 0.000163078
+
+183. number: 2887.48
+pTime - mTime: 0.000161171
+
+184. number: 9880.34
+pTime - mTime: 0.000163078
+
+185. number: 8930.05
+pTime - mTime: 0.000163078
+
+186. number: 7359.26
+pTime - mTime: 0.000161886
+
+187. number: 7036.61
+pTime - mTime: 0.000160933
+
+188. number: 4353.85
+pTime - mTime: 0.000161886
+
+189. number: 5116.12
+pTime - mTime: 0.000163078
+
+190. number: 6692.97
+pTime - mTime: 0.000163078
+
+191. number: 8722.72
+pTime - mTime: 0.000178814
+
+192. number: 2839.04
+pTime - mTime: 0.000167131
+
+193. number: 5705.03
+pTime - mTime: 0.000165939
+
+194. number: 4398.59
+pTime - mTime: 0.000164986
+
+195. number: 7036.58
+pTime - mTime: 0.000165939
+
+196. number: 3888.65
+pTime - mTime: 0.000177145
+
+197. number: 6510
+pTime - mTime: 0.000160933
+
+198. number: 3512.62
+pTime - mTime: 0.00016284
+
+199. number: 6558.88
+pTime - mTime: 0.000484705
+
+200. number: 5154.45
+pTime - mTime: 0.000315666
+
+201. number: 770.992
+pTime - mTime: 0.000178814
+
+202. number: 8066.6
+pTime - mTime: 0.000163078
+
+203. number: 5317.81
+pTime - mTime: 0.000160933
+
+204. number: 6510.28
+pTime - mTime: 0.000161886
+
+205. number: 8364.26
+pTime - mTime: 0.000162125
+
+206. number: 8149.13
+pTime - mTime: 0.000163078
+
+207. number: 2449.73
+pTime - mTime: 0.000163078
+
+208. number: 2574.27
+pTime - mTime: 0.000160933
+
+209. number: 5804.74
+pTime - mTime: 0.00016284
+
+210. number: 307.011
+pTime - mTime: 0.00016284
+
+211. number: 9938.32
+pTime - mTime: 0.000163078
+
+212. number: 3390.9
+pTime - mTime: 0.000162125
+
+213. number: 784.073
+pTime - mTime: 0.00016284
+
+214. number: 7922.85
+pTime - mTime: 0.00016284
+
+215. number: 9347.13
+pTime - mTime: 0.000160694
+
+216. number: 7207.95
+pTime - mTime: 0.000163078
+
+217. number: 4034.72
+pTime - mTime: 0.000163078
+
+218. number: 1535.36
+pTime - mTime: 0.000161171
+
+219. number: 4793.08
+pTime - mTime: 0.000163794
+
+220. number: 7230.92
+pTime - mTime: 0.000160694
+
+221. number: 137.534
+pTime - mTime: 0.000163078
+
+222. number: 1529.74
+pTime - mTime: 0.000163078
+
+223. number: 404.011
+pTime - mTime: 0.000162125
+
+224. number: 206.18
+pTime - mTime: 0.000163078
+
+225. number: 5265.79
+pTime - mTime: 0.000163078
+
+226. number: 2065.2
+pTime - mTime: 0.000160933
+
+227. number: 9741.6
+pTime - mTime: 0.000160694
+
+228. number: 7024.98
+pTime - mTime: 0.000163078
+
+229. number: 8846.84
+pTime - mTime: 0.000163078
+
+230. number: 8822.52
+pTime - mTime: 0.000162125
+
+231. number: 161.609
+pTime - mTime: 0.000161171
+
+232. number: 6169.7
+pTime - mTime: 0.000196218
+
+233. number: 4226.5
+pTime - mTime: 0.000172138
+
+234. number: 4803
+pTime - mTime: 0.000161171
+
+235. number: 4011.01
+pTime - mTime: 0.000163078
+
+236. number: 3033.62
+pTime - mTime: 0.000163078
+
+237. number: 6057.83
+pTime - mTime: 0.000163078
+
+238. number: 3888.3
+pTime - mTime: 0.00016284
+
+239. number: 690.778
+pTime - mTime: 0.000160933
+
+240. number: 9905.62
+pTime - mTime: 0.000163078
+
+241. number: 3777.62
+pTime - mTime: 0.000163078
+
+242. number: 435.355
+pTime - mTime: 0.000162125
+
+243. number: 7019.29
+pTime - mTime: 0.000161171
+
+244. number: 3153.2
+pTime - mTime: 0.000163078
+
+245. number: 5763.87
+pTime - mTime: 0.000163078
+
+246. number: 3438.7
+pTime - mTime: 0.000161886
+
+247. number: 4314.67
+pTime - mTime: 0.000163078
+
+248. number: 6593.28
+pTime - mTime: 0.000163078
+
+249. number: 3315.03
+pTime - mTime: 0.000163078
+
+250. number: 5724.99
+pTime - mTime: 0.000163078
+
+251. number: 9831.29
+pTime - mTime: 0.000161886
+
+252. number: 4559.95
+pTime - mTime: 0.000163078
+
+253. number: 9074.2
+pTime - mTime: 0.000163078
+
+254. number: 109.143
+pTime - mTime: 0.000162125
+
+255. number: 4371.04
+pTime - mTime: 0.000161171
+
+256. number: 4013.47
+pTime - mTime: 0.000161171
+
+257. number: 4474.17
+pTime - mTime: 0.000163078
+
+258. number: 7330.67
+pTime - mTime: 0.000161886
+
+259. number: 6513.27
+pTime - mTime: 0.000160933
+
+260. number: 8552.81
+pTime - mTime: 0.000163078
+
+261. number: 7100.05
+pTime - mTime: 0.000163078
+
+262. number: 479.634
+pTime - mTime: 0.000161171
+
+263. number: 1207.77
+pTime - mTime: 0.000163078
+
+264. number: 8906.46
+pTime - mTime: 0.000163078
+
+265. number: 829.137
+pTime - mTime: 0.000160933
+
+266. number: 5300.95
+pTime - mTime: 0.00016284
+
+267. number: 3103.99
+pTime - mTime: 0.000163078
+
+268. number: 8810.6
+pTime - mTime: 0.000163078
+
+269. number: 9791.29
+pTime - mTime: 0.000162125
+
+270. number: 2294.55
+pTime - mTime: 0.000163078
+
+271. number: 4547.93
+pTime - mTime: 0.000160933
+
+272. number: 7058
+pTime - mTime: 0.00016284
+
+273. number: 3837.14
+pTime - mTime: 0.000161886
+
+274. number: 893.208
+pTime - mTime: 0.000162125
+
+275. number: 2145.73
+pTime - mTime: 0.000163078
+
+276. number: 3350.27
+pTime - mTime: 0.000163078
+
+277. number: 8073.37
+pTime - mTime: 0.000162125
+
+278. number: 9118.39
+pTime - mTime: 0.000160933
+
+279. number: 2764.83
+pTime - mTime: 0.00016284
+
+280. number: 8448.49
+pTime - mTime: 0.000172853
+
+281. number: 3776.39
+pTime - mTime: 0.00016284
+
+282. number: 9708.08
+pTime - mTime: 0.000161171
+
+283. number: 3656.55
+pTime - mTime: 0.000161171
+
+284. number: 5573.95
+pTime - mTime: 0.000163078
+
+285. number: 1340.99
+pTime - mTime: 0.000163078
+
+286. number: 8014.81
+pTime - mTime: 0.000160933
+
+287. number: 4995.19
+pTime - mTime: 0.00016284
+
+288. number: 4102.15
+pTime - mTime: 0.00016284
+
+289. number: 4787.52
+pTime - mTime: 0.000161886
+
+290. number: 3916.73
+pTime - mTime: 0.000161171
+
+291. number: 8512.61
+pTime - mTime: 0.000163078
+
+292. number: 1492.95
+pTime - mTime: 0.000163078
+
+293. number: 1948.58
+pTime - mTime: 0.000160933
+
+294. number: 9796.15
+pTime - mTime: 0.00016284
+
+295. number: 3939.24
+pTime - mTime: 0.000161171
+
+296. number: 6753.84
+pTime - mTime: 0.00016284
+
+297. number: 1779.14
+pTime - mTime: 0.000161886
+
+298. number: 2013.37
+pTime - mTime: 0.000161886
+
+299. number: 8713.89
+pTime - mTime: 0.000164032
+
+300. number: 4377.51
+pTime - mTime: 0.000161171
+
+301. number: 2786.62
+pTime - mTime: 0.00016284
+
+302. number: 4799.74
+pTime - mTime: 0.000161886
+
+303. number: 9224.08
+pTime - mTime: 0.000160694
+
+304. number: 9055.28
+pTime - mTime: 0.000161886
+
+305. number: 2120.86
+pTime - mTime: 0.000163078
+
+306. number: 5369.8
+pTime - mTime: 0.000162125
+
+307. number: 198.722
+pTime - mTime: 0.000162125
+
+308. number: 9913.57
+pTime - mTime: 0.00016284
+
+309. number: 7350.73
+pTime - mTime: 0.000160933
+
+310. number: 3757.86
+pTime - mTime: 0.000163078
+
+311. number: 8389.51
+pTime - mTime: 0.000164032
+
+312. number: 2473.74
+pTime - mTime: 0.000163078
+
+313. number: 6170.82
+pTime - mTime: 0.000160933
+
+314. number: 3009.32
+pTime - mTime: 0.00016284
+
+315. number: 7602.28
+pTime - mTime: 0.00016284
+
+316. number: 1447.96
+pTime - mTime: 0.00016284
+
+317. number: 5831.23
+pTime - mTime: 0.000162125
+
+318. number: 5461.58
+pTime - mTime: 0.000161171
+
+319. number: 2797.94
+pTime - mTime: 0.000161171
+
+320. number: 4947.02
+pTime - mTime: 0.000162125
+
+321. number: 4494.22
+pTime - mTime: 0.00016284
+
+322. number: 4393.84
+pTime - mTime: 0.000160694
+
+323. number: 7304.04
+pTime - mTime: 0.000163078
+
+324. number: 8995.14
+pTime - mTime: 0.000163078
+
+325. number: 1281.18
+pTime - mTime: 0.000162125
+
+326. number: 2736.62
+pTime - mTime: 0.000161171
+
+327. number: 4429.64
+pTime - mTime: 0.000163078
+
+328. number: 9031.07
+pTime - mTime: 0.00016284
+
+329. number: 5275.28
+pTime - mTime: 0.000161886
+
+330. number: 1567.85
+pTime - mTime: 0.000160694
+
+331. number: 910.001
+pTime - mTime: 0.000163078
+
+332. number: 4388.17
+pTime - mTime: 0.000163078
+
+333. number: 1919.46
+pTime - mTime: 0.000162125
+
+334. number: 363.742
+pTime - mTime: 0.000162125
+
+335. number: 3412.45
+pTime - mTime: 0.00016284
+
+336. number: 2975.29
+pTime - mTime: 0.000160933
+
+337. number: 5774.63
+pTime - mTime: 0.000160694
+
+338. number: 4241.37
+pTime - mTime: 0.000160694
+
+339. number: 4781.15
+pTime - mTime: 0.000163078
+
+340. number: 6733.2
+pTime - mTime: 0.000163078
+
+341. number: 4827.19
+pTime - mTime: 0.000163078
+
+342. number: 596.527
+pTime - mTime: 0.000163078
+
+343. number: 5834.87
+pTime - mTime: 0.000163078
+
+344. number: 6581.69
+pTime - mTime: 0.000160933
+
+345. number: 8469.82
+pTime - mTime: 0.000172853
+
+346. number: 2266.75
+pTime - mTime: 0.000161886
+
+347. number: 7285.98
+pTime - mTime: 0.000161171
+
+348. number: 5462.08
+pTime - mTime: 0.000163078
+
+349. number: 1259.26
+pTime - mTime: 0.000162125
+
+350. number: 4395.91
+pTime - mTime: 0.000193834
+
+351. number: 2076.21
+pTime - mTime: 0.000159025
+
+352. number: 4810.97
+pTime - mTime: 0.000160217
+
+353. number: 7947.42
+pTime - mTime: 0.000158787
+
+354. number: 2340.25
+pTime - mTime: 0.00015831
+
+355. number: 2627.1
+pTime - mTime: 0.00015974
+
+356. number: 3747.97
+pTime - mTime: 0.000159264
+
+357. number: 2152.89
+pTime - mTime: 0.00015974
+
+358. number: 3561.66
+pTime - mTime: 0.000158787
+
+359. number: 876.313
+pTime - mTime: 0.000290155
+
+360. number: 8190.19
+pTime - mTime: 0.00016284
+
+361. number: 2474.64
+pTime - mTime: 0.000162125
+
+362. number: 1334.02
+pTime - mTime: 0.000162125
+
+363. number: 896.956
+pTime - mTime: 0.000163078
+
+364. number: 5133.76
+pTime - mTime: 0.000163078
+
+365. number: 3146.05
+pTime - mTime: 0.000161886
+
+366. number: 5715.35
+pTime - mTime: 0.000160933
+
+367. number: 7937.13
+pTime - mTime: 0.000161886
+
+368. number: 9389.62
+pTime - mTime: 0.000163078
+
+369. number: 1392.71
+pTime - mTime: 0.000163078
+
+370. number: 7315.71
+pTime - mTime: 0.000161171
+
+371. number: 5145.08
+pTime - mTime: 0.000250101
+
+372. number: 3404.07
+pTime - mTime: 0.000163794
+
+373. number: 2245.2
+pTime - mTime: 0.00016284
+
+374. number: 5091
+pTime - mTime: 0.000161171
+
+375. number: 4472.16
+pTime - mTime: 0.000163078
+
+376. number: 3674.46
+pTime - mTime: 0.000163078
+
+377. number: 6670.65
+pTime - mTime: 0.000161171
+
+378. number: 3649.46
+pTime - mTime: 0.00016284
+
+379. number: 6418.73
+pTime - mTime: 0.000163078
+
+380. number: 9562.56
+pTime - mTime: 0.000161171
+
+381. number: 7881.25
+pTime - mTime: 0.00016284
+
+382. number: 120.673
+pTime - mTime: 0.00016284
+
+383. number: 8155.3
+pTime - mTime: 0.000161886
+
+384. number: 6209.15
+pTime - mTime: 0.000160694
+
+385. number: 7162
+pTime - mTime: 0.000163078
+
+386. number: 1816.65
+pTime - mTime: 0.000163078
+
+387. number: 2401.51
+pTime - mTime: 0.000162125
+
+388. number: 2158.74
+pTime - mTime: 0.000160933
+
+389. number: 2026.7
+pTime - mTime: 0.00016284
+
+390. number: 2781.12
+pTime - mTime: 0.00016284
+
+391. number: 2313.73
+pTime - mTime: 0.000161886
+
+392. number: 6927.9
+pTime - mTime: 0.000162125
+
+393. number: 7173.68
+pTime - mTime: 0.000163078
+
+394. number: 8022.39
+pTime - mTime: 0.000163078
+
+395. number: 2388.83
+pTime - mTime: 0.000163078
+
+396. number: 9133.27
+pTime - mTime: 0.000160933
+
+397. number: 2863.5
+pTime - mTime: 0.000161886
+
+398. number: 6852.61
+pTime - mTime: 0.00016284
+
+399. number: 1891.92
+pTime - mTime: 0.00016427
+
+400. number: 7458.81
+pTime - mTime: 0.000163078
+
+401. number: 218.566
+pTime - mTime: 0.000163078
+
+402. number: 3436.33
+pTime - mTime: 0.000160933
+
+403. number: 4392.28
+pTime - mTime: 0.00016284
+
+404. number: 1020.59
+pTime - mTime: 0.00016284
+
+405. number: 3010.46
+pTime - mTime: 0.000163078
+
+406. number: 6815.54
+pTime - mTime: 0.000163078
+
+407. number: 8825.58
+pTime - mTime: 0.000162125
+
+408. number: 1560.9
+pTime - mTime: 0.000163078
+
+409. number: 4016.45
+pTime - mTime: 0.000163078
+
+410. number: 4399.75
+pTime - mTime: 0.000161886
+
+411. number: 6611.9
+pTime - mTime: 0.00016284
+
+412. number: 6204.35
+pTime - mTime: 0.000163078
+
+413. number: 6541.87
+pTime - mTime: 0.000163078
+
+414. number: 9222.58
+pTime - mTime: 0.000161171
+
+415. number: 3973.1
+pTime - mTime: 0.000161171
+
+416. number: 5871.29
+pTime - mTime: 0.000163078
+
+417. number: 8765.07
+pTime - mTime: 0.000163078
+
+418. number: 4496.43
+pTime - mTime: 0.000161886
+
+419. number: 1488.09
+pTime - mTime: 0.000160694
+
+420. number: 381.612
+pTime - mTime: 0.000163078
+
+421. number: 3760.48
+pTime - mTime: 0.000164032
+
+422. number: 2378.95
+pTime - mTime: 0.000163078
+
+423. number: 2973.42
+pTime - mTime: 0.000160933
+
+424. number: 4337.12
+pTime - mTime: 0.00016284
+
+425. number: 4046.32
+pTime - mTime: 0.00016284
+
+426. number: 6430.58
+pTime - mTime: 0.00016284
+
+427. number: 8777.78
+pTime - mTime: 0.000163078
+
+428. number: 8094.25
+pTime - mTime: 0.000162125
+
+429. number: 9.74162
+pTime - mTime: 0.000163078
+
+430. number: 3727.33
+pTime - mTime: 0.000163078
+
+431. number: 5266.44
+pTime - mTime: 0.000163078
+
+432. number: 3116.11
+pTime - mTime: 0.000161886
+
+433. number: 2413.83
+pTime - mTime: 0.000160933
+
+434. number: 9295.97
+pTime - mTime: 0.000163078
+
+435. number: 7419.62
+pTime - mTime: 0.000163078
+
+436. number: 1489.42
+pTime - mTime: 0.000163078
+
+437. number: 2722.3
+pTime - mTime: 0.000163078
+
+438. number: 3638.25
+pTime - mTime: 0.000162125
+
+439. number: 7995.37
+pTime - mTime: 0.000161171
+
+440. number: 8121
+pTime - mTime: 0.000161886
+
+441. number: 9727.01
+pTime - mTime: 0.00016284
+
+442. number: 1802.06
+pTime - mTime: 0.00016284
+
+443. number: 7169.35
+pTime - mTime: 0.00016284
+
+444. number: 5266.67
+pTime - mTime: 0.000163078
+
+445. number: 6856.56
+pTime - mTime: 0.000161171
+
+446. number: 8268.92
+pTime - mTime: 0.000163078
+
+447. number: 5747.61
+pTime - mTime: 0.000163078
+
+448. number: 77.1664
+pTime - mTime: 0.000163078
+
+449. number: 6935.2
+pTime - mTime: 0.000160933
+
+450. number: 9886.22
+pTime - mTime: 0.00016427
+
+451. number: 7671.67
+pTime - mTime: 0.000163078
+
+452. number: 7809.5
+pTime - mTime: 0.000162125
+
+453. number: 4252.25
+pTime - mTime: 0.000161171
+
+454. number: 7502.76
+pTime - mTime: 0.00016284
+
+455. number: 8949.95
+pTime - mTime: 0.00016284
+
+456. number: 1836.05
+pTime - mTime: 0.000300169
+
+457. number: 8534.53
+pTime - mTime: 0.00016284
+
+458. number: 9905.35
+pTime - mTime: 0.000161886
+
+459. number: 9188.16
+pTime - mTime: 0.000160694
+
+460. number: 5361.01
+pTime - mTime: 0.000161886
+
+461. number: 2502.3
+pTime - mTime: 0.000163078
+
+462. number: 6129.33
+pTime - mTime: 0.000163078
+
+463. number: 5728.18
+pTime - mTime: 0.000161886
+
+464. number: 3582.25
+pTime - mTime: 0.00016284
+
+465. number: 6881.27
+pTime - mTime: 0.000161886
+
+466. number: 3534.66
+pTime - mTime: 0.000161171
+
+467. number: 7109.68
+pTime - mTime: 0.000163078
+
+468. number: 2463.88
+pTime - mTime: 0.000163078
+
+469. number: 378.033
+pTime - mTime: 0.000163078
+
+470. number: 3605.21
+pTime - mTime: 0.000161886
+
+471. number: 2685.59
+pTime - mTime: 0.000161886
+
+472. number: 6677.81
+pTime - mTime: 0.000163078
+
+473. number: 3933.63
+pTime - mTime: 0.000161171
+
+474. number: 2523.1
+pTime - mTime: 0.000163078
+
+475. number: 5763.85
+pTime - mTime: 0.000163078
+
+476. number: 3037.29
+pTime - mTime: 0.00016284
+
+477. number: 7741.51
+pTime - mTime: 0.000161886
+
+478. number: 1596.31
+pTime - mTime: 0.000160694
+
+479. number: 9149.76
+pTime - mTime: 0.000160694
+
+480. number: 93.3786
+pTime - mTime: 0.000163078
+
+481. number: 9414.63
+pTime - mTime: 0.000163078
+
+482. number: 1641.58
+pTime - mTime: 0.000161171
+
+483. number: 102.874
+pTime - mTime: 0.000160933
+
+484. number: 8996.49
+pTime - mTime: 0.000161886
+
+485. number: 3972.4
+pTime - mTime: 0.00016284
+
+486. number: 4191.92
+pTime - mTime: 0.00016427
+
+487. number: 3608.44
+pTime - mTime: 0.000161171
+
+488. number: 7118.06
+pTime - mTime: 0.000163078
+
+489. number: 3309.72
+pTime - mTime: 0.000163078
+
+490. number: 6505.55
+pTime - mTime: 0.000163078
+
+491. number: 8777.13
+pTime - mTime: 0.000160933
+
+492. number: 7227.72
+pTime - mTime: 0.000231743
+
+493. number: 6367.79
+pTime - mTime: 0.00016284
+
+494. number: 3517.73
+pTime - mTime: 0.00016284
+
+495. number: 2490.77
+pTime - mTime: 0.000161171
+
+496. number: 2445.32
+pTime - mTime: 0.000162125
+
+497. number: 8531.58
+pTime - mTime: 0.000163078
+
+498. number: 198.59
+pTime - mTime: 0.000163078
+
+499. number: 7703.48
+pTime - mTime: 0.000160933
+
+500. number: 2394.74
+pTime - mTime: 0.00016427
+
+501. number: 8370.93
+pTime - mTime: 0.000162125
+
+502. number: 178.755
+pTime - mTime: 0.000161171
+
+503. number: 4333.57
+pTime - mTime: 0.00016284
+
+504. number: 4286.19
+pTime - mTime: 0.00016284
+
+505. number: 8080.14
+pTime - mTime: 0.000161886
+
+506. number: 2994.88
+pTime - mTime: 0.000160694
+
+507. number: 4935.91
+pTime - mTime: 0.000163078
+
+508. number: 7904.34
+pTime - mTime: 0.000163078
+
+509. number: 8309.92
+pTime - mTime: 0.000161171
+
+510. number: 4808.63
+pTime - mTime: 0.000163078
+
+511. number: 8642.93
+pTime - mTime: 0.00016284
+
+512. number: 1675.93
+pTime - mTime: 0.000161886
+
+513. number: 7362.72
+pTime - mTime: 0.000163078
+
+514. number: 5266.44
+pTime - mTime: 0.000163078
+
+515. number: 3120.57
+pTime - mTime: 0.000162125
+
+516. number: 7390.37
+pTime - mTime: 0.000161171
+
+517. number: 9991.01
+pTime - mTime: 0.000163078
+
+518. number: 8850.19
+pTime - mTime: 0.00016284
+
+519. number: 5166.75
+pTime - mTime: 0.000160933
+
+520. number: 7529.03
+pTime - mTime: 0.000163078
+
+521. number: 453.677
+pTime - mTime: 0.000167847
+
+522. number: 4948.25
+pTime - mTime: 0.00041008
+
+523. number: 5319.96
+pTime - mTime: 0.000337362
+
+524. number: 2501.96
+pTime - mTime: 0.000163078
+
+525. number: 398.241
+pTime - mTime: 0.000161171
+
+526. number: 3236.68
+pTime - mTime: 0.000163078
+
+527. number: 8916.91
+pTime - mTime: 0.000161886
+
+528. number: 6562.67
+pTime - mTime: 0.000163078
+
+529. number: 8742.05
+pTime - mTime: 0.000163078
+
+530. number: 7676.72
+pTime - mTime: 0.000163078
+
+531. number: 2632.31
+pTime - mTime: 0.000161171
+
+532. number: 1323.16
+pTime - mTime: 0.000163078
+
+533. number: 8433.14
+pTime - mTime: 0.0001719
+
+534. number: 5771.75
+pTime - mTime: 0.00016284
+
+535. number: 5776.5
+pTime - mTime: 0.00016284
+
+536. number: 5712.69
+pTime - mTime: 0.000167847
+
+537. number: 3219.45
+pTime - mTime: 0.000197887
+
+538. number: 9298.75
+pTime - mTime: 0.00016284
+
+539. number: 4151.18
+pTime - mTime: 0.000161886
+
+540. number: 8883.94
+pTime - mTime: 0.000163078
+
+541. number: 2325.34
+pTime - mTime: 0.000162125
+
+542. number: 1921.97
+pTime - mTime: 0.000163078
+
+543. number: 2480.64
+pTime - mTime: 0.00016284
+
+544. number: 2180.94
+pTime - mTime: 0.000160933
+
+545. number: 5012.21
+pTime - mTime: 0.000160694
+
+546. number: 181.066
+pTime - mTime: 0.000163078
+
+547. number: 3180.46
+pTime - mTime: 0.00016284
+
+548. number: 3936.04
+pTime - mTime: 0.000160694
+
+549. number: 3101.34
+pTime - mTime: 0.000161886
+
+550. number: 4203.19
+pTime - mTime: 0.000164032
+
+551. number: 3067.86
+pTime - mTime: 0.000163078
+
+552. number: 1532.01
+pTime - mTime: 0.000160933
+
+553. number: 8496.51
+pTime - mTime: 0.00016284
+
+554. number: 928.63
+pTime - mTime: 0.00016284
+
+555. number: 7489.97
+pTime - mTime: 0.000163078
+
+556. number: 3987.29
+pTime - mTime: 0.000161171
+
+557. number: 4439.53
+pTime - mTime: 0.000163078
+
+558. number: 5176.68
+pTime - mTime: 0.000163078
+
+559. number: 4402.88
+pTime - mTime: 0.000160933
+
+560. number: 9172.47
+pTime - mTime: 0.00016284
+
+561. number: 1628.1
+pTime - mTime: 0.000161886
+
+562. number: 3432.83
+pTime - mTime: 0.000161171
+
+563. number: 5538.06
+pTime - mTime: 0.000163078
+
+564. number: 8169.13
+pTime - mTime: 0.000163078
+
+565. number: 8543.61
+pTime - mTime: 0.000161171
+
+566. number: 2409.98
+pTime - mTime: 0.00016284
+
+567. number: 4527.92
+pTime - mTime: 0.00016284
+
+568. number: 669.303
+pTime - mTime: 0.000161886
+
+569. number: 8972.96
+pTime - mTime: 0.000162125
+
+570. number: 8517.55
+pTime - mTime: 0.000163078
+
+571. number: 4432.97
+pTime - mTime: 0.000161886
+
+572. number: 4973.81
+pTime - mTime: 0.000160933
+
+573. number: 4754.17
+pTime - mTime: 0.000161886
+
+574. number: 3298.8
+pTime - mTime: 0.00016284
+
+575. number: 2879.99
+pTime - mTime: 0.000163078
+
+576. number: 3945.84
+pTime - mTime: 0.000162125
+
+577. number: 7804.15
+pTime - mTime: 0.000161171
+
+578. number: 4339.55
+pTime - mTime: 0.000163078
+
+579. number: 4831.33
+pTime - mTime: 0.000163078
+
+580. number: 98.2865
+pTime - mTime: 0.000160933
+
+581. number: 1900.96
+pTime - mTime: 0.00016284
+
+582. number: 9421.23
+pTime - mTime: 0.000163078
+
+583. number: 2620.36
+pTime - mTime: 0.000162125
+
+584. number: 407.9
+pTime - mTime: 0.000163078
+
+585. number: 5581.8
+pTime - mTime: 0.000163078
+
+586. number: 3294.59
+pTime - mTime: 0.000160933
+
+587. number: 2222.82
+pTime - mTime: 0.00016284
+
+588. number: 8956.09
+pTime - mTime: 0.00016284
+
+589. number: 4950.89
+pTime - mTime: 0.000162125
+
+590. number: 9670.03
+pTime - mTime: 0.000163078
+
+591. number: 4262.92
+pTime - mTime: 0.000162125
+
+592. number: 6857.79
+pTime - mTime: 0.000163078
+
+593. number: 8871.76
+pTime - mTime: 0.00016284
+
+594. number: 7659.52
+pTime - mTime: 0.00016284
+
+595. number: 3531.79
+pTime - mTime: 0.000160694
+
+596. number: 8820.99
+pTime - mTime: 0.000163078
+
+597. number: 4311.03
+pTime - mTime: 0.000163078
+
+598. number: 5540.09
+pTime - mTime: 0.000161886
+
+599. number: 2291.24
+pTime - mTime: 0.000196934
+
+600. number: 8830.75
+pTime - mTime: 0.00016284
+
+601. number: 8498.16
+pTime - mTime: 0.00016284
+
+602. number: 8651.59
+pTime - mTime: 0.000163078
+
+603. number: 7220.02
+pTime - mTime: 0.000161171
+
+604. number: 6939.84
+pTime - mTime: 0.000163078
+
+605. number: 7869.33
+pTime - mTime: 0.000163078
+
+606. number: 9923.4
+pTime - mTime: 0.000161886
+
+607. number: 2580.65
+pTime - mTime: 0.00016284
+
+608. number: 2964.25
+pTime - mTime: 0.00016284
+
+609. number: 171.424
+pTime - mTime: 0.000161171
+
+610. number: 1126.4
+pTime - mTime: 0.000163078
+
+611. number: 1448.71
+pTime - mTime: 0.000161171
+
+612. number: 8403.12
+pTime - mTime: 0.000161886
+
+613. number: 1187.57
+pTime - mTime: 0.000161886
+
+614. number: 9407.25
+pTime - mTime: 0.000163078
+
+615. number: 7586.43
+pTime - mTime: 0.000162125
+
+616. number: 5146.04
+pTime - mTime: 0.000161171
+
+617. number: 9482.8
+pTime - mTime: 0.000163078
+
+618. number: 7423.3
+pTime - mTime: 0.000163078
+
+619. number: 3333.08
+pTime - mTime: 0.000161886
+
+620. number: 9062.69
+pTime - mTime: 0.000161886
+
+621. number: 6670.02
+pTime - mTime: 0.000163078
+
+622. number: 2991.82
+pTime - mTime: 0.000163078
+
+623. number: 3520.35
+pTime - mTime: 0.000161171
+
+624. number: 6459
+pTime - mTime: 0.000161171
+
+625. number: 6477.6
+pTime - mTime: 0.00016284
+
+626. number: 9007.46
+pTime - mTime: 0.000161886
+
+627. number: 8293.73
+pTime - mTime: 0.000163078
+
+628. number: 2732.57
+pTime - mTime: 0.000163078
+
+629. number: 6345.16
+pTime - mTime: 0.000162125
+
+630. number: 3143.04
+pTime - mTime: 0.000163078
+
+631. number: 5003.53
+pTime - mTime: 0.00016284
+
+632. number: 4369.7
+pTime - mTime: 0.000160694
+
+633. number: 1587.87
+pTime - mTime: 0.000163078
+
+634. number: 7411.4
+pTime - mTime: 0.000163078
+
+635. number: 3396.5
+pTime - mTime: 0.000162125
+
+636. number: 5011.76
+pTime - mTime: 0.000161171
+
+637. number: 2638.4
+pTime - mTime: 0.00016284
+
+638. number: 3637.13
+pTime - mTime: 0.00016284
+
+639. number: 9306.78
+pTime - mTime: 0.000160694
+
+640. number: 9036.7
+pTime - mTime: 0.000163078
+
+641. number: 9778.14
+pTime - mTime: 0.000163078
+
+642. number: 1152.04
+pTime - mTime: 0.000161171
+
+643. number: 2283.13
+pTime - mTime: 0.000163078
+
+644. number: 2625.63
+pTime - mTime: 0.000177145
+
+645. number: 9017.5
+pTime - mTime: 0.000165224
+
+646. number: 7211.51
+pTime - mTime: 0.000167131
+
+647. number: 3860.11
+pTime - mTime: 0.000165224
+
+648. number: 6910.95
+pTime - mTime: 0.000166178
+
+649. number: 2324.36
+pTime - mTime: 0.000168085
+
+650. number: 5531.36
+pTime - mTime: 0.000167131
+
+651. number: 5521.69
+pTime - mTime: 0.000165224
+
+652. number: 3066.77
+pTime - mTime: 0.000167131
+
+653. number: 3213.92
+pTime - mTime: 0.000165224
+
+654. number: 6411.1
+pTime - mTime: 0.000167131
+
+655. number: 1335.71
+pTime - mTime: 0.000165224
+
+656. number: 9337.2
+pTime - mTime: 0.000165224
+
+657. number: 302.096
+pTime - mTime: 0.000167131
+
+658. number: 7326.38
+pTime - mTime: 0.000166178
+
+659. number: 4429.75
+pTime - mTime: 0.000173807
+
+660. number: 801.165
+pTime - mTime: 0.000158787
+
+661. number: 5176.82
+pTime - mTime: 0.000159264
+
+662. number: 6823.57
+pTime - mTime: 0.00015974
+
+663. number: 3810.34
+pTime - mTime: 0.00015831
+
+664. number: 354.252
+pTime - mTime: 0.000177145
+
+665. number: 3918.63
+pTime - mTime: 0.000165224
+
+666. number: 444.591
+pTime - mTime: 0.000167131
+
+667. number: 2245.46
+pTime - mTime: 0.000164747
+
+668. number: 9443.4
+pTime - mTime: 0.000166178
+
+669. number: 5266.91
+pTime - mTime: 0.000167131
+
+670. number: 906.24
+pTime - mTime: 0.000163078
+
+671. number: 1182.02
+pTime - mTime: 0.000163078
+
+672. number: 6165.53
+pTime - mTime: 0.000163078
+
+673. number: 4001.43
+pTime - mTime: 0.000162125
+
+674. number: 2014.53
+pTime - mTime: 0.000177145
+
+675. number: 8127.59
+pTime - mTime: 0.000165224
+
+676. number: 437.887
+pTime - mTime: 0.000166178
+
+677. number: 9568.59
+pTime - mTime: 0.000206232
+
+678. number: 9384.48
+pTime - mTime: 0.000166178
+
+679. number: 4994.84
+pTime - mTime: 0.000167131
+
+680. number: 8264.93
+pTime - mTime: 0.000259161
+
+681. number: 8643.62
+pTime - mTime: 0.000165224
+
+682. number: 3243.23
+pTime - mTime: 0.000166178
+
+683. number: 8898.22
+pTime - mTime: 0.000176907
+
+684. number: 2376.59
+pTime - mTime: 0.000160217
+
+685. number: 3429.05
+pTime - mTime: 0.000158787
+
+686. number: 2039.6
+pTime - mTime: 0.000159025
+
+687. number: 9478.81
+pTime - mTime: 0.000159264
+
+688. number: 322.51
+pTime - mTime: 0.000157833
+
+689. number: 429.632
+pTime - mTime: 0.000160217
+
+690. number: 823.895
+pTime - mTime: 0.000158787
+
+691. number: 7206.95
+pTime - mTime: 0.000160217
+
+692. number: 7183.76
+pTime - mTime: 0.000158787
+
+693. number: 7523.71
+pTime - mTime: 0.000145912
+
+694. number: 973.858
+pTime - mTime: 0.000164747
+
+695. number: 7631.88
+pTime - mTime: 0.000166178
+
+696. number: 8998.66
+pTime - mTime: 0.000164747
+
+697. number: 505.661
+pTime - mTime: 0.000165701
+
+698. number: 8640.84
+pTime - mTime: 0.000168085
+
+699. number: 6584.29
+pTime - mTime: 0.000167131
+
+700. number: 2174.38
+pTime - mTime: 0.000165224
+
+701. number: 4790.95
+pTime - mTime: 0.000166178
+
+702. number: 1418.55
+pTime - mTime: 0.000167131
+
+703. number: 1634.28
+pTime - mTime: 0.000162125
+
+704. number: 7360.12
+pTime - mTime: 0.000363827
+
+705. number: 1611.35
+pTime - mTime: 0.000161886
+
+706. number: 1915.19
+pTime - mTime: 0.000160694
+
+707. number: 8683.43
+pTime - mTime: 0.000163078
+
+708. number: 2487.64
+pTime - mTime: 0.000163078
+
+709. number: 9838.27
+pTime - mTime: 0.000163078
+
+710. number: 1773.37
+pTime - mTime: 0.000162125
+
+711. number: 5012.02
+pTime - mTime: 0.000160933
+
+712. number: 7006.22
+pTime - mTime: 0.00016284
+
+713. number: 3561.32
+pTime - mTime: 0.00016284
+
+714. number: 5081.04
+pTime - mTime: 0.000161886
+
+715. number: 7088.82
+pTime - mTime: 0.000163078
+
+716. number: 1845.66
+pTime - mTime: 0.000162125
+
+717. number: 84.3347
+pTime - mTime: 0.000160933
+
+718. number: 7413
+pTime - mTime: 0.00016284
+
+719. number: 235.47
+pTime - mTime: 0.00016427
+
+720. number: 7548.64
+pTime - mTime: 0.000163078
+
+721. number: 9969.81
+pTime - mTime: 0.000163078
+
+722. number: 2534.54
+pTime - mTime: 0.000163078
+
+723. number: 7994.04
+pTime - mTime: 0.000178814
+
+724. number: 5774.37
+pTime - mTime: 0.000167131
+
+725. number: 9880.52
+pTime - mTime: 0.000164747
+
+726. number: 1925.59
+pTime - mTime: 0.000165701
+
+727. number: 3447.67
+pTime - mTime: 0.000178099
+
+728. number: 4973.68
+pTime - mTime: 0.000159264
+
+729. number: 2691.84
+pTime - mTime: 0.000157833
+
+730. number: 1776.24
+pTime - mTime: 0.000160217
+
+731. number: 3321.54
+pTime - mTime: 0.000158787
+
+732. number: 5049.58
+pTime - mTime: 0.000159979
+
+733. number: 8309.42
+pTime - mTime: 0.000158787
+
+734. number: 6404.36
+pTime - mTime: 0.000159979
+
+735. number: 8104.51
+pTime - mTime: 0.000159264
+
+736. number: 2456.74
+pTime - mTime: 0.000157833
+
+737. number: 505.057
+pTime - mTime: 0.000160217
+
+738. number: 8496.22
+pTime - mTime: 0.000176191
+
+739. number: 5987.92
+pTime - mTime: 0.00016284
+
+740. number: 8999.7
+pTime - mTime: 0.000163317
+
+741. number: 7903.44
+pTime - mTime: 0.000162125
+
+742. number: 3197.75
+pTime - mTime: 0.000161886
+
+743. number: 4547.37
+pTime - mTime: 0.000163078
+
+744. number: 7658.14
+pTime - mTime: 0.000163794
+
+745. number: 376.695
+pTime - mTime: 0.000163078
+
+746. number: 1120.99
+pTime - mTime: 0.000161886
+
+747. number: 404.787
+pTime - mTime: 0.00016427
+
+748. number: 3259.78
+pTime - mTime: 0.00016284
+
+749. number: 7142.63
+pTime - mTime: 0.000163317
+
+750. number: 6182.08
+pTime - mTime: 0.000164032
+
+751. number: 2296.63
+pTime - mTime: 0.000161886
+
+752. number: 9500.26
+pTime - mTime: 0.000162125
+
+753. number: 873.716
+pTime - mTime: 0.00016284
+
+754. number: 4537.91
+pTime - mTime: 0.000163078
+
+755. number: 8622.87
+pTime - mTime: 0.000163794
+
+756. number: 4645
+pTime - mTime: 0.000162125
+
+757. number: 8507.64
+pTime - mTime: 0.00016284
+
+758. number: 7918.04
+pTime - mTime: 0.00016284
+
+759. number: 8577.98
+pTime - mTime: 0.000162125
+
+760. number: 134.401
+pTime - mTime: 0.00016284
+
+761. number: 8880.97
+pTime - mTime: 0.000163078
+
+762. number: 2549.39
+pTime - mTime: 0.000163794
+
+763. number: 7643.24
+pTime - mTime: 0.000161886
+
+764. number: 9963.32
+pTime - mTime: 0.000163078
+
+765. number: 3582.4
+pTime - mTime: 0.000203848
+
+766. number: 9399.25
+pTime - mTime: 0.000165701
+
+767. number: 3187.24
+pTime - mTime: 0.000166655
+
+768. number: 8009.99
+pTime - mTime: 0.000164747
+
+769. number: 3970.82
+pTime - mTime: 0.000165701
+
+770. number: 7581.33
+pTime - mTime: 0.000165701
+
+771. number: 9344.22
+pTime - mTime: 0.000165939
+
+772. number: 8349.96
+pTime - mTime: 0.000164747
+
+773. number: 7823.17
+pTime - mTime: 0.000165701
+
+774. number: 3966.28
+pTime - mTime: 0.000164747
+
+775. number: 1268.51
+pTime - mTime: 0.000165701
+
+776. number: 9887.24
+pTime - mTime: 0.000164747
+
+777. number: 4866.68
+pTime - mTime: 0.000165939
+
+778. number: 4222.32
+pTime - mTime: 0.000175714
+
+779. number: 4481.43
+pTime - mTime: 0.000166655
+
+780. number: 9361.61
+pTime - mTime: 0.000164747
+
+781. number: 536.58
+pTime - mTime: 0.000165939
+
+782. number: 8305.97
+pTime - mTime: 0.000166893
+
+783. number: 8379.03
+pTime - mTime: 0.000165701
+
+784. number: 6420.19
+pTime - mTime: 0.000166655
+
+785. number: 4149.56
+pTime - mTime: 0.000164747
+
+786. number: 1734.97
+pTime - mTime: 0.000166655
+
+787. number: 9576.67
+pTime - mTime: 0.000164747
+
+788. number: 5063.75
+pTime - mTime: 0.000165939
+
+789. number: 6451.51
+pTime - mTime: 0.000164986
+
+790. number: 583.406
+pTime - mTime: 0.000165939
+
+791. number: 5301.16
+pTime - mTime: 0.000166893
+
+792. number: 6641.43
+pTime - mTime: 0.000165939
+
+793. number: 2575.47
+pTime - mTime: 0.000167131
+
+794. number: 5840.87
+pTime - mTime: 0.000165224
+
+795. number: 7567.68
+pTime - mTime: 0.000165939
+
+796. number: 11.5678
+pTime - mTime: 0.000165224
+
+797. number: 4420.63
+pTime - mTime: 0.000166893
+
+798. number: 7533.23
+pTime - mTime: 0.000165939
+
+799. number: 956.585
+pTime - mTime: 0.000166655
+
+800. number: 7328.21
+pTime - mTime: 0.000166655
+
+801. number: 5192.31
+pTime - mTime: 0.000164747
+
+802. number: 7177.37
+pTime - mTime: 0.000166655
+
+803. number: 124.4
+pTime - mTime: 0.000164747
+
+804. number: 791.616
+pTime - mTime: 0.000165701
+
+805. number: 4696.73
+pTime - mTime: 0.000166655
+
+806. number: 7900.81
+pTime - mTime: 0.000166655
+
+807. number: 8898.46
+pTime - mTime: 0.000164747
+
+808. number: 6466.65
+pTime - mTime: 0.000165701
+
+809. number: 5077.13
+pTime - mTime: 0.000164747
+
+810. number: 1380.97
+pTime - mTime: 0.000164747
+
+811. number: 37.751
+pTime - mTime: 0.000165701
+
+812. number: 4480.78
+pTime - mTime: 0.000180006
+
+813. number: 8500.41
+pTime - mTime: 0.000163078
+
+814. number: 6340.33
+pTime - mTime: 0.000161886
+
+815. number: 1907.98
+pTime - mTime: 0.000160933
+
+816. number: 7485.45
+pTime - mTime: 0.00016284
+
+817. number: 8031.13
+pTime - mTime: 0.000162125
+
+818. number: 9159.55
+pTime - mTime: 0.000163078
+
+819. number: 4627.92
+pTime - mTime: 0.000164032
+
+820. number: 1488.54
+pTime - mTime: 0.000160933
+
+821. number: 7890.62
+pTime - mTime: 0.000160933
+
+822. number: 7691.31
+pTime - mTime: 0.000163078
+
+823. number: 7905.33
+pTime - mTime: 0.000163078
+
+824. number: 4842.5
+pTime - mTime: 0.000162125
+
+825. number: 7863.06
+pTime - mTime: 0.000161171
+
+826. number: 4437.64
+pTime - mTime: 0.000161171
+
+827. number: 3387.61
+pTime - mTime: 0.000163078
+
+828. number: 5530.38
+pTime - mTime: 0.000181198
+
+829. number: 9030.83
+pTime - mTime: 0.000169277
+
+830. number: 1108.75
+pTime - mTime: 0.000169277
+
+831. number: 4795.58
+pTime - mTime: 0.000170231
+
+832. number: 9304.62
+pTime - mTime: 0.000169754
+
+833. number: 2817.43
+pTime - mTime: 0.000175714
+
+834. number: 2625.28
+pTime - mTime: 0.000162125
+
+835. number: 3061.72
+pTime - mTime: 0.00016284
+
+836. number: 8270.11
+pTime - mTime: 0.000164032
+
+837. number: 5765.97
+pTime - mTime: 0.000161886
+
+838. number: 8747.06
+pTime - mTime: 0.000162125
+
+839. number: 1784.36
+pTime - mTime: 0.00016284
+
+840. number: 9780.15
+pTime - mTime: 0.00016427
+
+841. number: 5039.2
+pTime - mTime: 0.000175953
+
+842. number: 3805.88
+pTime - mTime: 0.000165224
+
+843. number: 5442.05
+pTime - mTime: 0.000167131
+
+844. number: 4464.22
+pTime - mTime: 0.000165224
+
+845. number: 89.7645
+pTime - mTime: 0.000166178
+
+846. number: 8672.22
+pTime - mTime: 0.000165224
+
+847. number: 3983.36
+pTime - mTime: 0.000166893
+
+848. number: 8295.99
+pTime - mTime: 0.000167131
+
+849. number: 660.097
+pTime - mTime: 0.000166178
+
+850. number: 4251.04
+pTime - mTime: 0.000165224
+
+851. number: 7207.03
+pTime - mTime: 0.000165939
+
+852. number: 8580.85
+pTime - mTime: 0.000165224
+
+853. number: 8334.27
+pTime - mTime: 0.000166178
+
+854. number: 4079.92
+pTime - mTime: 0.000166178
+
+855. number: 1266.93
+pTime - mTime: 0.000165224
+
+856. number: 3278.21
+pTime - mTime: 0.000166178
+
+857. number: 6910.01
+pTime - mTime: 0.000178814
+
+858. number: 6575.28
+pTime - mTime: 0.000161886
+
+859. number: 724.899
+pTime - mTime: 0.000160694
+
+860. number: 3375.78
+pTime - mTime: 0.000163078
+
+861. number: 6819.8
+pTime - mTime: 0.000163078
+
+862. number: 374.407
+pTime - mTime: 0.000161171
+
+863. number: 2650.86
+pTime - mTime: 0.00016284
+
+864. number: 2984.06
+pTime - mTime: 0.00016284
+
+865. number: 3078.8
+pTime - mTime: 0.000161886
+
+866. number: 5351.67
+pTime - mTime: 0.000160694
+
+867. number: 5464.95
+pTime - mTime: 0.000163078
+
+868. number: 9364.2
+pTime - mTime: 0.000163078
+
+869. number: 4041.49
+pTime - mTime: 0.000231743
+
+870. number: 5301.19
+pTime - mTime: 0.000198126
+
+871. number: 7019.84
+pTime - mTime: 0.000161171
+
+872. number: 2427.52
+pTime - mTime: 0.000163078
+
+873. number: 9358.2
+pTime - mTime: 0.000163078
+
+874. number: 3301.56
+pTime - mTime: 0.000161886
+
+875. number: 9307.5
+pTime - mTime: 0.000160933
+
+876. number: 1097.29
+pTime - mTime: 0.00016284
+
+877. number: 2140.42
+pTime - mTime: 0.00019598
+
+878. number: 4065.65
+pTime - mTime: 0.000157833
+
+879. number: 1309.43
+pTime - mTime: 0.000159979
+
+880. number: 7593.83
+pTime - mTime: 0.000159264
+
+881. number: 9502.82
+pTime - mTime: 0.00015974
+
+882. number: 3905.99
+pTime - mTime: 0.000178337
+
+883. number: 7966.1
+pTime - mTime: 0.000166893
+
+884. number: 6258.27
+pTime - mTime: 0.000167131
+
+885. number: 2770.86
+pTime - mTime: 0.000167131
+
+886. number: 9902.81
+pTime - mTime: 0.000166893
+
+887. number: 6539.38
+pTime - mTime: 0.000180006
+
+888. number: 7284.44
+pTime - mTime: 0.000165224
+
+889. number: 9527.69
+pTime - mTime: 0.000167131
+
+890. number: 1859.93
+pTime - mTime: 0.000165224
+
+891. number: 9927.65
+pTime - mTime: 0.000166178
+
+892. number: 3961.05
+pTime - mTime: 0.000167131
+
+893. number: 3361.01
+pTime - mTime: 0.000165224
+
+894. number: 8512.5
+pTime - mTime: 0.000166178
+
+895. number: 9654.61
+pTime - mTime: 0.000166178
+
+896. number: 5037.52
+pTime - mTime: 0.000167131
+
+897. number: 5662.02
+pTime - mTime: 0.000165224
+
+898. number: 1609.75
+pTime - mTime: 0.000167131
+
+899. number: 5057.44
+pTime - mTime: 0.00024724
+
+900. number: 455.864
+pTime - mTime: 0.000166178
+
+901. number: 1703.47
+pTime - mTime: 0.000167131
+
+902. number: 180.546
+pTime - mTime: 0.000165224
+
+903. number: 4444.74
+pTime - mTime: 0.000166178
+
+904. number: 2772.3
+pTime - mTime: 0.000207186
+
+905. number: 3996.76
+pTime - mTime: 0.000167131
+
+906. number: 3512.44
+pTime - mTime: 0.000165224
+
+907. number: 3605.13
+pTime - mTime: 0.000166178
+
+908. number: 1477.82
+pTime - mTime: 0.000165224
+
+909. number: 7766.34
+pTime - mTime: 0.000205755
+
+910. number: 8920.31
+pTime - mTime: 0.000166655
+
+911. number: 3634.74
+pTime - mTime: 0.000164747
+
+912. number: 9123.77
+pTime - mTime: 0.000166655
+
+913. number: 3255.66
+pTime - mTime: 0.000164747
+
+914. number: 7816.34
+pTime - mTime: 0.000293016
+
+915. number: 9193.2
+pTime - mTime: 0.000180244
+
+916. number: 128.416
+pTime - mTime: 0.000164032
+
+917. number: 8285.68
+pTime - mTime: 0.00016284
+
+918. number: 7374.03
+pTime - mTime: 0.000161171
+
+919. number: 5307.05
+pTime - mTime: 0.000239134
+
+920. number: 5530.66
+pTime - mTime: 0.000158787
+
+921. number: 3828.39
+pTime - mTime: 0.000159979
+
+922. number: 3772.88
+pTime - mTime: 0.000158787
+
+923. number: 858.085
+pTime - mTime: 0.000159979
+
+924. number: 1835.49
+pTime - mTime: 0.000259876
+
+925. number: 9133.97
+pTime - mTime: 0.000159979
+
+926. number: 4606.5
+pTime - mTime: 0.000157833
+
+927. number: 1411.46
+pTime - mTime: 0.00015974
+
+928. number: 2341.55
+pTime - mTime: 0.000159264
+
+929. number: 4462.75
+pTime - mTime: 0.00015974
+
+930. number: 5492.27
+pTime - mTime: 0.000181913
+
+931. number: 8557.86
+pTime - mTime: 0.000163078
+
+932. number: 2016.23
+pTime - mTime: 0.000163078
+
+933. number: 6796.37
+pTime - mTime: 0.000163078
+
+934. number: 6509.63
+pTime - mTime: 0.000181198
+
+935. number: 7424.33
+pTime - mTime: 0.000196695
+
+936. number: 682.731
+pTime - mTime: 0.00016284
+
+937. number: 4662.2
+pTime - mTime: 0.000162125
+
+938. number: 7660.37
+pTime - mTime: 0.000161171
+
+939. number: 7777.27
+pTime - mTime: 0.000161171
+
+940. number: 2587.59
+pTime - mTime: 0.000233889
+
+941. number: 9562.44
+pTime - mTime: 0.00016284
+
+942. number: 5923.72
+pTime - mTime: 0.00018096
+
+943. number: 9889.1
+pTime - mTime: 0.000163078
+
+944. number: 6152.12
+pTime - mTime: 0.000163078
+
+945. number: 8638.15
+pTime - mTime: 0.000163078
+
+946. number: 1420.58
+pTime - mTime: 0.000161171
+
+947. number: 5744.96
+pTime - mTime: 0.000162125
+
+948. number: 5602.1
+pTime - mTime: 0.000193119
+
+949. number: 4515.76
+pTime - mTime: 0.000163078
+
+950. number: 6409.67
+pTime - mTime: 0.000161171
+
+951. number: 7393.99
+pTime - mTime: 0.000163078
+
+952. number: 774.112
+pTime - mTime: 0.000163078
+
+953. number: 504.916
+pTime - mTime: 0.00016284
+
+954. number: 6121.31
+pTime - mTime: 0.000160694
+
+955. number: 846.11
+pTime - mTime: 0.000163078
+
+956. number: 564.677
+pTime - mTime: 0.000163078
+
+957. number: 520.913
+pTime - mTime: 0.000161171
+
+958. number: 4979.55
+pTime - mTime: 0.000161171
+
+959. number: 1382.28
+pTime - mTime: 0.000305891
+
+960. number: 1969.35
+pTime - mTime: 0.000179052
+
+961. number: 8878.36
+pTime - mTime: 0.000164747
+
+962. number: 8626.63
+pTime - mTime: 0.000163078
+
+963. number: 7845.51
+pTime - mTime: 0.00019908
+
+964. number: 9554.37
+pTime - mTime: 0.000164032
+
+965. number: 244.526
+pTime - mTime: 0.000161171
+
+966. number: 9747.81
+pTime - mTime: 0.00016284
+
+967. number: 1389.69
+pTime - mTime: 0.000163078
+
+968. number: 6567.11
+pTime - mTime: 0.000163078
+
+969. number: 3350.05
+pTime - mTime: 0.000160933
+
+970. number: 4257.31
+pTime - mTime: 0.00016284
+
+971. number: 2608.27
+pTime - mTime: 0.00016284
+
+972. number: 7165.78
+pTime - mTime: 0.000163078
+
+973. number: 5230.67
+pTime - mTime: 0.000163078
+
+974. number: 1799.1
+pTime - mTime: 0.000163078
+
+975. number: 7398.42
+pTime - mTime: 0.000162125
+
+976. number: 5172.13
+pTime - mTime: 0.00016284
+
+977. number: 7926.65
+pTime - mTime: 0.000212193
+
+978. number: 3206.47
+pTime - mTime: 0.000160217
+
+979. number: 1105.68
+pTime - mTime: 0.000159979
+
+980. number: 3217.22
+pTime - mTime: 0.000159264
+
+981. number: 1873.29
+pTime - mTime: 0.000158787
+
+982. number: 4394.41
+pTime - mTime: 0.000159979
+
+983. number: 6901.36
+pTime - mTime: 0.000158787
+
+984. number: 1153.98
+pTime - mTime: 0.000159979
+
+985. number: 4975.68
+pTime - mTime: 0.000159264
+
+986. number: 6220.4
+pTime - mTime: 0.00015974
+
+987. number: 6237.54
+pTime - mTime: 0.000158072
+
+988. number: 4302.08
+pTime - mTime: 0.000160217
+
+989. number: 5147.25
+pTime - mTime: 0.000157833
+
+990. number: 9792.85
+pTime - mTime: 0.000160217
+
+991. number: 8506.55
+pTime - mTime: 0.000157833
+
+992. number: 9592.6
+pTime - mTime: 0.000159979
+
+993. number: 2847.04
+pTime - mTime: 0.000157833
+
+994. number: 272.482
+pTime - mTime: 0.000159979
+
+995. number: 9597.08
+pTime - mTime: 0.000160217
+
+996. number: 8062.99
+pTime - mTime: 0.000158787
+
+997. number: 4708.45
+pTime - mTime: 0.000159979
+
+998. number: 4994.46
+pTime - mTime: 0.00030303
+
+999. number: 1847.85
+pTime - mTime: 0.000434875
+
+1000. number: 6864.98
+pTime - mTime: 0.000274897
+
+result: -1000
