@@ -18,9 +18,9 @@ set(PROJ3_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # include header files
-include_directories(${PROJ2_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS})
+include_directories(${PROJ3_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS})
 
-add_executable(objectRecognizer objectRecognizer.cpp)
+add_executable(objectRecognizer objectRecognizer.cpp processors.cpp)
 
 # link dynamic libraries to this executable
 target_link_libraries(objectRecognizer ${OpenCV_LIBS})
