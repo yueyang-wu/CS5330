@@ -61,11 +61,7 @@ int main() {
             for(int c = 0; c < processedFrame.cols; c++){
                 int label = thresholdFrame.at<int>(r, c);
                 Vec3b &pixel = processedFrame.at<Vec3b>(r, c);
-                if (label < N) {
-                    pixel = colors[label];
-                } else {
-                    pixel = colors[0];
-                }
+                pixel = (label < N) ? colors[label] : colors[0];
             }
         }
 
