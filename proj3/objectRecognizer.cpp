@@ -48,19 +48,16 @@ int main() {
         vector<Vec3b> colors(N);
 
         colors[0] = Vec3b(0, 0, 0);//background
-        int i = 1, interval = 50;
+        int i = 1, interval = 80;
         while (i < N && i < nLabels) {
-            colors[i] = Vec3b(i * interval, i * interval, i * interval);
+            colors[i] = Vec3b(i * interval, interval, interval);
             i++;
         }
-//        for(int label = 1; label < nLabels; ++label){
-//            colors[label] = Vec3b(100, 150, 200);
-//        }
         processedFrame.create(thresholdFrame.size(), CV_8UC3);
-        for(int r = 0; r < processedFrame.rows; r++){
-            for(int c = 0; c < processedFrame.cols; c++){
-                int label = thresholdFrame.at<int>(r, c);
-                Vec3b &pixel = processedFrame.at<Vec3b>(r, c);
+        for(int i = 0; i < processedFrame.rows; i++){
+            for(int j = 0; j < processedFrame.cols; j++){
+                int label = thresholdFrame.at<int>(i, j);
+                Vec3b &pixel = processedFrame.at<Vec3b>(i, j);
                 pixel = (label < N) ? colors[label] : colors[0];
             }
         }
