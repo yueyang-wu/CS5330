@@ -32,30 +32,40 @@ int main() {
             cout << "frame is empty\n";
             break;
         }
-        imshow("Original Video", frame);
+        imshow("Original Video", frame); // display the original image
 
         // threshold the image
         thresholdFrame = threshold(frame);
+
         // clean up the image
         const Mat kernel = getStructuringElement(MORPH_CROSS, Size(25, 25));
         morphologyEx(thresholdFrame, thresholdFrame, MORPH_CLOSE, kernel);
-        // get the region
 
-//        Mat labelImage(img.size(), CV_32S);
+        // get the region
         Mat stats, centroids;
         int nLabels = connectedComponentsWithStats(thresholdFrame, thresholdFrame, stats, centroids);
-        vector<Vec3b> colors(nLabels);
+        int N = 4; // only take the largest 3 regions
+        vector<Vec3b> colors(N);
 
         colors[0] = Vec3b(0, 0, 0);//background
-        for(int label = 1; label < nLabels; ++label){
-            colors[label] = Vec3b(100, 150, 200);
+        int i = 1, interval = 50;
+        while (i < N && i < nLabels) {
+            colors[i] = Vec3b(i * interval, i * interval, i * interval);
+            i++;
         }
+//        for(int label = 1; label < nLabels; ++label){
+//            colors[label] = Vec3b(100, 150, 200);
+//        }
         processedFrame.create(thresholdFrame.size(), CV_8UC3);
-        for(int r = 0; r < processedFrame.rows; ++r){
-            for(int c = 0; c < processedFrame.cols; ++c){
+        for(int r = 0; r < processedFrame.rows; r++){
+            for(int c = 0; c < processedFrame.cols; c++){
                 int label = thresholdFrame.at<int>(r, c);
                 Vec3b &pixel = processedFrame.at<Vec3b>(r, c);
-                pixel = colors[label];
+                if (label < N) {
+                    pixel = colors[label];
+                } else {
+                    pixel = colors[0];
+                }
             }
         }
 
