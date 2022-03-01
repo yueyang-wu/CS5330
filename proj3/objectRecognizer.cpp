@@ -33,7 +33,12 @@ int main() {
             break;
         }
         imshow("Original Video", frame);
+
+        // threshold the image
         processedFrame = threshold(frame);
+        // clean up the image
+        const Mat kernel = getStructuringElement(MORPH_CROSS, Size(25, 25));
+        morphologyEx(processedFrame, processedFrame, MORPH_CLOSE, kernel);
         imshow("Processed Video", processedFrame);
 
         // see if there is a waiting keystroke
