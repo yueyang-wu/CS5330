@@ -23,9 +23,8 @@ int main() {
     // identify two windows
     namedWindow("Original Video", 1);
     namedWindow("Processed Video", 1);
-//    namedWindow("Test Video", 1);
-    Mat frame;
 
+    Mat frame;
     while (true) {
         *capdev >> frame; // get a new frame from the camera, treat as a stream
         if (frame.empty()) {
@@ -38,32 +37,14 @@ int main() {
         Mat thresholdFrame = threshold(frame);
 
         // clean up the image
-        Mat cleanupFrame;
-        const Mat kernel = getStructuringElement(MORPH_CROSS, Size(25, 25));
-        morphologyEx(thresholdFrame, cleanupFrame, MORPH_CLOSE, kernel);
+        Mat cleanupFrame = cleanup(thresholdFrame);
 
         // get the region
-        Mat temp, regionFrame;
         Mat stats, centroids;
-        int nLabels = connectedComponentsWithStats(cleanupFrame, temp, stats, centroids);
-        cout << "nLabels: " << nLabels << endl;
-        int N = 4; // only take the largest 3 regions
-        vector<Vec3b> colors(N);
+        Mat regionFrame = getRegions(cleanupFrame, stats, centroids);
 
-        colors[0] = Vec3b(0, 0, 0);//background
-        int i = 1, interval = 80;
-        while (i < N && i < nLabels) {
-            colors[i] = Vec3b(i * interval, interval, interval);
-            i++;
-        }
-        regionFrame.create(temp.size(), CV_8UC3);
-        for(int i = 0; i < regionFrame.rows; i++){
-            for(int j = 0; j < regionFrame.cols; j++){
-                int label = temp.at<int>(i, j);
-                Vec3b &pixel = regionFrame.at<Vec3b>(i, j);
-                pixel = (label < N) ? colors[label] : colors[0];
-            }
-        }
+        // compute features
+
 
         imshow("Processed Video", regionFrame);
 
