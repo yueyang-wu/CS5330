@@ -24,7 +24,7 @@ int main() {
     namedWindow("Original Video", 1);
     namedWindow("Processed Video", 1);
 //    namedWindow("Test Video", 1);
-    Mat frame, thresholdFrame, processedFrame;
+    Mat frame;
 
     while (true) {
         *capdev >> frame; // get a new frame from the camera, treat as a stream
@@ -34,16 +34,19 @@ int main() {
         }
         imshow("Original Video", frame); // display the original image
 
-        // threshold the image
-        thresholdFrame = threshold(frame);
+        // threshold the image, thresholdFrame is single-channel
+        Mat thresholdFrame = threshold(frame);
 
         // clean up the image
+        Mat cleanupFrame;
         const Mat kernel = getStructuringElement(MORPH_CROSS, Size(25, 25));
-        morphologyEx(thresholdFrame, thresholdFrame, MORPH_CLOSE, kernel);
+        morphologyEx(thresholdFrame, cleanupFrame, MORPH_CLOSE, kernel);
 
         // get the region
+        Mat temp, regionFrame;
         Mat stats, centroids;
-        int nLabels = connectedComponentsWithStats(thresholdFrame, thresholdFrame, stats, centroids);
+        int nLabels = connectedComponentsWithStats(cleanupFrame, temp, stats, centroids);
+        cout << "nLabels: " << nLabels << endl;
         int N = 4; // only take the largest 3 regions
         vector<Vec3b> colors(N);
 
@@ -53,16 +56,16 @@ int main() {
             colors[i] = Vec3b(i * interval, interval, interval);
             i++;
         }
-        processedFrame.create(thresholdFrame.size(), CV_8UC3);
-        for(int i = 0; i < processedFrame.rows; i++){
-            for(int j = 0; j < processedFrame.cols; j++){
-                int label = thresholdFrame.at<int>(i, j);
-                Vec3b &pixel = processedFrame.at<Vec3b>(i, j);
+        regionFrame.create(temp.size(), CV_8UC3);
+        for(int i = 0; i < regionFrame.rows; i++){
+            for(int j = 0; j < regionFrame.cols; j++){
+                int label = temp.at<int>(i, j);
+                Vec3b &pixel = regionFrame.at<Vec3b>(i, j);
                 pixel = (label < N) ? colors[label] : colors[0];
             }
         }
 
-        imshow("Processed Video", processedFrame);
+        imshow("Processed Video", regionFrame);
 
         // see if there is a waiting keystroke
         char key = waitKey(10);

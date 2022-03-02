@@ -11,11 +11,11 @@ Mat threshold(Mat &image) {
     processedImage = Mat(image.size(), CV_8UC1);
 
     cvtColor(image, grayscale, COLOR_BGR2GRAY);
-    cout << "mean: " << mean(grayscale) << endl;
-    double min, max;
-    minMaxLoc(grayscale, &min, &max);
-    cout << "max: " << max << endl;
-    cout << "min: " << min << endl;
+//    cout << "mean: " << mean(grayscale) << endl;
+//    double min, max;
+//    minMaxLoc(grayscale, &min, &max);
+//    cout << "max: " << max << endl;
+//    cout << "min: " << min << endl;
     for (int i = 0; i < grayscale.rows; i++) {
         for (int j = 0; j < grayscale.cols; j++) {
             if (grayscale.at<uchar>(i, j) <= THRESHOLD) {
