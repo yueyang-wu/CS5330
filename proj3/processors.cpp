@@ -50,9 +50,10 @@ Mat getRegions(Mat &image, Mat stats, Mat centroids) {
     sortIdx(areas, sortedIdx, SORT_EVERY_ROW + SORT_DESCENDING);
 
     vector<Vec3b> colors(nLabels, Vec3b(0, 0, 0)); // label to color mapping
+
     int N = 3; // only take the largest 3 non-background regions
     N = (N < sortedIdx.cols) ? N : sortedIdx.cols;
-    int THRESHOLD = 50000; // any region area less than 50,000 will be ignored
+    int THRESHOLD = 5000; // any region area less than 5,000 will be ignored
     for (int i = 0; i < N; i++) {
         int label = sortedIdx.at<int>(i) + 1;
         if (stats.at<int>(label, CC_STAT_AREA) > THRESHOLD) {
