@@ -33,6 +33,9 @@ int main() {
     namedWindow("Region", WINDOW_AUTOSIZE);
     imshow("Region", regionImage);
 
+    // compute features
+
+
 
     // check for keypress.
     while (true) {

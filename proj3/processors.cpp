@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <opencv2/opencv.hpp>
 #include "processors.h"
 
@@ -39,27 +40,31 @@ Mat getRegions(Mat &image, Mat stats, Mat centroids) {
     Mat temp, processedImage;
     int nLabels = connectedComponentsWithStats(image, temp, stats, centroids);
 
-    // sort temp according to the area of the region
-    Mat sortedArea(temp.rows, 1, temp.type());
-    sortIdx(temp.col(4), sortedArea, SORT_EVERY_COLUMN);
-
-    cout << "nLabels: " << nLabels << endl;
-    cout << "stats: " << stats.at<Vec3b>(1, CC_STAT_AREA);
-    int N = 4; // only take the largest 3 regions
-    vector<Vec3b> colors(N);
-
-    colors[0] = Vec3b(0, 0, 0);//background
-    int i = 1, interval = 80;
-    while (i < N && i < nLabels) {
-        colors[i] = Vec3b(i * interval, interval, interval);
-        i++;
+    // save all region areas into a vector and sort the area descending
+    Mat areas = Mat::zeros(1, nLabels - 1, CV_32S);
+    Mat sortedIdx;
+    for (int i = 1; i < nLabels; i++) {
+        int area = stats.at<int>(i, CC_STAT_AREA);
+        areas.at<int>(i - 1) = area;
     }
-    processedImage.create(temp.size(), CV_8UC3);
-    for(int i = 0; i < processedImage.rows; i++){
-        for(int j = 0; j < processedImage.cols; j++){
+    sortIdx(areas, sortedIdx, SORT_EVERY_ROW + SORT_DESCENDING);
+
+    vector<Vec3b> colors(nLabels, Vec3b(0, 0, 0)); // label to color mapping
+    int N = 3; // only take the largest 3 non-background regions
+    N = (N < sortedIdx.cols) ? N : sortedIdx.cols;
+    int THRESHOLD = 50000; // any region area less than 50,000 will be ignored
+    for (int i = 0; i < N; i++) {
+        int label = sortedIdx.at<int>(i) + 1;
+        if (stats.at<int>(label, CC_STAT_AREA) > THRESHOLD) {
+            colors[label] = Vec3b(rand() % 256, rand() % 256, rand() % 256);
+        }
+    }
+
+    processedImage = Mat::zeros(temp.size(), CV_8UC3);
+    for(int i = 0; i < processedImage.rows; i++) {
+        for (int j = 0; j < processedImage.cols; j++) {
             int label = temp.at<int>(i, j);
-            Vec3b &pixel = processedImage.at<Vec3b>(i, j);
-            pixel = (label < N) ? colors[label] : colors[0];
+            processedImage.at<Vec3b>(i, j) = colors[label];
         }
     }
     return processedImage;
