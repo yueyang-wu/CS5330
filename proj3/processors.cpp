@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <map>
+#include <float.h>
 #include <opencv2/opencv.hpp>
 #include "processors.h"
 
@@ -73,27 +74,56 @@ Mat getRegions(Mat &image, Mat &labeledRegions, Mat &stats, Mat &centroids, vect
     return processedImage;
 }
 
-void calcHuMoments(Mat &labeledRegions, vector<int> topNLabels, map<int, double*> &huMomentsMap) {
-    for (int n = 0; n < topNLabels.size(); n++) {
-        Mat region;
-        region = (labeledRegions == topNLabels[n]);
-//        region = Mat(labeledRegions.size(), CV_8UC1);
-//        for (int i = 0; i < labeledRegions.rows; i++) {
-//            for (int j = 0; j < labeledRegions.cols; j++) {
-//                if (labeledRegions.at<int>(i, j) == topNLabels[n]) {
-//                    region.at<uchar>(i, j) = 255;
-//                } else {
-//                    region.at<uchar>(i, j) = 0;
-//                }
-//            }
-//        }
-        Moments mo = moments(region, true);
-        double huMoments[7];
-        HuMoments(mo, huMoments);
-        for (int i = 0; i < 7; i++) {
-            cout << huMoments[i] << " ";
+void calcHuMoments(Mat &region, double huMoments[]) {
+    Moments mo = moments(region, true);
+    HuMoments(mo, huMoments);
+    return;
+}
+
+double euclideanDistance(double* features1, double* features2) {
+    Mat m1(1, 7, CV_64FC1, features1);
+    Mat m2(1, 7, CV_64FC1, features2);
+    return norm(m1, m2, NORM_L2) / (norm(m1, NORM_L2) * norm(m2, NORM_L2));
+}
+
+/*
+ * normalized euclidean distance as distance metric
+ */
+string classifier(map<string, double*> &huMomentsMap, double* feature) {
+    double distance = DBL_MAX;
+    string className = " ";
+    for (map<string, double*>::iterator it = huMomentsMap.begin(); it != huMomentsMap.end(); it++) {
+        string key = it->first;
+        double* value = it->second;
+        double curDistance = euclideanDistance(value, feature);
+//        cout << "curDistance" << curDistance << endl;
+//        cout << "distance" << distance << endl;
+        if (curDistance < distance) {
+            className = key;
+            distance = curDistance;
         }
-        cout << endl;
-        huMomentsMap[topNLabels[n]] = huMoments;
     }
+    return className;
+}
+
+//void calcHuMoments(Mat &labeledRegions, vector<int> topNLabels, map<int, double*> &huMomentsMap) {
+//    for (int n = 0; n < topNLabels.size(); n++) {
+//        Mat region;
+//        region = (labeledRegions == topNLabels[n]);
+//        Moments mo = moments(region, true);
+//        double huMoments[7];
+//        HuMoments(mo, huMoments);
+//        for (int i = 0; i < 7; i++) {
+//            cout << huMoments[i] << " ";
+//        }
+//        cout << endl;
+//        huMomentsMap[topNLabels[n]] = huMoments;
+//    }
+//}
+
+string getClassName(char c) {
+    std::map<char, string> myMap {
+            {'p', "pen"}, {'a', "alligator"}, {'h', "hammer"}
+    };
+    return myMap[c];
 }

@@ -25,6 +25,8 @@ int main() {
     namedWindow("Processed Video", 1);
 
     Mat frame;
+    bool training = false; // whether the system is in training mode
+    map<string, double*> huMomentsMap; // DB to save the Class Name and Features of each object
     while (true) {
         *capdev >> frame; // get a new frame from the camera, treat as a stream
         if (frame.empty()) {
@@ -32,6 +34,16 @@ int main() {
             break;
         }
         imshow("Original Video", frame); // display the original image
+        char key = waitKey(10); // see if there is a waiting keystroke for the video
+
+        if (key == 't') {
+            training = !training;
+            if (training) {
+                cout << "Training Mode" << endl;
+            } else {
+                cout << "Inference Mode" << endl;
+            }
+        }
 
         // threshold the image, thresholdFrame is single-channel
         Mat thresholdFrame = threshold(frame);
@@ -42,26 +54,61 @@ int main() {
         // get the region
         Mat labeledRegions, stats, centroids;
         vector<int> topNLabels;
-
         Mat regionFrame = getRegions(cleanupFrame, labeledRegions, stats, centroids, topNLabels);
 
-        // compute features
-         map<int, double*> huMomentsMap;
-         calcHuMoments(labeledRegions, topNLabels, huMomentsMap);
-//         cout << "size: " << huMomentsMap.size() << endl;
-//         for (int i = 0; i < huMomentsMap.size(); i++) {
-//             for (int j = 0; i < 7; j++) {
-//                 cout << huMomentsMap[topNLabels[i]][j] << " ";
-//             }
-//             cout << endl;
-//         }
-//         cout << endl;
-//         cout << endl;
+        // calculate HuMoments of each region
+        for (int n = 0; n < topNLabels.size(); n++) {
+            int label = topNLabels[n];
+            Mat region;
+            region = (labeledRegions == label);
+            double huMoments[7];
+            calcHuMoments(region, huMoments);
+//            cout << "humoment" << huMoments << endl;
+
+            if (training) {
+                // training mode
+                // display current region
+                namedWindow("Current Region", WINDOW_AUTOSIZE);
+                imshow("Current Region", region);
+
+                cout << "Input the class for this object." << endl;
+                char k = waitKey(0); // see if there is a waiting keystroke for the region
+                string className = getClassName(k);
+//                // ask the user for a class name
+//
+//                string className;
+//                getline(cin, className);
+
+                // update the DB
+                huMomentsMap[className] = huMoments;
+
+                // destroy the window after labeling all the objects
+                if (n == topNLabels.size() - 1) {
+                    training = false;
+                    destroyWindow("Current Region");
+                }
+            } else {
+                // inference mode
+                // classify the object
+                string className = classifier(huMomentsMap, huMoments);
+                cout << "size: " << huMomentsMap.size() << endl;
+                for (map<string, double*>::iterator it = huMomentsMap.begin(); it != huMomentsMap.end(); it++) {
+                    double* value = it->second;
+                    cout << "label: " << it->first << endl;
+                    for (int idx = 0; idx < 7; idx++) {
+                        cout << value[idx] << " ";
+                    }
+                    cout << "value: " << it->second << endl;
+                }
+                cout << endl;
+                cout << "className: " << className << endl;
+                // overlay classname to the video
+                putText(regionFrame, className, Point(centroids.at<int>(label, 0), centroids.at<int>(label, 1)), FONT_HERSHEY_COMPLEX_SMALL, 2, Scalar(0, 0, 255, 255));
+            }
+        }
 
         imshow("Processed Video", regionFrame);
 
-        // see if there is a waiting keystroke
-        char key = waitKey(10);
         // if user types 'q', quit.
         if (key == 'q') {
             break;
