@@ -74,30 +74,32 @@ Mat getRegions(Mat &image, Mat &labeledRegions, Mat &stats, Mat &centroids, vect
     return processedImage;
 }
 
-void calcHuMoments(Mat &region, double huMoments[]) {
+void calcHuMoments(Mat &region, vector<double> &huMoments) {
     Moments mo = moments(region, true);
-    HuMoments(mo, huMoments);
+    double hu[7];
+    HuMoments(mo, hu);
+
+    // covert array to vector
+    for (double d : hu) {
+        huMoments.push_back(d);
+    }
     return;
 }
 
-double euclideanDistance(double* features1, double* features2) {
-    Mat m1(1, 7, CV_64FC1, features1);
-    Mat m2(1, 7, CV_64FC1, features2);
-    return norm(m1, m2, NORM_L2) / (norm(m1, NORM_L2) * norm(m2, NORM_L2));
+double euclideanDistance(vector<double> features1, vector<double> features2) {
+    return norm(features1, features2, NORM_L2) / (norm(features1, NORM_L2) * norm(features2, NORM_L2));
 }
 
 /*
- * normalized euclidean distance as distance metric
+ * used normalized euclidean distance as distance metric
  */
-string classifier(map<string, double*> &huMomentsMap, double* feature) {
+string classifier(map<string, vector<double>> &huMomentsMap, vector<double> feature) {
     double distance = DBL_MAX;
     string className = " ";
-    for (map<string, double*>::iterator it = huMomentsMap.begin(); it != huMomentsMap.end(); it++) {
+    for (map<string, vector<double>>::iterator it = huMomentsMap.begin(); it != huMomentsMap.end(); it++) {
         string key = it->first;
-        double* value = it->second;
+        vector<double> value = it->second;
         double curDistance = euclideanDistance(value, feature);
-//        cout << "curDistance" << curDistance << endl;
-//        cout << "distance" << distance << endl;
         if (curDistance < distance) {
             className = key;
             distance = curDistance;
@@ -105,21 +107,6 @@ string classifier(map<string, double*> &huMomentsMap, double* feature) {
     }
     return className;
 }
-
-//void calcHuMoments(Mat &labeledRegions, vector<int> topNLabels, map<int, double*> &huMomentsMap) {
-//    for (int n = 0; n < topNLabels.size(); n++) {
-//        Mat region;
-//        region = (labeledRegions == topNLabels[n]);
-//        Moments mo = moments(region, true);
-//        double huMoments[7];
-//        HuMoments(mo, huMoments);
-//        for (int i = 0; i < 7; i++) {
-//            cout << huMoments[i] << " ";
-//        }
-//        cout << endl;
-//        huMomentsMap[topNLabels[n]] = huMoments;
-//    }
-//}
 
 string getClassName(char c) {
     std::map<char, string> myMap {
