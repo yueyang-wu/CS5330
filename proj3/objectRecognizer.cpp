@@ -40,11 +40,23 @@ int main() {
         Mat cleanupFrame = cleanup(thresholdFrame);
 
         // get the region
-        Mat stats, centroids;
-        Mat regionFrame = getRegions(cleanupFrame, stats, centroids);
+        Mat labeledRegions, stats, centroids;
+        vector<int> topNLabels;
+
+        Mat regionFrame = getRegions(cleanupFrame, labeledRegions, stats, centroids, topNLabels);
 
         // compute features
-
+         map<int, double*> huMomentsMap;
+         calcHuMoments(labeledRegions, topNLabels, huMomentsMap);
+//         cout << "size: " << huMomentsMap.size() << endl;
+//         for (int i = 0; i < huMomentsMap.size(); i++) {
+//             for (int j = 0; i < 7; j++) {
+//                 cout << huMomentsMap[topNLabels[i]][j] << " ";
+//             }
+//             cout << endl;
+//         }
+//         cout << endl;
+//         cout << endl;
 
         imshow("Processed Video", regionFrame);
 

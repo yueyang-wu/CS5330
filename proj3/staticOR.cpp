@@ -30,8 +30,8 @@ int main() {
     // get the region
     Mat stats, centroids;
     Mat regionImage = getRegions(cleanupImage, stats, centroids);
-    namedWindow("Region", WINDOW_AUTOSIZE);
-    imshow("Region", regionImage);
+//    namedWindow("Region", WINDOW_AUTOSIZE);
+//    imshow("Region", regionImage);
 
     // compute features
 

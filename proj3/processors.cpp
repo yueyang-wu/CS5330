@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <map>
 #include <opencv2/opencv.hpp>
 #include "processors.h"
 
@@ -36,9 +37,9 @@ Mat cleanup(Mat &image) {
     return processedImage;
 }
 
-Mat getRegions(Mat &image, Mat stats, Mat centroids) {
-    Mat temp, processedImage;
-    int nLabels = connectedComponentsWithStats(image, temp, stats, centroids);
+Mat getRegions(Mat &image, Mat &labeledRegions, Mat &stats, Mat &centroids, vector<int> &topNLabels) {
+    Mat processedImage;
+    int nLabels = connectedComponentsWithStats(image, labeledRegions, stats, centroids);
 
     // save all region areas into a vector and sort the area descending
     Mat areas = Mat::zeros(1, nLabels - 1, CV_32S);
@@ -58,15 +59,41 @@ Mat getRegions(Mat &image, Mat stats, Mat centroids) {
         int label = sortedIdx.at<int>(i) + 1;
         if (stats.at<int>(label, CC_STAT_AREA) > THRESHOLD) {
             colors[label] = Vec3b(rand() % 256, rand() % 256, rand() % 256);
+            topNLabels.push_back(label);
         }
     }
 
-    processedImage = Mat::zeros(temp.size(), CV_8UC3);
+    processedImage = Mat::zeros(labeledRegions.size(), CV_8UC3);
     for(int i = 0; i < processedImage.rows; i++) {
         for (int j = 0; j < processedImage.cols; j++) {
-            int label = temp.at<int>(i, j);
+            int label = labeledRegions.at<int>(i, j);
             processedImage.at<Vec3b>(i, j) = colors[label];
         }
     }
     return processedImage;
+}
+
+void calcHuMoments(Mat &labeledRegions, vector<int> topNLabels, map<int, double*> &huMomentsMap) {
+    for (int n = 0; n < topNLabels.size(); n++) {
+        Mat region;
+        region = (labeledRegions == topNLabels[n]);
+//        region = Mat(labeledRegions.size(), CV_8UC1);
+//        for (int i = 0; i < labeledRegions.rows; i++) {
+//            for (int j = 0; j < labeledRegions.cols; j++) {
+//                if (labeledRegions.at<int>(i, j) == topNLabels[n]) {
+//                    region.at<uchar>(i, j) = 255;
+//                } else {
+//                    region.at<uchar>(i, j) = 0;
+//                }
+//            }
+//        }
+        Moments mo = moments(region, true);
+        double huMoments[7];
+        HuMoments(mo, huMoments);
+        for (int i = 0; i < 7; i++) {
+            cout << huMoments[i] << " ";
+        }
+        cout << endl;
+        huMomentsMap[topNLabels[n]] = huMoments;
+    }
 }
