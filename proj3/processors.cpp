@@ -45,7 +45,9 @@ Mat getRegions(Mat &image, Mat &labeledRegions, Mat &stats, Mat &centroids, vect
         int area = stats.at<int>(i, CC_STAT_AREA);
         areas.at<int>(i - 1) = area;
     }
-    sortIdx(areas, sortedIdx, SORT_EVERY_ROW + SORT_DESCENDING);
+    if (areas.cols > 0) {
+        sortIdx(areas, sortedIdx, SORT_EVERY_ROW + SORT_DESCENDING);
+    }
 
     vector<Vec3b> colors(nLabels, Vec3b(0, 0, 0)); // label to color mapping
 
@@ -89,15 +91,15 @@ double euclideanDistance(vector<double> features1, vector<double> features2) {
 /*
  * used normalized euclidean distance as distance metric
  */
-string classifier(map<string, vector<double>> &huMomentsMap, vector<double> feature) {
+string classifier(vector<vector<double>> featureVectors, vector<string> classNames, vector<double> currentFeature) {
     double distance = DBL_MAX;
     string className = " ";
-    for (map<string, vector<double>>::iterator it = huMomentsMap.begin(); it != huMomentsMap.end(); it++) {
-        string key = it->first;
-        vector<double> value = it->second;
-        double curDistance = euclideanDistance(value, feature);
+    for (int i = 0; i < featureVectors.size(); i++) {
+        vector<double> dbFeature = featureVectors[i];
+        string dbClassName = classNames[i];
+        double curDistance = euclideanDistance(dbFeature, currentFeature);
         if (curDistance < distance) {
-            className = key;
+            className = dbClassName;
             distance = curDistance;
         }
     }
@@ -148,7 +150,7 @@ void drawLine(Mat &image, double x, double y, double alpha, Scalar color) {
     double edge2 = sqrt(length * length - edge1 * edge1);
     double xPrime = x + edge2, yPrime = y + edge1;
 
-    line(image, Point(x, y), Point(xPrime, yPrime), color);
+    arrowedLine(image, Point(x, y), Point(xPrime, yPrime), color, 3);
 }
 
 void drawBoundingBox(Mat &image, RotatedRect boundingBox, Scalar color) {

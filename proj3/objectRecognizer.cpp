@@ -21,7 +21,13 @@ int main() {
 
     Mat frame;
     bool training = false; // whether the system is in training mode
-    map<string, vector<double>> huMomentsMap; // DB to save the Class Name and Features of each object
+
+    // featuresDB and classNamesDB are used to save the feature vectors of known objects
+    // featuresDB.size() == classNamesDB
+    // featuresDB[i] is the i-th object's feature vector, classNamesDB[i] is the i-th object's class name
+    vector<vector<double>> featuresDB;
+    vector<string> classNamesDB;
+
     while (true) {
         *capdev >> frame; // get a new frame from the camera, treat as a stream
         if (frame.empty()) {
@@ -84,7 +90,8 @@ int main() {
                 string className = getClassName(k); //see function for a detailed mapping
 
                 // update the DB
-                huMomentsMap[className] = huMoments;
+                featuresDB.push_back(huMoments);
+                classNamesDB.push_back(className);
 
                 // destroy the window after labeling all the objects
                 if (n == topNLabels.size() - 1) {
@@ -94,16 +101,16 @@ int main() {
             } else {
                 // inference mode
                 // classify the object
-                string className = classifier(huMomentsMap, huMoments);
-                cout << "size: " << huMomentsMap.size() << endl;
-                for (map<string, vector<double>>::iterator it = huMomentsMap.begin(); it != huMomentsMap.end(); it++) {
-                    vector<double> value = it->second;
-                    cout << "label: " << it->first << endl;
-                    for (int idx = 0; idx < 7; idx++) {
-                        cout << value[idx] << " ";
-                    }
-                }
-                cout << endl;
+                string className = classifier(featuresDB, classNamesDB, huMoments);
+//                cout << "size: " << huMomentsMap.size() << endl;
+//                for (map<string, vector<double>>::iterator it = huMomentsMap.begin(); it != huMomentsMap.end(); it++) {
+//                    vector<double> value = it->second;
+//                    cout << "label: " << it->first << endl;
+//                    for (int idx = 0; idx < 7; idx++) {
+//                        cout << value[idx] << " ";
+//                    }
+//                }
+//                cout << endl;
                 cout << "className: " << className << endl;
                 // overlay classname to the video
                 putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 2, Scalar(0, 0, 255));
