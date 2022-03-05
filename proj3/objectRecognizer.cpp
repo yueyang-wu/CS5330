@@ -102,7 +102,6 @@ int main() {
                 // inference mode
                 // classify the object
                 string className = classifier(featuresDB, classNamesDB, huMoments);
-                cout << "className: " << className << endl;
                 // overlay classname to the video
                 putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 2, Scalar(0, 0, 255), 3);
             }
