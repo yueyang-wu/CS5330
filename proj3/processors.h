@@ -16,12 +16,11 @@ void calcHuMoments(Mat &region, vector<double> &huMoments);
 
 double euclideanDistance(vector<double> features1, vector<double> features2);
 
-//string classifier(map<string, vector<double>> &huMomentsMap, vector<double> feature);
 string classifier(vector<vector<double>> featureVectors, vector<string> classNames, vector<double> currentFeature);
 
 string getClassName(char c);
 
-RotatedRect getBoundingBox(Mat &region, Mat &centroids, int label);
+RotatedRect getBoundingBox(Mat &region, double x, double y, double alpha);
 
 void drawLine(Mat &image, double x, double y, double alpha, Scalar color);
 

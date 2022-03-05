@@ -17,7 +17,7 @@ int main() {
 
     // identify two windows
     namedWindow("Original Video", 1);
-    namedWindow("Processed Video", 1);
+//    namedWindow("Processed Video", 1);
 
     Mat frame;
     bool training = false; // whether the system is in training mode
@@ -70,7 +70,7 @@ int main() {
             double alpha = 1.0 / 2.0 * atan2(2 * m.mu11, m.mu20 - m.mu02);
 
             // get the bounding box of this region
-            RotatedRect boundingBox = getBoundingBox(region, centroids, label);
+            RotatedRect boundingBox = getBoundingBox(region, centroidX, centroidY, alpha);
             drawLine(frame, centroidX, centroidY, alpha, Scalar(0, 0, 255));
             drawBoundingBox(frame, boundingBox, Scalar(0, 255, 0));
 
@@ -87,7 +87,7 @@ int main() {
                 // ask the user for a class name
                 cout << "Input the class for this object." << endl;
                 char k = waitKey(0); // see if there is a waiting keystroke for the region
-                string className = getClassName(k); //see function for a detailed mapping
+                string className = getClassName(k); //see the function for a detailed mapping
 
                 // update the DB
                 featuresDB.push_back(huMoments);
@@ -102,23 +102,14 @@ int main() {
                 // inference mode
                 // classify the object
                 string className = classifier(featuresDB, classNamesDB, huMoments);
-//                cout << "size: " << huMomentsMap.size() << endl;
-//                for (map<string, vector<double>>::iterator it = huMomentsMap.begin(); it != huMomentsMap.end(); it++) {
-//                    vector<double> value = it->second;
-//                    cout << "label: " << it->first << endl;
-//                    for (int idx = 0; idx < 7; idx++) {
-//                        cout << value[idx] << " ";
-//                    }
-//                }
-//                cout << endl;
                 cout << "className: " << className << endl;
                 // overlay classname to the video
-                putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 2, Scalar(0, 0, 255));
+                putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 2, Scalar(0, 0, 255), 3);
             }
         }
 
         imshow("Original Video", frame);
-        imshow("Processed Video", regionFrame);
+//        imshow("Processed Video", regionFrame);
 
         // if user types 'q', quit.
         if (key == 'q') {

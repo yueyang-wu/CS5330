@@ -115,21 +115,13 @@ string getClassName(char c) {
     return myMap[c];
 }
 
-RotatedRect getBoundingBox(Mat &region, Mat &centroids, int label) {
-    Moments m = moments(region, true);
-    double centroidX = centroids.at<double>(label, 0);
-    double centroidY = centroids.at<double>(label, 1);
-    cout << "x: " << centroidX << endl;
-    cout << "y: " << centroidY << endl;
-    double alpha = 1.0 / 2.0 * atan2(2 * m.mu11, m.mu20 - m.mu02);
-    cout << "a: " << alpha << endl;
-
+RotatedRect getBoundingBox(Mat &region, double x, double y, double alpha) {
     int maxX = INT_MIN, minX = INT_MAX, maxY = INT_MIN, minY = INT_MAX;
     for (int i = 0; i < region.rows; i++) {
         for (int j = 0; j < region.cols; j++) {
             if (region.at<uchar>(i, j) == 255) {
-                int projectedX = (i - centroidX) * cos(alpha) + (j - centroidY) * sin(alpha);
-                int projectedY = -(i - centroidX) * sin(alpha) + (j - centroidY) * cos(alpha);
+                int projectedX = (i - x) * cos(alpha) + (j - y) * sin(alpha);
+                int projectedY = -(i - x) * sin(alpha) + (j - y) * cos(alpha);
                 maxX = max(maxX, projectedX);
                 minX = min(minX, projectedX);
                 maxY = max(maxY, projectedY);
@@ -140,7 +132,7 @@ RotatedRect getBoundingBox(Mat &region, Mat &centroids, int label) {
     int lengthX = maxX - minX;
     int lengthY = maxY - minY;
 
-    Point centroid = Point(centroidX, centroidY);
+    Point centroid = Point(x, y);
     Size size = Size(lengthX, lengthY);
 
     return RotatedRect(centroid, size, alpha * 180.0 / CV_PI);
