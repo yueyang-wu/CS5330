@@ -17,6 +17,7 @@ void calcHuMoments(Mat &region, vector<double> &huMoments);
 double euclideanDistance(vector<double> features1, vector<double> features2);
 
 string classifier(vector<vector<double>> featureVectors, vector<string> classNames, vector<double> currentFeature);
+string classifierKNN(vector<vector<double>> featureVectors, vector<string> classNames, vector<double> currentFeature, int K);
 
 string getClassName(char c);
 
