@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <map>
 #include <float.h>
+#include <math.h>
 #include <opencv2/opencv.hpp>
 #include "processors.h"
 
@@ -14,11 +15,6 @@ Mat threshold(Mat &image) {
     processedImage = Mat(image.size(), CV_8UC1);
 
     cvtColor(image, grayscale, COLOR_BGR2GRAY);
-//    cout << "mean: " << mean(grayscale) << endl;
-//    double min, max;
-//    minMaxLoc(grayscale, &min, &max);
-//    cout << "max: " << max << endl;
-//    cout << "min: " << min << endl;
     for (int i = 0; i < grayscale.rows; i++) {
         for (int j = 0; j < grayscale.cols; j++) {
             if (grayscale.at<uchar>(i, j) <= THRESHOLD) {
@@ -113,4 +109,52 @@ string getClassName(char c) {
             {'p', "pen"}, {'a', "alligator"}, {'h', "hammer"}
     };
     return myMap[c];
+}
+
+RotatedRect getBoundingBox(Mat &region, Mat &centroids, int label) {
+    Moments m = moments(region, true);
+    double centroidX = centroids.at<double>(label, 0);
+    double centroidY = centroids.at<double>(label, 1);
+    cout << "x: " << centroidX << endl;
+    cout << "y: " << centroidY << endl;
+    double alpha = 1.0 / 2.0 * atan2(2 * m.mu11, m.mu20 - m.mu02);
+    cout << "a: " << alpha << endl;
+
+    int maxX = INT_MIN, minX = INT_MAX, maxY = INT_MIN, minY = INT_MAX;
+    for (int i = 0; i < region.rows; i++) {
+        for (int j = 0; j < region.cols; j++) {
+            if (region.at<uchar>(i, j) == 255) {
+                int projectedX = (i - centroidX) * cos(alpha) + (j - centroidY) * sin(alpha);
+                int projectedY = -(i - centroidX) * sin(alpha) + (j - centroidY) * cos(alpha);
+                maxX = max(maxX, projectedX);
+                minX = min(minX, projectedX);
+                maxY = max(maxY, projectedY);
+                minY = min(minY, projectedY);
+            }
+        }
+    }
+    int lengthX = maxX - minX;
+    int lengthY = maxY - minY;
+
+    cout << "lX: " << lengthX << endl;
+    cout << "lY: " << lengthY << endl;
+
+    Point centroid = Point(centroidX, centroidY);
+    Size size = Size(lengthX, lengthY);
+
+    return RotatedRect(centroid, size, alpha);
+}
+
+void drawBoundingBox(Mat &image, RotatedRect boundingBox) {
+    Scalar color = Scalar(0, 255, 0);
+    Point2f rect_points[4];
+    boundingBox.points(rect_points);
+//    cout << "1: " << rect_points[0] << endl;
+//    cout << "2: " << rect_points[1] << endl;
+//    cout << "3: " << rect_points[2] << endl;
+//    cout << "4: " << rect_points[3] << endl;
+    for (int i = 0; i < 4; i++) {
+        line(image, rect_points[i], rect_points[(i + 1) % 4], color);
+    }
+    circle(image, boundingBox.center, 50, color);
 }

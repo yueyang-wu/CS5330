@@ -20,4 +20,12 @@ string classifier(map<string, vector<double>> &huMomentsMap, vector<double> feat
 
 string getClassName(char c);
 
+RotatedRect getBoundingBox(Mat &region, Mat &centroids, int label);
+
+void drawBoundingBox(Mat &image, RotatedRect boundingBox);
+
+//int getProjectedX(int x, int y, int centroidX, int centroidY, double alpha);
+//
+//int getProjectedY(int x, int y, int centroidY, int centroidX, double alpha);
+
 #endif //PROJ3_PROCESSORS_H

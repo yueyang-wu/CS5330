@@ -15,11 +15,6 @@ int main() {
         return -1;
     }
 
-    // get some properties of the image
-//    Size refS((int) capdev->get(cv::CAP_PROP_FRAME_WIDTH),
-//              (int) capdev->get(cv::CAP_PROP_FRAME_HEIGHT));
-//    cout << "Expected size: " << refS.width << " " << refS.height << "\n";
-
     // identify two windows
     namedWindow("Original Video", 1);
     namedWindow("Processed Video", 1);
@@ -33,7 +28,7 @@ int main() {
             cout << "frame is empty\n";
             break;
         }
-        imshow("Original Video", frame); // display the original image
+//        imshow("Original Video", frame); // display the original image
         char key = waitKey(10); // see if there is a waiting keystroke for the video
 
         if (key == 't') {
@@ -56,25 +51,30 @@ int main() {
         vector<int> topNLabels;
         Mat regionFrame = getRegions(cleanupFrame, labeledRegions, stats, centroids, topNLabels);
 
-        // calculate HuMoments of each region
+        // for each region, get bounding box and calculate HuMoments
         for (int n = 0; n < topNLabels.size(); n++) {
             int label = topNLabels[n];
             Mat region;
             region = (labeledRegions == label);
-            // double huMoments[7];
+
+            // get the bounding box of this region
+            RotatedRect boundingBox = getBoundingBox(region, centroids, label);
+            drawBoundingBox(frame, boundingBox);
+
+            // calculate hu moments of this region
             vector<double> huMoments;
             calcHuMoments(region, huMoments);
 
             if (training) {
                 // training mode
-                // display current region
+                // display current region in binary form
                 namedWindow("Current Region", WINDOW_AUTOSIZE);
                 imshow("Current Region", region);
 
                 // ask the user for a class name
                 cout << "Input the class for this object." << endl;
                 char k = waitKey(0); // see if there is a waiting keystroke for the region
-                string className = getClassName(k);
+                string className = getClassName(k); //see function for a detailed mapping
 
                 // update the DB
                 huMomentsMap[className] = huMoments;
@@ -99,10 +99,11 @@ int main() {
                 cout << endl;
                 cout << "className: " << className << endl;
                 // overlay classname to the video
-                putText(frame, className, Point(centroids.at<int>(label, 0), centroids.at<int>(label, 1)), FONT_HERSHEY_COMPLEX_SMALL, 2, Scalar(0, 0, 255, 255));
+                putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 10, Scalar(0, 0, 255, 255));
             }
         }
 
+        imshow("Original Video", frame);
         imshow("Processed Video", regionFrame);
 
         // if user types 'q', quit.
