@@ -108,7 +108,9 @@ string classifier(vector<vector<double>> featureVectors, vector<string> classNam
 
 string getClassName(char c) {
     std::map<char, string> myMap {
-            {'p', "pen"}, {'a', "alligator"}, {'h', "hammer"}
+            {'p', "pen"}, {'a', "alligator"}, {'h', "hammer"}, {'g', "glasses"},
+            {'r', "round"}, {'c', "cat"}, {'b', "bone"}, {'k', "key"},
+            {'m', "mouse"}, {'x', "binder clip"}
     };
     return myMap[c];
 }
@@ -157,7 +159,7 @@ void drawBoundingBox(Mat &image, RotatedRect boundingBox, Scalar color) {
     Point2f rect_points[4];
     boundingBox.points(rect_points);
     for (int i = 0; i < 4; i++) {
-        line(image, rect_points[i], rect_points[(i + 1) % 4], color);
+        line(image, rect_points[i], rect_points[(i + 1) % 4], color, 3);
     }
 }
 
