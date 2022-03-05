@@ -28,9 +28,10 @@ int main() {
             cout << "frame is empty\n";
             break;
         }
-//        imshow("Original Video", frame); // display the original image
+
         char key = waitKey(10); // see if there is a waiting keystroke for the video
 
+        // switch between training mode and inference mode
         if (key == 't') {
             training = !training;
             if (training) {
@@ -57,9 +58,15 @@ int main() {
             Mat region;
             region = (labeledRegions == label);
 
+            Moments m = moments(region, true);
+            double centroidX = centroids.at<double>(label, 0);
+            double centroidY = centroids.at<double>(label, 1);
+            double alpha = 1.0 / 2.0 * atan2(2 * m.mu11, m.mu20 - m.mu02);
+
             // get the bounding box of this region
             RotatedRect boundingBox = getBoundingBox(region, centroids, label);
-            drawBoundingBox(frame, boundingBox);
+            drawLine(frame, centroidX, centroidY, alpha, Scalar(0, 0, 255));
+            drawBoundingBox(frame, boundingBox, Scalar(0, 255, 0));
 
             // calculate hu moments of this region
             vector<double> huMoments;
@@ -99,7 +106,7 @@ int main() {
                 cout << endl;
                 cout << "className: " << className << endl;
                 // overlay classname to the video
-                putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 10, Scalar(0, 0, 255, 255));
+                putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 2, Scalar(0, 0, 255));
             }
         }
 

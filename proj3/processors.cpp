@@ -136,25 +136,26 @@ RotatedRect getBoundingBox(Mat &region, Mat &centroids, int label) {
     int lengthX = maxX - minX;
     int lengthY = maxY - minY;
 
-    cout << "lX: " << lengthX << endl;
-    cout << "lY: " << lengthY << endl;
-
     Point centroid = Point(centroidX, centroidY);
     Size size = Size(lengthX, lengthY);
 
-    return RotatedRect(centroid, size, alpha);
+    return RotatedRect(centroid, size, alpha * 180.0 / CV_PI);
 }
 
-void drawBoundingBox(Mat &image, RotatedRect boundingBox) {
-    Scalar color = Scalar(0, 255, 0);
+void drawLine(Mat &image, double x, double y, double alpha, Scalar color) {
+    double length = 100.0;
+    double edge1 = length * sin(alpha);
+    double edge2 = sqrt(length * length - edge1 * edge1);
+    double xPrime = x + edge2, yPrime = y + edge1;
+
+    line(image, Point(x, y), Point(xPrime, yPrime), color);
+}
+
+void drawBoundingBox(Mat &image, RotatedRect boundingBox, Scalar color) {
     Point2f rect_points[4];
     boundingBox.points(rect_points);
-//    cout << "1: " << rect_points[0] << endl;
-//    cout << "2: " << rect_points[1] << endl;
-//    cout << "3: " << rect_points[2] << endl;
-//    cout << "4: " << rect_points[3] << endl;
     for (int i = 0; i < 4; i++) {
         line(image, rect_points[i], rect_points[(i + 1) % 4], color);
     }
-    circle(image, boundingBox.center, 50, color);
 }
+

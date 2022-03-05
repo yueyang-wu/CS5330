@@ -22,10 +22,7 @@ string getClassName(char c);
 
 RotatedRect getBoundingBox(Mat &region, Mat &centroids, int label);
 
-void drawBoundingBox(Mat &image, RotatedRect boundingBox);
+void drawLine(Mat &image, double x, double y, double alpha, Scalar color);
 
-//int getProjectedX(int x, int y, int centroidX, int centroidY, double alpha);
-//
-//int getProjectedY(int x, int y, int centroidY, int centroidX, double alpha);
-
+void drawBoundingBox(Mat &image, RotatedRect boundingBox, Scalar color);
 #endif //PROJ3_PROCESSORS_H
