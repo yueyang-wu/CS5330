@@ -1,32 +1,47 @@
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
 #include "processors.h"
+#include "csv_util.h"
 
 using namespace cv;
 using namespace std;
 
-int main() {
-    VideoCapture *capdev;
+/*
+ * Takes two inputs
+ * The first is the path to the csv file store the class name feature vector for each known object
+ * The second is the classifier type ('n' for the nearest neighbor, 'k' for KNN)
+ */
+int main(int argc, char *argv[]) {
+    // check for sufficient arguments
+    if (argc < 3) {
+        cout << "Wrong input." << endl;
+        exit(-1);
+    }
+
+    // featuresDB and classNamesDB are used to save the feature vectors of known objects
+    // featuresDB.size() == classNamesDB.size()
+    // featuresDB[i] is the i-th object's feature vector, classNamesDB[i] is the i-th object's class name
+    vector<string> classNamesDB;
+    vector<vector<double>> featuresDB;
+    // load existing data from csv file to featuresDB and classNameDB
+    loadFromCSV(argv[1], classNamesDB, featuresDB);
 
     // open the video device
+    VideoCapture *capdev;
     capdev = new VideoCapture(0);
     if (!capdev->isOpened()) {
         cout << "Unable to open video device\n";
         return -1;
     }
 
-    // identify two windows
+    // identify window
     namedWindow("Original Video", 1);
 //    namedWindow("Processed Video", 1);
 
     Mat frame;
     bool training = false; // whether the system is in training mode
 
-    // featuresDB and classNamesDB are used to save the feature vectors of known objects
-    // featuresDB.size() == classNamesDB
-    // featuresDB[i] is the i-th object's feature vector, classNamesDB[i] is the i-th object's class name
-    vector<vector<double>> featuresDB;
-    vector<string> classNamesDB;
+
 
     while (true) {
         *capdev >> frame; // get a new frame from the camera, treat as a stream
@@ -101,8 +116,8 @@ int main() {
             } else {
                 // inference mode
                 // classify the object
-                string className = classifier(featuresDB, classNamesDB, huMoments);
-//                string className = classifierKNN(featuresDB, classNamesDB, huMoments, 3);
+//                string className = classifier(featuresDB, classNamesDB, huMoments);
+                string className = classifierKNN(featuresDB, classNamesDB, huMoments, 3);
                 // overlay classname to the video
                 putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 2, Scalar(0, 0, 255), 3);
             }
@@ -113,6 +128,8 @@ int main() {
 
         // if user types 'q', quit.
         if (key == 'q') {
+            // when quit, add data in classNamesDB and featuresDB to csv file
+            writeToCSV(argv[1], classNamesDB, featuresDB);
             break;
         }
     }
