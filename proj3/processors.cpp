@@ -73,8 +73,7 @@ Mat getRegions(Mat &image, Mat &labeledRegions, Mat &stats, Mat &centroids, vect
     return processedImage;
 }
 
-void calcHuMoments(Mat &region, vector<double> &huMoments) {
-    Moments mo = moments(region, true);
+void calcHuMoments(Moments mo, vector<double> &huMoments) {
     double hu[7];
     HuMoments(mo, hu);
 
@@ -141,15 +140,6 @@ string classifierKNN(vector<vector<double>> featureVectors, vector<string> class
         }
     }
 
-    // find the class appears most in firstKNames
-//    map<string, int> nameCount;
-//    for (string name : firstKNames) {
-//        if (nameCount.find(name) != nameCount.end()) {
-//            nameCount[name]++;
-//        } else {
-//            nameCount[name] = 1;
-//        }
-//    }
     string className = " ";
     int count = 0;
     for (map<string ,int>::iterator it = nameCount.begin(); it != nameCount.end(); it++) {

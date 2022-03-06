@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
 
             // calculate hu moments of this region
             vector<double> huMoments;
-            calcHuMoments(region, huMoments);
+            calcHuMoments(m, huMoments);
 
             if (training) {
                 // training mode
@@ -111,6 +111,7 @@ int main(int argc, char *argv[]) {
                 // destroy the window after labeling all the objects
                 if (n == topNLabels.size() - 1) {
                     training = false;
+                    cout << "Inference Mode" << endl;
                     destroyWindow("Current Region");
                 }
             } else {
