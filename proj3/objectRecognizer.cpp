@@ -8,7 +8,7 @@ using namespace std;
 
 /*
  * Takes two inputs
- * The first is the path to the csv file store the class name feature vector for each known object
+ * The first is the path to the csv file store the class name and feature vector for each known object
  * The second is the classifier type ('n' for the nearest neighbor, 'k' for KNN)
  */
 int main(int argc, char *argv[]) {
@@ -40,8 +40,6 @@ int main(int argc, char *argv[]) {
 
     Mat frame;
     bool training = false; // whether the system is in training mode
-
-
 
     while (true) {
         *capdev >> frame; // get a new frame from the camera, treat as a stream
