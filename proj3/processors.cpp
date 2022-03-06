@@ -84,8 +84,18 @@ void calcHuMoments(Moments mo, vector<double> &huMoments) {
     return;
 }
 
+//double euclideanDistance(vector<double> features1, vector<double> features2) {
+//    return norm(features1, features2, NORM_L2) / (norm(features1, NORM_L2) * norm(features2, NORM_L2));
+//}
+
 double euclideanDistance(vector<double> features1, vector<double> features2) {
-    return norm(features1, features2, NORM_L2) / (norm(features1, NORM_L2) * norm(features2, NORM_L2));
+    double sum1 = 0, sum2 = 0, sumDifference;
+    for (int i = 0; i < features1.size(); i++) {
+        sumDifference += (features1[i] - features2[i]) * (features1[i] - features2[i]);
+        sum1 += features1[i] * features1[i];
+        sum2 += features2[i] * features2[i];
+    }
+    return sqrt(sumDifference) / (sqrt(sum1) + sqrt(sum2));
 }
 
 /*
@@ -93,13 +103,14 @@ double euclideanDistance(vector<double> features1, vector<double> features2) {
  * use normalized euclidean distance as distance metric
  */
 string classifier(vector<vector<double>> featureVectors, vector<string> classNames, vector<double> currentFeature) {
+    double THRESHOLD = 0.15;
     double distance = DBL_MAX;
     string className = " ";
     for (int i = 0; i < featureVectors.size(); i++) {
         vector<double> dbFeature = featureVectors[i];
         string dbClassName = classNames[i];
         double curDistance = euclideanDistance(dbFeature, currentFeature);
-        if (curDistance < distance) {
+        if (curDistance < distance && curDistance < THRESHOLD) {
             className = dbClassName;
             distance = curDistance;
         }
@@ -112,40 +123,43 @@ string classifier(vector<vector<double>> featureVectors, vector<string> classNam
  * use normalized euclidean distance as distance metric
  */
 string classifierKNN(vector<vector<double>> featureVectors, vector<string> classNames, vector<double> currentFeature, int K) {
+    double THRESHOLD = 0.15;
     // compute the distances of current feature vector with all the feature vectors in DB
     vector<double> distances;
     for (int i = 0; i < featureVectors.size(); i++) {
         vector<double> dbFeature = featureVectors[i];
         double distance = euclideanDistance(dbFeature, currentFeature);
-        distances.push_back(distance);
-    }
-
-    // sort the distances in ascending order
-    vector<int> sortedIdx;
-    if (distances.size() > 0) {
-        sortIdx(distances, sortedIdx, SORT_EVERY_ROW + SORT_ASCENDING);
-    }
-
-    // get the first K class name, and count the number of each name
-    vector<string> firstKNames;
-    int s = classNames.size();
-    map<string, int> nameCount;
-    int range = min(s, K); // if less than K classnames, get all of them
-    for (int i = 0; i < range; i++) {
-        string name = classNames[sortedIdx[i]];
-        if (nameCount.find(name) != nameCount.end()) {
-            nameCount[name]++;
-        } else {
-            nameCount[name] = 1;
+        if (distance < THRESHOLD) {
+            distances.push_back(distance);
         }
     }
 
     string className = " ";
-    int count = 0;
-    for (map<string ,int>::iterator it = nameCount.begin(); it != nameCount.end(); it++) {
-        if (it->second > count) {
-            className = it->first;
-            count = it->second;
+    if (distances.size() > 0) {
+        // sort the distances in ascending order
+        vector<int> sortedIdx;
+        sortIdx(distances, sortedIdx, SORT_EVERY_ROW + SORT_ASCENDING);
+
+        // get the first K class name, and count the number of each name
+        vector<string> firstKNames;
+        int s = sortedIdx.size();
+        map<string, int> nameCount;
+        int range = min(s, K); // if less than K classnames, get all of them
+        for (int i = 0; i < range; i++) {
+            string name = classNames[sortedIdx[i]];
+            if (nameCount.find(name) != nameCount.end()) {
+                nameCount[name]++;
+            } else {
+                nameCount[name] = 1;
+            }
+        }
+
+        int count = 0;
+        for (map<string ,int>::iterator it = nameCount.begin(); it != nameCount.end(); it++) {
+            if (it->second > count) {
+                className = it->first;
+                count = it->second;
+            }
         }
     }
     return className;
