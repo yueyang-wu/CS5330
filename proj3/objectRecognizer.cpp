@@ -121,7 +121,7 @@ int main(int argc, char *argv[]) {
                 if (!strcmp(argv[2], "n")) { // nearest neighbor
                     className = classifier(featuresDB, classNamesDB, huMoments);
                 } else if (!strcmp(argv[2], "k")) { // KNN
-                    className = classifierKNN(featuresDB, classNamesDB, huMoments, 3);
+                    className = classifierKNN(featuresDB, classNamesDB, huMoments, 5);
                 }
                 // overlay classname to the video
                 putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 2, Scalar(0, 0, 255), 3);
