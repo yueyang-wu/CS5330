@@ -23,6 +23,7 @@ int main(int argc, char *argv[]) {
     // featuresDB[i] is the i-th object's feature vector, classNamesDB[i] is the i-th object's class name
     vector<string> classNamesDB;
     vector<vector<double>> featuresDB;
+
     // load existing data from csv file to featuresDB and classNameDB
     loadFromCSV(argv[1], classNamesDB, featuresDB);
 
@@ -36,7 +37,6 @@ int main(int argc, char *argv[]) {
 
     // identify window
     namedWindow("Original Video", 1);
-//    namedWindow("Processed Video", 1);
 
     Mat frame;
     bool training = false; // whether the system is in training mode
@@ -116,15 +116,18 @@ int main(int argc, char *argv[]) {
             } else {
                 // inference mode
                 // classify the object
-//                string className = classifier(featuresDB, classNamesDB, huMoments);
-                string className = classifierKNN(featuresDB, classNamesDB, huMoments, 3);
+                string className;
+                if (!strcmp(argv[2], "n")) { // nearest neighbor
+                    className = classifier(featuresDB, classNamesDB, huMoments);
+                } else if (!strcmp(argv[2], "k")) { // KNN
+                    className = classifierKNN(featuresDB, classNamesDB, huMoments, 3);
+                }
                 // overlay classname to the video
                 putText(frame, className, Point(centroids.at<double>(label, 0), centroids.at<double>(label, 1)), FONT_HERSHEY_SIMPLEX, 2, Scalar(0, 0, 255), 3);
             }
         }
 
         imshow("Original Video", frame);
-//        imshow("Processed Video", regionFrame);
 
         // if user types 'q', quit.
         if (key == 'q') {

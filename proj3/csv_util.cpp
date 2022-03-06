@@ -8,7 +8,7 @@ using namespace std;
 void writeToCSV(string filename, vector<string> classNamesDB, vector<vector<double>> featuresDB) {
     // create an output filestream object
     ofstream csvFile;
-    csvFile.open(filename, ofstream::app);
+    csvFile.open(filename, ofstream::trunc);
 
     // send data to the stream
     for (int i = 0; i < classNamesDB.size(); i++) {
