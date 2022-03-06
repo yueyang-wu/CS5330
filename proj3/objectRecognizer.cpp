@@ -10,6 +10,11 @@ using namespace std;
  * Takes two inputs
  * The first is the path to the csv file store the class name and feature vector for each known object
  * The second is the classifier type ('n' for the nearest neighbor, 'k' for KNN)
+ *
+ * This program will threshold and clean up the images of the objects in live video,
+ * and then computes features of each region.
+ * If in training mode, this program allows users to label each object and save the data in database.
+ * If in inference mode, this program infers and displays the class name of each object on the live video
  */
 int main(int argc, char *argv[]) {
     // check for sufficient arguments
@@ -66,7 +71,7 @@ int main(int argc, char *argv[]) {
         // clean up the image
         Mat cleanupFrame = cleanup(thresholdFrame);
 
-        // get the region
+        // get the largest 3 regions
         Mat labeledRegions, stats, centroids;
         vector<int> topNLabels;
         Mat regionFrame = getRegions(cleanupFrame, labeledRegions, stats, centroids, topNLabels);
@@ -77,12 +82,13 @@ int main(int argc, char *argv[]) {
             Mat region;
             region = (labeledRegions == label);
 
+            // calculate central moments, centroids, and alpha
             Moments m = moments(region, true);
             double centroidX = centroids.at<double>(label, 0);
             double centroidY = centroids.at<double>(label, 1);
             double alpha = 1.0 / 2.0 * atan2(2 * m.mu11, m.mu20 - m.mu02);
 
-            // get the bounding box of this region
+            // get the least central axis and bounding box of this region
             RotatedRect boundingBox = getBoundingBox(region, centroidX, centroidY, alpha);
             drawLine(frame, centroidX, centroidY, alpha, Scalar(0, 0, 255));
             drawBoundingBox(frame, boundingBox, Scalar(0, 255, 0));
@@ -92,28 +98,30 @@ int main(int argc, char *argv[]) {
             calcHuMoments(m, huMoments);
 
             if (training) {
-                // training mode
+                // in training mode
                 // display current region in binary form
                 namedWindow("Current Region", WINDOW_AUTOSIZE);
                 imshow("Current Region", region);
 
                 // ask the user for a class name
                 cout << "Input the class for this object." << endl;
-                char k = waitKey(0); // see if there is a waiting keystroke for the region
+                // get the code for each class name
+                char k = waitKey(0);
                 string className = getClassName(k); //see the function for a detailed mapping
 
                 // update the DB
                 featuresDB.push_back(huMoments);
                 classNamesDB.push_back(className);
 
-                // destroy the window after labeling all the objects
+                // after labeling all the objects,
+                // switch back to inference mode and destroy all the windows created in training mode
                 if (n == topNLabels.size() - 1) {
                     training = false;
                     cout << "Inference Mode" << endl;
                     destroyWindow("Current Region");
                 }
             } else {
-                // inference mode
+                // in inference mode
                 // classify the object
                 string className;
                 if (!strcmp(argv[2], "n")) { // nearest neighbor
@@ -126,7 +134,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        imshow("Original Video", frame);
+        imshow("Original Video", frame); // display the video
 
         // if user types 'q', quit.
         if (key == 'q') {
@@ -135,6 +143,5 @@ int main(int argc, char *argv[]) {
             break;
         }
     }
-
     return 0;
 }
