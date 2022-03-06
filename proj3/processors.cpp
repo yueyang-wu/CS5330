@@ -169,7 +169,8 @@ string getClassName(char c) {
     std::map<char, string> myMap {
             {'p', "pen"}, {'a', "alligator"}, {'h', "hammer"}, {'g', "glasses"},
             {'r', "round"}, {'c', "cat"}, {'b', "bone"}, {'k', "key"},
-            {'m', "mouse"}, {'x', "binder clip"}
+            {'m', "mouse"}, {'x', "binder clip"},
+            {'w', "watch"}, {'s', "credit card"}, {'t', "spanner"} , {'y', "pliers"}
     };
     return myMap[c];
 }
