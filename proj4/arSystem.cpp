@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
+#include "processors.h"
 
 using namespace std;
 using namespace cv;
@@ -7,9 +8,9 @@ using namespace cv;
 int main() {
     Size patternSize(9, 6); // the size of the chessboard
     vector<Point2f> corners; // the image points found by findChessboardCorners
-    Size subPixWinSize(10, 10);
-    TermCriteria termCrit(TermCriteria::COUNT|TermCriteria::EPS,20,0.03);
-    bool patternWasFound;
+//    Size subPixWinSize(10, 10);
+//    TermCriteria termCrit(TermCriteria::COUNT|TermCriteria::EPS,20,0.03);
+    bool patternWasFound; // whether a pattern was found by extractCorners()
     vector<Vec3f> points; // the 3D world points constructed
     vector<vector<Point2f> > cornerList;
     vector<vector<Vec3f> > pointList;
@@ -36,15 +37,16 @@ int main() {
 
         char key = waitKey(10);
 
-        bool foundCorners = findChessboardCorners(frame, patternSize, corners);
-        cout << "number of corners: " << corners.size() << endl;
-        if (foundCorners) {
-            Mat grayscale;
-            cvtColor(frame, grayscale, COLOR_BGR2GRAY); // the input image for cornerSubPix must be single-channel
-            cornerSubPix(grayscale, corners, subPixWinSize, Size(-1, -1), termCrit);
-            cout << "coordinates of the first corner: (" << corners[0].x << ", " << corners[0].y << ")" << endl;
-            drawChessboardCorners(frame, patternSize, corners, patternWasFound);
-        }
+        extractCorners(frame, patternSize, corners, patternWasFound);
+//        bool foundCorners = findChessboardCorners(frame, patternSize, corners);
+//        cout << "number of corners: " << corners.size() << endl;
+//        if (foundCorners) {
+//            Mat grayscale;
+//            cvtColor(frame, grayscale, COLOR_BGR2GRAY); // the input image for cornerSubPix must be single-channel
+//            cornerSubPix(grayscale, corners, subPixWinSize, Size(-1, -1), termCrit);
+//            cout << "coordinates of the first corner: (" << corners[0].x << ", " << corners[0].y << ")" << endl;
+//            drawChessboardCorners(frame, patternSize, corners, patternWasFound);
+//        }
 
         imshow("Video", frame);
         if (key == 'q') { // press 'q' to quit the system

@@ -20,7 +20,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # include header files
 include_directories(${PROJ4_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS})
 
-add_executable(arSystem arSystem.cpp)
+add_executable(arSystem arSystem.cpp processors.cpp)
 
 # link dynamic libraries to this executable
 target_link_libraries(arSystem ${OpenCV_LIBS})
