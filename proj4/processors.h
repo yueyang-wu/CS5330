@@ -4,6 +4,6 @@
 using namespace std;
 using namespace cv;
 
-void extractCorners(Mat &frame, Size patternSize, vector<Point2f> &corners, bool &patternWasFound);
+void extractCorners(Mat &frame, Size patternSize, vector<Point2f> &corners);
 
 #endif //PROJ4_PROCESSORS_H
