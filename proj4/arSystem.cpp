@@ -40,6 +40,7 @@ int main() {
         extractCorners(frame, patternSize, corners);
 
         if (key == 's') { // select calibration images
+            cout << "select calibration image" << endl;
             // add the vector of corners found by findChessCorners() into a cornerList
             cornerList.push_back(corners);
             // create a vector of points that specifies the 3D position of th corners in world coordinates
@@ -50,23 +51,39 @@ int main() {
                     points.push_back(coordinates);
                 }
             }
-//            for (int i = 0; i < points.size(); i++) {
-//                cout << i << ": " << points[i][0] << ", " << points[i][1] << ", " << points[i][2] << endl;
-//            }
             // add the vector of points into a pointList
             pointList.push_back(points);
-        } else if (key == 'c') {
+        } else if (key == 'c') { // calibrate the camera
             if (pointList.size() < CALIBRATION_FRAME_NEEDED) { // not enough calibration frames
                 cout << "Not enough calibration frames. 5 or more needed." << endl;
             } else {
+                cout << "calibrate camera" << endl;
                 // initialize a 3 x 3 camera matrix
                 double data[3][3] = {{1, 0, double(frame.cols / 2)}, {0, 1, double(frame.rows / 2)}, {0, 0, 1}};
                 Mat cameraMatrix = Mat(3, 3, CV_64FC1, data);
 
                 // calibrate the camera
-//                Mat
-//                double error = calibrateCamera()
+                Mat distCoeffs, rvecs, tvecs;
+                double error = calibrateCamera(pointList, cornerList, Size(frame.rows, frame.cols), cameraMatrix, distCoeffs, rvecs, tvecs);
+
+                // print out the intrinsic parameters and the final re-projection error
+                cout << "Camera Matrix: " << endl;
+                for (int i = 0; i < cameraMatrix.rows; i++) {
+                    for (int j = 0; j < cameraMatrix.cols; j++) {
+                        cout << cameraMatrix.at<double>(i, j) << ", ";
+                    }
+                    cout << "\n";
+                }
+                cout << "Distortion Coefficients: " << endl;
+                for (int i = 0; i < distCoeffs.rows; i++) {
+                    for (int j = 0; j < distCoeffs.cols; j++) {
+                        cout << distCoeffs.at<double>(i, j) << ", ";
+                    }
+                }
+                cout << "\n";
+                cout << "re-projection error: " << error << endl;
             }
+        } else if (key == 'w') { // write the intrinsic parameters to a file
 
         }
 
