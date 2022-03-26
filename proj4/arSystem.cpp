@@ -124,47 +124,34 @@ int main() {
             if (foundCurrCorners) {
                 drawChessboardCorners(frame2, patternSize, currCorners, foundCorners);
             }
-
-//            vector<Point3f> convertedPointList;
-//            for (auto && v : pointList) {
-//                convertedPointList.insert(convertedPointList.end(), v.begin(), v.end());
-//            }
-//            vector<Point2f> convertedCornerList;
-//            for (auto && v : cornerList) {
-//                convertedCornerList.insert(convertedCornerList.end(), v.begin(), v.end());
-//            }
-
-            cout << "currCorners" << currCorners.size() << endl;
-//            for (int i = 0; i < currCorners.size(); i++) {
-//                cout << currCorners[i] << ", ";
-//            }
-//            cout << "\n";
+            
             if (foundCurrCorners) {
                 Mat rvec, tvec; // output arrays for solvePnP()
                 bool status = solvePnP(points, currCorners, cameraMatrix, distCoeffs, rvec, tvec);
 
                 if (status) {
                     // print the rotation and translation data
-                    cout << "Rotation Data: " << endl;
-                    for (int i = 0; i < rvec.rows; i++) {
-                        for (int j = 0; j < rvec.cols; j++) {
-                            cout << rvec.at<double>(i, j) << ", ";
-                        }
-                    }
-                    cout << "\n";
-                    cout << "Translation Data: " << endl;
-                    for (int i = 0; i < tvec.rows; i++) {
-                        for (int j = 0; j < tvec.cols; j++) {
-                            cout << tvec.at<double>(i, j) << ", ";
-                        }
-                    }
-                    cout << "\n";
+//                    cout << "Rotation Data: " << endl;
+//                    for (int i = 0; i < rvec.rows; i++) {
+//                        for (int j = 0; j < rvec.cols; j++) {
+//                            cout << rvec.at<double>(i, j) << ", ";
+//                        }
+//                    }
+//                    cout << "\n";
+//                    cout << "Translation Data: " << endl;
+//                    for (int i = 0; i < tvec.rows; i++) {
+//                        for (int j = 0; j < tvec.cols; j++) {
+//                            cout << tvec.at<double>(i, j) << ", ";
+//                        }
+//                    }
+//                    cout << "\n";
 
                     // project outside corners
                     vector<Point2f> imagePoints;
                     projectPoints(points, rvec, tvec, cameraMatrix, distCoeffs, imagePoints);
-                    for (int i = 0; i < imagePoints.size(); i++) {
-                        circle(frame2, imagePoints[i], 5, Scalar(255, 0, 0), 4);
+                    int index[] = {0, 8, 45, 53};
+                    for (int i : index) {
+                        circle(frame2, imagePoints[i], 5, Scalar(147, 20, 255), 4);
                     }
                 }
             }
