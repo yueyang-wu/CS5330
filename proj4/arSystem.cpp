@@ -165,6 +165,7 @@ int main() {
         }
 
         imshow("Video", frame2);
+
         if (key == 'q') { // press 'q' to quit the system
             break;
         }
