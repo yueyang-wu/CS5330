@@ -18,3 +18,31 @@ bool extractCorners(Mat &frame, Size patternSize, vector<Point2f> &corners) {
     }
     return foundCorners;
 }
+
+vector<Vec3f> constructObjectPoints() {
+    vector<Vec3f> objectPoints;
+    objectPoints.push_back(Vec3f(1, -1, 0));
+    objectPoints.push_back(Vec3f(1, -4, 0));
+    objectPoints.push_back(Vec3f(4, -1, 0));
+    objectPoints.push_back(Vec3f(4, -4, 0));
+    objectPoints.push_back(Vec3f(2, -2, 2));
+    objectPoints.push_back(Vec3f(2, -3, 2));
+    objectPoints.push_back(Vec3f(3, -2, 2));
+    objectPoints.push_back(Vec3f(3, -3, 2));
+    return objectPoints;
+}
+
+void drawObjects(Mat &frame, vector<Point2f> p) {
+    line(frame, p[0], p[1], Scalar(147, 20, 255), 2);
+    line(frame, p[0], p[2], Scalar(147, 20, 255), 2);
+    line(frame, p[1], p[3], Scalar(147, 20, 255), 2);
+    line(frame, p[2], p[3], Scalar(147, 20, 255), 2);
+    line(frame, p[4], p[6], Scalar(147, 20, 255), 2);
+    line(frame, p[4], p[5], Scalar(147, 20, 255), 2);
+    line(frame, p[5], p[7], Scalar(147, 20, 255), 2);
+    line(frame, p[6], p[7], Scalar(147, 20, 255), 2);
+    line(frame, p[0], p[4], Scalar(147, 20, 255), 2);
+    line(frame, p[1], p[5], Scalar(147, 20, 255), 2);
+    line(frame, p[2], p[6], Scalar(147, 20, 255), 2);
+    line(frame, p[3], p[7], Scalar(147, 20, 255), 2);
+}

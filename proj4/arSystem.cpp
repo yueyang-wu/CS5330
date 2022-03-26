@@ -40,7 +40,7 @@ int main() {
 //    double data[3][3] = {{1, 0, double(frame.cols / 2)}, {0, 1, double(frame.rows / 2)}, {0, 0, 1}};
 //    Mat cameraMatrix = Mat(3, 3, CV_64FC1, data);
 
-    Mat frame;
+    Mat frame; // the original frame
 
     while (true) {
         *capdev >> frame; // get a new frame from the camera, treat as a stream
@@ -52,7 +52,7 @@ int main() {
         // resize the frame to 1/2 of the original size
         resize(frame, frame, Size(), 0.5, 0.5);
 
-        Mat frame2 = frame.clone();
+        Mat frame2 = frame.clone(); // the frame displayed
 
         char key = waitKey(10); // see if there is a waiting keystroke for the video
 
@@ -64,10 +64,10 @@ int main() {
         if (key == 's') { // select calibration images
             if (foundCorners) {
 
-                cout << "frame size: " << frame.size() << endl;
-
-                cout << "corners: " << endl;
-                cout << corners[0] << ", " << corners[1] << ", " << corners[2] << ", " << corners[3] << ", " << corners[4] << ", " << corners[5] << corners[6] << ", " << corners[7] << ", " << corners[8] << corners[9] << endl;
+//                cout << "frame size: " << frame.size() << endl;
+//
+//                cout << "corners: " << endl;
+//                cout << corners[0] << ", " << corners[1] << ", " << corners[2] << ", " << corners[3] << ", " << corners[4] << ", " << corners[5] << corners[6] << ", " << corners[7] << ", " << corners[8] << corners[9] << endl;
 
                 cout << "select calibration image" << endl;
                 // add the vector of corners found by findChessCorners() into a cornerList
@@ -116,20 +116,18 @@ int main() {
         }
 
         if (augmentedReality) { // in the AR mode, should put virtual object
-            // convert pointList and cornerList to vector<>
-
             // extractCorners of current frame
             vector<Point2f> currCorners; // the image points found by findChessboardCorners
             bool foundCurrCorners = extractCorners(frame, patternSize, currCorners);
-            if (foundCurrCorners) {
-                drawChessboardCorners(frame2, patternSize, currCorners, foundCorners);
-            }
-            
+//            if (foundCurrCorners) {
+//                drawChessboardCorners(frame2, patternSize, currCorners, foundCorners);
+//            }
+
             if (foundCurrCorners) {
                 Mat rvec, tvec; // output arrays for solvePnP()
                 bool status = solvePnP(points, currCorners, cameraMatrix, distCoeffs, rvec, tvec);
 
-                if (status) {
+                if (status) { // solvePnP() succeed
                     // print the rotation and translation data
 //                    cout << "Rotation Data: " << endl;
 //                    for (int i = 0; i < rvec.rows; i++) {
@@ -153,6 +151,15 @@ int main() {
                     for (int i : index) {
                         circle(frame2, imagePoints[i], 5, Scalar(147, 20, 255), 4);
                     }
+
+                    // project a virtual object
+                    vector<Vec3f> objectPoints = constructObjectPoints();
+                    vector<Point2f> projectedPoints;
+                    projectPoints(objectPoints, rvec, tvec, cameraMatrix, distCoeffs, projectedPoints);
+                    for (int i = 0; i < projectedPoints.size(); i++) {
+                        circle(frame2, projectedPoints[i], 1, Scalar(147, 20, 255), 4);
+                    }
+                    drawObjects(frame2, projectedPoints);
                 }
             }
         }
