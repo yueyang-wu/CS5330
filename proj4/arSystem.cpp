@@ -36,10 +36,6 @@ int main() {
         }
     }
 
-    // initialize a 3 x 3 camera matrix
-//    double data[3][3] = {{1, 0, double(frame.cols / 2)}, {0, 1, double(frame.rows / 2)}, {0, 0, 1}};
-//    Mat cameraMatrix = Mat(3, 3, CV_64FC1, data);
-
     Mat frame; // the original frame
 
     while (true) {
@@ -63,12 +59,6 @@ int main() {
 
         if (key == 's') { // select calibration images
             if (foundCorners) {
-
-//                cout << "frame size: " << frame.size() << endl;
-//
-//                cout << "corners: " << endl;
-//                cout << corners[0] << ", " << corners[1] << ", " << corners[2] << ", " << corners[3] << ", " << corners[4] << ", " << corners[5] << corners[6] << ", " << corners[7] << ", " << corners[8] << corners[9] << endl;
-
                 cout << "select calibration image" << endl;
                 // add the vector of corners found by findChessCorners() into a cornerList
                 cornerList.push_back(corners);
@@ -119,9 +109,6 @@ int main() {
             // extractCorners of current frame
             vector<Point2f> currCorners; // the image points found by findChessboardCorners
             bool foundCurrCorners = extractCorners(frame, patternSize, currCorners);
-//            if (foundCurrCorners) {
-//                drawChessboardCorners(frame2, patternSize, currCorners, foundCorners);
-//            }
 
             if (foundCurrCorners) {
                 Mat rvec, tvec; // output arrays for solvePnP()
