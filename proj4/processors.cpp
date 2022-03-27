@@ -1,11 +1,12 @@
-#include <stdio.h>
+#include <iostream>
 #include <opencv2/opencv.hpp>
+#include <opencv2/aruco.hpp>
 #include "processors.h"
 
 using namespace std;
 using namespace cv;
 
-bool extractCorners(Mat &frame, Size patternSize, vector<Point2f> &corners) {
+bool extractChessboardCorners(Mat &frame, Size patternSize, vector<Point2f> &corners) {
     bool foundCorners = findChessboardCorners(frame, patternSize, corners);
 //    cout << "number of corners: " << corners.size() << endl;
     if (foundCorners) {
@@ -17,6 +18,44 @@ bool extractCorners(Mat &frame, Size patternSize, vector<Point2f> &corners) {
 //        cout << "coordinates of the first corner: (" << corners[0].x << ", " << corners[0].y << ")" << endl;
     }
     return foundCorners;
+}
+
+// only use the top left points of each target
+bool extractArucoCorners(Mat &frame, vector<Point2f> &corners) {
+    vector<int> markerIds;
+    vector<std::vector<cv::Point2f>> markerCorners, rejectedCandidates;
+    Ptr<cv::aruco::DetectorParameters> parameters = aruco::DetectorParameters::create();
+    Ptr<cv::aruco::Dictionary> dictionary = aruco::getPredefinedDictionary(aruco::DICT_6X6_250);
+    aruco::detectMarkers(frame, dictionary, markerCorners, markerIds, parameters, rejectedCandidates);
+
+    // only keep the coordinates of the top left corner of each target
+    for (auto c : markerCorners) {
+        corners.push_back(c[0]);
+    }
+
+    return corners.size() == 35; // successfully extract Aruco corners
+}
+
+vector<Vec3f> constructChessboardWorldCoordinates(Size patternSize) {
+    vector<Vec3f> points;
+    for (int i = 0; i < patternSize.height; i++) {
+        for (int j = 0; j < patternSize.width; j++) {
+            Vec3f coordinates = Vec3f(j, -i, 0);
+            points.push_back(coordinates);
+        }
+    }
+    return points;
+}
+
+vector<Vec3f> constructArucoWorldCoordinates(Size patternSize) {
+    vector<Vec3f> points;
+    for (int i = patternSize.height - 1; i >= 0; i--) {
+        for (int j = patternSize.width - 1; j >= 0; j--) {
+            Vec3f coordinates = Vec3f(j, -i, 0);
+            points.push_back(coordinates);
+        }
+    }
+    return points;
 }
 
 vector<Vec3f> constructObjectPoints() {

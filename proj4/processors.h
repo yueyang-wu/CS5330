@@ -4,7 +4,13 @@
 using namespace std;
 using namespace cv;
 
-bool extractCorners(Mat &frame, Size patternSize, vector<Point2f> &corners);
+bool extractChessboardCorners(Mat &frame, Size patternSize, vector<Point2f> &corners);
+
+bool extractArucoCorners(Mat &frame, vector<Point2f> &corners);
+
+vector<Vec3f> constructChessboardWorldCoordinates(Size patternSize);
+
+vector<Vec3f> constructArucoWorldCoordinates(Size patternSize);
 
 vector<Vec3f> constructObjectPoints();
 
