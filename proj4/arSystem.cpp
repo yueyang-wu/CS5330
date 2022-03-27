@@ -15,7 +15,7 @@ int main() {
     int CALIBRATION_FRAME_NEEDED = 5; // the minimum number of calibration frames needed
     Mat distCoeffs; // output arrays for calibrateCamera()
     vector<Mat> R, T; // output arrays for calibrateCamera()
-    bool augmentedReality = false; // whether the system should start to put virtual objects
+//    bool augmentedReality = false; // whether the system should start to put virtual objects
 
     // open the video device
     VideoCapture *capdev;
@@ -93,19 +93,19 @@ int main() {
                 cout << "\n";
                 cout << "re-projection error: " << error << endl;
             }
-        } else if (key == 't') { // start the AR test
-            if (!augmentedReality && distCoeffs.rows != 0) {
-                cout << "AR started" << endl;
-                augmentedReality = true;
-            } else if (!augmentedReality && distCoeffs.rows == 0) {
-                cout << "camera not calibrated" << endl;
-            } else { // switch back to calibration mode
-                cout << "AR ended" << endl;
-                augmentedReality = false;
-            }
+//        } else if (key == 't') { // start the AR test
+//            if (!augmentedReality && distCoeffs.rows != 0) {
+//                cout << "AR started" << endl;
+//                augmentedReality = true;
+//            } else if (!augmentedReality && distCoeffs.rows == 0) {
+//                cout << "camera not calibrated" << endl;
+//            } else { // switch back to calibration mode
+//                cout << "AR ended" << endl;
+//                augmentedReality = false;
+//            }
         }
 
-        if (augmentedReality) { // in the AR mode, should put virtual object
+        if (distCoeffs.rows != 0) { // in the AR mode, should put virtual object
             // extractCorners of current frame
             vector<Point2f> currCorners; // the image points found by findChessboardCorners
             bool foundCurrCorners = extractCorners(frame, patternSize, currCorners);
