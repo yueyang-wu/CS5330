@@ -1,101 +1,275 @@
-//Example 9-4. Slightly modified code from the OpenCV documentation that draws a
-//cube every frame; this modified version uses the global variables rotx and roty that are
-//connected to the sliders in Figure 9-6
-// Note: This example needs OpenGL installed on your system. It doesn't build if
-//       the OpenGL libraries cannot be found.
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
+/*
+# Released under MIT License
+Copyright (c) 2017 insaneyilin.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial
+portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#include <opencv2/opencv.hpp>
-#include <opencv2/core/opengl.hpp>
 #include <iostream>
 
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+
+#include <opencv2/opencv.hpp>
+
 using namespace std;
-using namespace cv;
 
-int rotx = 55, roty = 40;
+int window_width  = 960;
+int window_height = 540;
 
-void on_opengl(void* param) {
-    cv::ogl::Texture2D* backgroundTex = (cv::ogl::Texture2D*)param;
-    glEnable( GL_TEXTURE_2D );
-    backgroundTex->bind();
-    cv::ogl::render(*backgroundTex);
-    glDisable( GL_TEXTURE_2D );
+// Frame counting and limiting
+int    frame_count = 0;
+double frame_start_time, frame_end_time, frame_draw_time;
 
-    glMatrixMode( GL_PROJECTION );
-    glLoadIdentity();
-    glMatrixMode( GL_MODELVIEW );
-    glLoadIdentity();
-    glTranslatef(0, 0, -0.5);
-    glRotatef( rotx, 1, 0, 0 );
-    glRotatef( roty, 0, 1, 0 );
-    glRotatef( 0, 0, 0, 1 );
-    glEnable( GL_DEPTH_TEST );
-    glDepthFunc( GL_LESS );
-    static const int coords[6][4][3] = {
-            { { +1, -1, -1 }, { -1, -1, -1 }, { -1, +1, -1 }, { +1, +1, -1 } },
-            { { +1, +1, -1 }, { -1, +1, -1 }, { -1, +1, +1 }, { +1, +1, +1 } },
-            { { +1, -1, +1 }, { +1, -1, -1 }, { +1, +1, -1 }, { +1, +1, +1 } },
-            { { -1, -1, -1 }, { -1, -1, +1 }, { -1, +1, +1 }, { -1, +1, -1 } },
-            { { +1, -1, +1 }, { -1, -1, +1 }, { -1, -1, -1 }, { +1, -1, -1 } },
-            { { -1, -1, +1 }, { +1, -1, +1 }, { +1, +1, +1 }, { -1, +1, +1 } }
-    };
-    for (int i = 0; i < 6; ++i) {
-        glColor3ub( i*20, 100+i*10, i*42 );
-        glBegin( GL_QUADS );
-        for (int j = 0; j < 4; ++j) {
-            glVertex3d(
-                    0.2 * coords[i][j][0],
-                    0.2 * coords[i][j][1],
-                    0.2 * coords[i][j][2]
-            );
-        }
-        glEnd();
-    }
-}
+float ver[8][3] =
+        {
+                {-1.0,-1.0,1.0},
+                {-1.0,1.0,1.0},
+                {1.0,1.0,1.0},
+                {1.0,-1.0,1.0},
 
-void on_trackbar( int, void* ) {
-    cv::updateWindow( "Example 9-4" );
-}
+                {-1.0,1.0,-1.0},
+                {1.0,1.0,-1.0},
 
-void help(char ** argv) {
+        };
 
-    cout << "\n//Example 9-4. Slightly modified code from the OpenCV documentation that draws a"
-         << "\n//cube every frame; this modified version uses the global variables rotx and roty that are"
-         << "\n//connected to the sliders in Figure 9-6"
-         << "\n// Note: This example needs OpenGL installed on your system. It doesn't build if"
-         << "\n//       the OpenGL libraries cannot be found.\n\/"
-         << "\nCall: " << argv[0] << " <image>\n\n"
-         << "\nHere OpenGL is used to render a cube on top of an image.\n"
-         << "\nUser can rotate the cube with the sliders\n" <<endl;
-}
+GLfloat color[8][3] =
+        {
+                {0.0,0.0,0.0},
+                {1.0,0.0,0.0},
+                {1.0,1.0,0.0},
+                {0.0,1.0,0.0},
 
-int main(int argc, char* argv[])
+                {1.0,1.0,1.0},
+                {0.0,1.0,1.0},
+        };
+
+void quad(int a,int b,int c,int d)
 {
-    if(argc != 2) {
-        help (argv);
+    glBegin(GL_QUADS);
+    glColor3fv(color[a]);
+    glVertex3fv(ver[a]);
+
+    glColor3fv(color[b]);
+    glVertex3fv(ver[b]);
+
+    glColor3fv(color[d]);
+    glVertex3fv(ver[d]);
+    glEnd();
+}
+
+void colorcube()
+{
+    quad(0,3,2,1);
+    quad(2,3,7,6);
+}
+
+void rectangle()
+{
+    glLineWidth(30);
+    glVertex2i(50,90);
+    glVertex2i(100,90);
+    glVertex2i(100,150);
+    glVertex2i(50,150);
+}
+
+// Function turn a cv::Mat into a texture, and return the texture ID as a GLuint for use
+static GLuint matToTexture(const cv::Mat &mat, GLenum minFilter, GLenum magFilter, GLenum wrapFilter) {
+    // Generate a number for our textureID's unique handle
+    GLuint textureID;
+    glGenTextures(1, &textureID);
+
+    // Bind to our texture handle
+    glBindTexture(GL_TEXTURE_2D, textureID);
+
+    // Catch silly-mistake texture interpolation method for magnification
+    if (magFilter == GL_LINEAR_MIPMAP_LINEAR  ||
+        magFilter == GL_LINEAR_MIPMAP_NEAREST ||
+        magFilter == GL_NEAREST_MIPMAP_LINEAR ||
+        magFilter == GL_NEAREST_MIPMAP_NEAREST)
+    {
+        cout << "You can't use MIPMAPs for magnification - setting filter to GL_LINEAR" << endl;
+        magFilter = GL_LINEAR;
+    }
+
+    // Set texture interpolation methods for minification and magnification
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, magFilter);
+
+    // Set texture clamping method
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapFilter);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapFilter);
+
+    // Set incoming texture format to:
+    // GL_BGR       for CV_CAP_OPENNI_BGR_IMAGE,
+    // GL_LUMINANCE for CV_CAP_OPENNI_DISPARITY_MAP,
+    // Work out other mappings as required ( there's a list in comments in main() )
+    GLenum inputColourFormat = GL_BGR;
+    if (mat.channels() == 1)
+    {
+        inputColourFormat = GL_LUMINANCE;
+    }
+
+    // Create the texture
+    glTexImage2D(GL_TEXTURE_2D,     // Type of texture
+                 0,                 // Pyramid level (for mip-mapping) - 0 is the top level
+                 GL_RGB,            // Internal colour format to convert to
+                 mat.cols,          // Image width  i.e. 640 for Kinect in standard mode
+                 mat.rows,          // Image height i.e. 480 for Kinect in standard mode
+                 0,                 // Border width in pixels (can either be 1 or 0)
+                 inputColourFormat, // Input image format (i.e. GL_RGB, GL_RGBA, GL_BGR etc.)
+                 GL_UNSIGNED_BYTE,  // Image data type
+                 mat.ptr());        // The actual image data itself
+
+    // If we're using mipmaps then generate them. Note: This requires OpenGL 3.0 or higher
+    if (minFilter == GL_LINEAR_MIPMAP_LINEAR  ||
+        minFilter == GL_LINEAR_MIPMAP_NEAREST ||
+        minFilter == GL_NEAREST_MIPMAP_LINEAR ||
+        minFilter == GL_NEAREST_MIPMAP_NEAREST)
+    {
+        glGenerateMipmap(GL_TEXTURE_2D);
+    }
+
+    return textureID;
+}
+
+static void error_callback(int error, const char* description) {
+    fprintf(stderr, "Error: %s\n", description);
+}
+
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
+    }
+}
+
+static void resize_callback(GLFWwindow* window, int new_width, int new_height) {
+    glViewport(0, 0, window_width = new_width, window_height = new_height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(0.0, window_width, window_height, 0.0, 0.0, 100.0);
+    glMatrixMode(GL_MODELVIEW);
+}
+
+static void draw_frame(const cv::Mat& frame) {
+    // Clear color and depth buffers
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glMatrixMode(GL_MODELVIEW);     // Operate on model-view matrix
+
+    glEnable(GL_TEXTURE_2D);
+
+    GLuint image_tex = matToTexture(frame, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_CLAMP);
+
+    /* Draw a quad */
+    glBegin(GL_QUADS);
+
+    glTexCoord2i(0, 0); glVertex2i(0,   0);
+    glTexCoord2i(0, 1); glVertex2i(0,   window_height);
+    glTexCoord2i(1, 1); glVertex2i(window_width, window_height);
+    glTexCoord2i(1, 0); glVertex2i(window_width, 0);
+
+    // draw rectangle
+    glLoadIdentity();
+    rectangle();
+
+    glEnd();
+
+    glDeleteTextures(1, &image_tex);
+    glDisable(GL_TEXTURE_2D);
+}
+
+static void init_opengl(int w, int h) {
+    glViewport(0, 0, w, h); // use a screen size of WIDTH x HEIGHT
+
+    glMatrixMode(GL_PROJECTION);     // Make a simple 2D projection on the entire window
+    glLoadIdentity();
+    glOrtho(0.0, w, h, 0.0, 0.0, 100.0);
+
+    glMatrixMode(GL_MODELVIEW);    // Set the matrix mode to object modeling
+
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearDepth(0.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear the window
+}
+
+int main()
+{
+    cv::VideoCapture *capdev;
+    capdev = new cv::VideoCapture(0);
+    if (!capdev->isOpened()) {
+        cout << "Unable to open video device\n";
         return -1;
     }
 
-    cv::Mat img = cv::imread(argv[1]);
-    if( img.empty() ) {
-        cout << "Cannot load " << argv[1] << endl;
-        return -1;
+    GLFWwindow* window;
+
+    glfwSetErrorCallback(error_callback);
+
+    if (!glfwInit()) {
+        exit(EXIT_FAILURE);
     }
 
-    cv::namedWindow( "Example 9-4", WINDOW_OPENGL );
-    cv::resizeWindow("Example 9-4", img.cols, img.rows);
-    cv::createTrackbar( "X-rotation", "Example 9-4", &rotx, 360, on_trackbar);
-    cv::createTrackbar( "Y-rotation", "Example 9-4", &roty, 360, on_trackbar);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+    window = glfwCreateWindow(window_width, window_height, "Simple example", NULL, NULL);
+    if (!window) {
+        glfwTerminate();
+        exit(EXIT_FAILURE);
+    }
 
-    cv::ogl::Texture2D backgroundTex(img);
-    cv::setOpenGlDrawCallback("Example 9-4", on_opengl, &backgroundTex);
-    cv::updateWindow("Example 9-4");
+    glfwSetKeyCallback(window, key_callback);
+    glfwSetWindowSizeCallback(window, resize_callback);
 
-    cv::waitKey(0);
+    glfwMakeContextCurrent(window);
 
-    cv::setOpenGlDrawCallback("Example 9-4", 0, 0);
-    cv::destroyAllWindows();
+    glfwSwapInterval(1);
 
-    return 0;
+    //  Initialise glew (must occur AFTER window creation or glew will error)
+    GLenum err = glewInit();
+    if (GLEW_OK != err)
+    {
+        cout << "GLEW initialisation error: " << glewGetErrorString(err) << endl;
+        exit(-1);
+    }
+    cout << "GLEW okay - using version: " << glewGetString(GLEW_VERSION) << endl;
+
+    init_opengl(window_width, window_height);
+
+    double video_start_time = glfwGetTime();
+    double video_end_time = 0.0;
+
+    cv::Mat frame;
+    while (!glfwWindowShouldClose(window)) {
+        frame_start_time = glfwGetTime();
+        *capdev >> frame;
+        resize(frame, frame, cv::Size(), 0.5, 0.5);
+        cout << frame.size() << endl;
+        draw_frame(frame);
+        video_end_time = glfwGetTime();
+
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+
+        ++frame_count;
+    }
+
+    cout << "Total video time: " << video_end_time - video_start_time << " seconds" << endl;
+
+    glfwDestroyWindow(window);
+    glfwTerminate();
+
+    exit(EXIT_SUCCESS);
 }
