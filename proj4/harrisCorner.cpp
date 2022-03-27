@@ -9,7 +9,7 @@ int main() {
     int blockSize = 2;
     int kSize = 3;
     double k = 0.04;
-    double thresh = 100;
+//    double thresh = 100;
 
     // open the video device
     VideoCapture *capdev;
@@ -41,13 +41,16 @@ int main() {
         Mat dst = Mat::zeros(grayscale.size(), CV_32FC1);
         cornerHarris(grayscale, dst, blockSize, kSize, k);
 
-        Mat dst_norm, dst_norm_scaled;
-        normalize(dst, dst_norm, 0, 255, NORM_MINMAX, CV_32FC1, Mat());
-        convertScaleAbs( dst_norm, dst_norm_scaled );
-        for (int i = 0; i < dst_norm.rows ; i++) {
-            for(int j = 0; j < dst_norm.cols; j++) {
-                if ((int)dst_norm.at<float>(i,j) > thresh) {
-                    circle(frame, Point(j,i), 5, Scalar(0), 2, 8, 0);
+//        Mat dst_norm, dst_norm_scaled;
+//        normalize(dst, dst_norm, 0, 255, NORM_MINMAX, CV_32FC1, Mat());
+//        convertScaleAbs( dst_norm, dst_norm_scaled );
+        double min, max;
+        cv::minMaxLoc(dst, &min, &max);
+        float thresh = 0.1 * max;
+        for (int i = 0; i < dst.rows ; i++) {
+            for(int j = 0; j < dst.cols; j++) {
+                if (dst.at<float>(i,j) > thresh) {
+                    circle(frame, Point(j,i), 1, Scalar(147, 20, 255), 2);
                 }
             }
         }
