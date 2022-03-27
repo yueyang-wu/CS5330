@@ -8,9 +8,7 @@ bool extractChessboardCorners(Mat &frame, Size patternSize, vector<Point2f> &cor
 
 bool extractArucoCorners(Mat &frame, vector<Point2f> &corners);
 
-vector<Vec3f> constructChessboardWorldCoordinates(Size patternSize);
-
-vector<Vec3f> constructArucoWorldCoordinates(Size patternSize);
+vector<Vec3f> constructWorldCoordinates(Size patternSize);
 
 vector<Vec3f> constructObjectPoints();
 

@@ -22,21 +22,22 @@ bool extractChessboardCorners(Mat &frame, Size patternSize, vector<Point2f> &cor
 
 // only use the top left points of each target
 bool extractArucoCorners(Mat &frame, vector<Point2f> &corners) {
+    corners.resize(35, Point2f(0, 0));
     vector<int> markerIds;
     vector<std::vector<cv::Point2f>> markerCorners, rejectedCandidates;
     Ptr<cv::aruco::DetectorParameters> parameters = aruco::DetectorParameters::create();
     Ptr<cv::aruco::Dictionary> dictionary = aruco::getPredefinedDictionary(aruco::DICT_6X6_250);
     aruco::detectMarkers(frame, dictionary, markerCorners, markerIds, parameters, rejectedCandidates);
 
-    // only keep the coordinates of the top left corner of each target
-    for (auto c : markerCorners) {
-        corners.push_back(c[0]);
+    for (int i = 0; i < markerIds.size(); i++) {
+        int idx = markerIds[i];
+        corners[idx] = markerCorners[i][0];
     }
 
-    return corners.size() == 35; // successfully extract Aruco corners
+    return markerCorners.size() == 35; // successfully extract Aruco corners
 }
 
-vector<Vec3f> constructChessboardWorldCoordinates(Size patternSize) {
+vector<Vec3f> constructWorldCoordinates(Size patternSize) {
     vector<Vec3f> points;
     for (int i = 0; i < patternSize.height; i++) {
         for (int j = 0; j < patternSize.width; j++) {
@@ -47,27 +48,16 @@ vector<Vec3f> constructChessboardWorldCoordinates(Size patternSize) {
     return points;
 }
 
-vector<Vec3f> constructArucoWorldCoordinates(Size patternSize) {
-    vector<Vec3f> points;
-    for (int i = patternSize.height - 1; i >= 0; i--) {
-        for (int j = patternSize.width - 1; j >= 0; j--) {
-            Vec3f coordinates = Vec3f(j, -i, 0);
-            points.push_back(coordinates);
-        }
-    }
-    return points;
-}
-
 vector<Vec3f> constructObjectPoints() {
     vector<Vec3f> objectPoints;
-    objectPoints.push_back(Vec3f(1, -1, 0));
-    objectPoints.push_back(Vec3f(1, -4, 0));
-    objectPoints.push_back(Vec3f(4, -1, 0));
-    objectPoints.push_back(Vec3f(4, -4, 0));
-    objectPoints.push_back(Vec3f(2, -2, 2));
-    objectPoints.push_back(Vec3f(2, -3, 2));
-    objectPoints.push_back(Vec3f(3, -2, 2));
-    objectPoints.push_back(Vec3f(3, -3, 2));
+    objectPoints.push_back(Vec3f(1, -1, 1));
+    objectPoints.push_back(Vec3f(1, -4, 1));
+    objectPoints.push_back(Vec3f(4, -1, 1));
+    objectPoints.push_back(Vec3f(4, -4, 1));
+    objectPoints.push_back(Vec3f(2, -2, 3));
+    objectPoints.push_back(Vec3f(2, -3, 3));
+    objectPoints.push_back(Vec3f(3, -2, 3));
+    objectPoints.push_back(Vec3f(3, -3, 3));
     return objectPoints;
 }
 

@@ -31,8 +31,8 @@ int main() {
     namedWindow("Video", 1);
 
     // create a vector of points that specifies the 3D position of the corners in world coordinates
-    chessBoardPoints = constructChessboardWorldCoordinates(chessboardPatternSize);
-    arucoPoints = constructArucoWorldCoordinates(arucoPatternSize);
+    chessBoardPoints = constructWorldCoordinates(chessboardPatternSize);
+    arucoPoints = constructWorldCoordinates(arucoPatternSize);
 
     Mat frame; // the original frame
 
@@ -51,13 +51,19 @@ int main() {
         char key = waitKey(10); // see if there is a waiting keystroke for the video
 
         vector<Point2f> chessboardCorners; // the image points found by extractChessboardCorners()
+//        bool foundChessboardCorners = false;
         bool foundChessboardCorners = extractChessboardCorners(frame, chessboardPatternSize, chessboardCorners);
         if (foundChessboardCorners) {
             drawChessboardCorners(displayedFrame, chessboardPatternSize, chessboardCorners, foundChessboardCorners);
         }
 
         vector<Point2f> arucoCorners; // the image points found by extractarucoCorners()
-        bool foundarucoCorners = extractArucoCorners(frame, arucoCorners);
+        bool foundArucoCorners = extractArucoCorners(frame, arucoCorners);
+        if (foundArucoCorners) {
+            for (int i = 0; i < arucoCorners.size(); i++) {
+                circle(displayedFrame, arucoCorners[i], 1, Scalar(147, 200, 255), 4);
+            }
+        }
 
         if (key == 's') { // select calibration images for chessboard
             if (foundChessboardCorners) {
@@ -70,7 +76,7 @@ int main() {
                 cout << "No chessboard corners found" << endl;
             }
         } else if (key == 'h') { // select calibration images for aruco target
-            if (foundarucoCorners) {
+            if (foundArucoCorners) {
                 cout << "select aruco calibration image" << endl;
                 // add the vector of corners found by extractarucoCorners() into a cornerList
                 arucoCornerList.push_back(arucoCorners);
