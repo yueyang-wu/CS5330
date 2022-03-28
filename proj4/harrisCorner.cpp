@@ -5,6 +5,11 @@
 using namespace std;
 using namespace cv;
 
+/*
+ * This program will read a video stream
+ * detect corners in the video using cornerHarris(),
+ * and then display the corners on the video
+ */
 int main() {
     int blockSize = 2;
     int kSize = 3;

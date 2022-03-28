@@ -5,6 +5,18 @@
 using namespace std;
 using namespace cv;
 
+/*
+ * Takes one inputs
+ * The input is the path to an image file which you would like to use to overlay on the ArUco targets
+ *
+ * This program will read a video stream, then detect targets, calibrate the camera and add virtual objects/picture on the video
+ * The program can detect chessboard corners and ArUco targets.
+ * It will allow the users to choose calibration pictures for the two targets,
+ * and then calibrate the camera(at least five calibration pictures required).
+ * After calibration, it will put a virtual object on the targets
+ *
+ * The program will also allow the user to overlay a picture of their choice to the ArUco targets
+ */
 int main(int argc, char *argv[]) {
     Size chessboardPatternSize(9, 6); // the size of the chessboard, height is 6, width is 9
     Size arucoPatternSize(5, 7); // the size of the aruco target, height is 7, width is 5
@@ -78,11 +90,11 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        if (key == 'p') {
+        if (key == 'p') {  // whether to overlay the picture to ArUco targets
             overLayPicture = !overLayPicture;
         }
 
-        // apply a picture to the Aruco targets
+        // apply a picture to the Aruco targets if needed
         if (overLayPicture && foundArucoCorners) {
             overlayPicture(frame, displayedFrame, image);
         }

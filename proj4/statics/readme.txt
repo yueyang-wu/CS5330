@@ -13,8 +13,9 @@
 
 - Instructions for running your executables.
     - There are two executables: arSystem and harrisCorner
-    - arSystem is able to detect chessboard corners and ArUco targets. It can put AR objects on the two targets at the same time
-      it can also overlay a picture on the ArUco targets
+    - arSystem is able to detect chessboard corners and ArUco targets.
+      It allows the user to select calibration pictures, and then calibrate the camera.
+      It can put AR objects on the two targets at the same time, and it can also overlay a picture on the ArUco targets
         - takes one input, the file path to an image, the image is used to overlay the ArUco target
         - type 'p' to display/remove the image from ArUco targets
         - for the two target, the system calibrate the camera separately
@@ -23,6 +24,7 @@
         - type 'c' to calibrate camera for chessboard (at least 5 calibration image required)
         - type 'x' to calibrate camera for chessboard (at least 5 calibration image required)
         - once the camera is calibrated, it will put a virtual object on the target
+        - type 'q' to quit the system
     - harrisCorners is able to detect corners and highlight corners
         - takes no input
         - type 'q' to quit the system
