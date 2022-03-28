@@ -13,8 +13,9 @@
 
 - Instructions for running your executables.
     - There are two executables: arSystem and harrisCorner
-    - arSystem is able to detect chessboard corners and ArUco targets and put AR objects on the two targets at the same time
-        - takes one input, the file path to an image, used to overlay the ArUco target
+    - arSystem is able to detect chessboard corners and ArUco targets. It can put AR objects on the two targets at the same time
+      it can also overlay a picture on the ArUco targets
+        - takes one input, the file path to an image, the image is used to overlay the ArUco target
         - type 'p' to display/remove the image from ArUco targets
         - for the two target, the system calibrate the camera separately
         - type 's' to select calibration images for chessboard
@@ -30,4 +31,4 @@
     No extra steps are needed for testing the extensions. Details are in the instructions for running my executables.
 
 - Whether received accommodation for the project or you are using any time travel days and how many.
-    Yes, 2 days.
+    Yes, 3 time travel days.
