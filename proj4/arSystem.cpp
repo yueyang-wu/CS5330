@@ -90,7 +90,6 @@ int main() {
                 cout << "Not enough calibration frames. 5 or more needed." << endl;
             } else {
                 cout << "calibrate camera" << endl;
-
                 // calibrate the camera
                 double chessboardError = calibrateCamera(chessboardPointList, chessboardCornerList, Size(frame.rows, frame.cols), chessboardCameraMatrix, chessboardDistCoeffs, chessboardR, chessboardT);
 
