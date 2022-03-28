@@ -50,16 +50,17 @@ int main() {
 
         char key = waitKey(10); // see if there is a waiting keystroke for the video
 
+        // extract chessboard corners
         vector<Point2f> chessboardCorners; // the image points found by extractChessboardCorners()
-//        bool foundChessboardCorners = false;
         bool foundChessboardCorners = extractChessboardCorners(frame, chessboardPatternSize, chessboardCorners);
-        if (foundChessboardCorners) {
+        if (foundChessboardCorners) { // display the chessboard corners
             drawChessboardCorners(displayedFrame, chessboardPatternSize, chessboardCorners, foundChessboardCorners);
         }
 
-        vector<Point2f> arucoCorners; // the image points found by extractarucoCorners()
+        // extract ArUco corners
+        vector<Point2f> arucoCorners; // the image points found by extractArucoCorners()
         bool foundArucoCorners = extractArucoCorners(frame, arucoCorners);
-        if (foundArucoCorners) {
+        if (foundArucoCorners) { // display the top left corner of each target
             for (int i = 0; i < arucoCorners.size(); i++) {
                 circle(displayedFrame, arucoCorners[i], 1, Scalar(147, 200, 255), 4);
             }
@@ -70,7 +71,7 @@ int main() {
                 cout << "select chessboard calibration image" << endl;
                 // add the vector of corners found by findChessCorners() into a cornerList
                 chessboardCornerList.push_back(chessboardCorners);
-                // add the vector of points into a pointList
+                // add the vector of real-world points into a pointList
                 chessboardPointList.push_back(chessBoardPoints);
             } else {
                 cout << "No chessboard corners found" << endl;
@@ -80,7 +81,7 @@ int main() {
                 cout << "select aruco calibration image" << endl;
                 // add the vector of corners found by extractarucoCorners() into a cornerList
                 arucoCornerList.push_back(arucoCorners);
-                // add the vector of points into a pointList
+                // add the vector of real-world points into a pointList
                 arucoPointList.push_back(arucoPoints);
             } else {
                 cout << "No aruco corners found" << endl;
@@ -95,19 +96,9 @@ int main() {
 
                 // print out the intrinsic parameters and the final re-projection error
                 cout << "Chessboard Camera Matrix: " << endl;
-                for (int i = 0; i < chessboardCameraMatrix.rows; i++) {
-                    for (int j = 0; j < chessboardCameraMatrix.cols; j++) {
-                        cout << chessboardCameraMatrix.at<double>(i, j) << ", ";
-                    }
-                    cout << "\n";
-                }
+                printMatrix(chessboardCameraMatrix);
                 cout << "Chessboard Distortion Coefficients: " << endl;
-                for (int i = 0; i < chessboardDistCoeffs.rows; i++) {
-                    for (int j = 0; j < chessboardDistCoeffs.cols; j++) {
-                        cout << chessboardDistCoeffs.at<double>(i, j) << ", ";
-                    }
-                }
-                cout << "\n";
+                printMatrix(chessboardDistCoeffs);
                 cout << "Chessboard Re-projection Error: " << chessboardError << endl;
             }
         } else if (key == 'x') { // calibrate the camera for aruco target
@@ -115,25 +106,14 @@ int main() {
                 cout << "Not enough calibration frames. 5 or more needed." << endl;
             } else {
                 cout << "calibrate camera" << endl;
-
                 // calibrate the camera
                 double arucoError = calibrateCamera(arucoPointList, arucoCornerList, Size(frame.rows, frame.cols), arucoCameraMatrix, arucoDistCoeffs, arucoR, arucoT);
 
                 // print out the intrinsic parameters and the final re-projection error
                 cout << "Aruco Camera Matrix: " << endl;
-                for (int i = 0; i < arucoCameraMatrix.rows; i++) {
-                    for (int j = 0; j < arucoCameraMatrix.cols; j++) {
-                        cout << arucoCameraMatrix.at<double>(i, j) << ", ";
-                    }
-                    cout << "\n";
-                }
+                printMatrix(arucoCameraMatrix);
                 cout << "Aruco Distortion Coefficients: " << endl;
-                for (int i = 0; i < arucoDistCoeffs.rows; i++) {
-                    for (int j = 0; j < arucoDistCoeffs.cols; j++) {
-                        cout << arucoDistCoeffs.at<double>(i, j) << ", ";
-                    }
-                }
-                cout << "\n";
+                printMatrix(arucoDistCoeffs);
                 cout << "Aruco Re-projection Error: " << arucoError << endl;
             }
         }
@@ -148,38 +128,11 @@ int main() {
                 bool status = solvePnP(chessBoardPoints, currCorners, chessboardCameraMatrix, chessboardDistCoeffs, rvec, tvec);
 
                 if (status) { // solvePnP() succeed
-                    // print the rotation and translation data
-//                    cout << "Rotation Data: " << endl;
-//                    for (int i = 0; i < rvec.rows; i++) {
-//                        for (int j = 0; j < rvec.cols; j++) {
-//                            cout << rvec.at<double>(i, j) << ", ";
-//                        }
-//                    }
-//                    cout << "\n";
-//                    cout << "Translation Data: " << endl;
-//                    for (int i = 0; i < tvec.rows; i++) {
-//                        for (int j = 0; j < tvec.cols; j++) {
-//                            cout << tvec.at<double>(i, j) << ", ";
-//                        }
-//                    }
-//                    cout << "\n";
-
                     // project outside corners
-                    vector<Point2f> imagePoints;
-                    projectPoints(chessBoardPoints, rvec, tvec, chessboardCameraMatrix, chessboardDistCoeffs, imagePoints);
-                    int index[] = {0, 8, 45, 53};
-                    for (int i : index) {
-                        circle(displayedFrame, imagePoints[i], 5, Scalar(147, 20, 255), 4);
-                    }
+                    projectOutsideCorners(displayedFrame, chessBoardPoints, rvec, tvec, chessboardCameraMatrix, chessboardDistCoeffs);
 
                     // project a virtual object
-                    vector<Vec3f> objectPoints = constructObjectPoints();
-                    vector<Point2f> projectedPoints;
-                    projectPoints(objectPoints, rvec, tvec, chessboardCameraMatrix, chessboardDistCoeffs, projectedPoints);
-                    for (int i = 0; i < projectedPoints.size(); i++) {
-                        circle(displayedFrame, projectedPoints[i], 1, Scalar(147, 20, 255), 4);
-                    }
-                    drawObjects(displayedFrame, projectedPoints);
+                    projectVirtualObject(displayedFrame, rvec, tvec, chessboardCameraMatrix, chessboardDistCoeffs);
                 }
             }
         }
@@ -194,30 +147,8 @@ int main() {
                 bool status = solvePnP(arucoPoints, currCorners, arucoCameraMatrix, arucoDistCoeffs, rvec, tvec);
 
                 if (status) { // solvePnP() succeed
-                    // print the rotation and translation data
-//                    cout << "Rotation Data: " << endl;
-//                    for (int i = 0; i < rvec.rows; i++) {
-//                        for (int j = 0; j < rvec.cols; j++) {
-//                            cout << rvec.at<double>(i, j) << ", ";
-//                        }
-//                    }
-//                    cout << "\n";
-//                    cout << "Translation Data: " << endl;
-//                    for (int i = 0; i < tvec.rows; i++) {
-//                        for (int j = 0; j < tvec.cols; j++) {
-//                            cout << tvec.at<double>(i, j) << ", ";
-//                        }
-//                    }
-//                    cout << "\n";
-
                     // project a virtual object
-                    vector<Vec3f> objectPoints = constructObjectPoints();
-                    vector<Point2f> projectedPoints;
-                    projectPoints(objectPoints, rvec, tvec, arucoCameraMatrix, arucoDistCoeffs, projectedPoints);
-                    for (int i = 0; i < projectedPoints.size(); i++) {
-                        circle(displayedFrame, projectedPoints[i], 1, Scalar(147, 20, 255), 4);
-                    }
-                    drawObjects(displayedFrame, projectedPoints);
+                    projectVirtualObject(displayedFrame, rvec, tvec, arucoCameraMatrix, arucoDistCoeffs);
                 }
             }
         }
