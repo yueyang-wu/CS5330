@@ -8,7 +8,11 @@ bool extractChessboardCorners(Mat &frame, Size patternSize, vector<Point2f> &cor
 
 bool extractArucoCorners(Mat &frame, vector<Point2f> &corners);
 
+void arucoOutsidePoints(Mat &frame, vector<Point2f> &outsidePoints);
+
 vector<Vec3f> constructWorldCoordinates(Size patternSize);
+
+void overlayPicture(Mat &frame, Mat &displayedFrame, Mat &image);
 
 void printMatrix(Mat &m);
 

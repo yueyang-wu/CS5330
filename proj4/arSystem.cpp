@@ -5,7 +5,7 @@
 using namespace std;
 using namespace cv;
 
-int main() {
+int main(int argc, char *argv[]) {
     Size chessboardPatternSize(9, 6); // the size of the chessboard, height is 6, width is 9
     Size arucoPatternSize(5, 7); // the size of the aruco target, height is 7, width is 5
     Mat chessboardCameraMatrix, arucoCameraMatrix;
@@ -18,6 +18,15 @@ int main() {
     int CALIBRATION_FRAME_NEEDED = 5; // the minimum number of calibration frames needed
     Mat chessboardDistCoeffs, arucoDistCoeffs; // output arrays for calibrateCamera()
     vector<Mat> chessboardR, chessboardT, arucoR, arucoT; // output arrays for calibrateCamera()
+
+    // read an image to put on the target
+    Mat image;
+    image = imread(argv[1], 1);
+    // validate image data
+    if (!image.data) {
+        cout << "No image data\n";
+        return -1;
+    }
 
     // open the video device
     VideoCapture *capdev;
@@ -35,6 +44,8 @@ int main() {
     arucoPoints = constructWorldCoordinates(arucoPatternSize);
 
     Mat frame; // the original frame
+
+    bool overLayPicture = false;
 
     while (true) {
         *capdev >> frame; // get a new frame from the camera, treat as a stream
@@ -60,10 +71,20 @@ int main() {
         // extract ArUco corners
         vector<Point2f> arucoCorners; // the image points found by extractArucoCorners()
         bool foundArucoCorners = extractArucoCorners(frame, arucoCorners);
-        if (foundArucoCorners) { // display the top left corner of each target
+        if (foundArucoCorners) {
+            // display the top left corner of each target
             for (int i = 0; i < arucoCorners.size(); i++) {
                 circle(displayedFrame, arucoCorners[i], 1, Scalar(147, 200, 255), 4);
             }
+        }
+
+        if (key == 'p') {
+            overLayPicture = !overLayPicture;
+        }
+
+        // apply a picture to the Aruco targets
+        if (overLayPicture && foundArucoCorners) {
+            overlayPicture(frame, displayedFrame, image);
         }
 
         if (key == 's') { // select calibration images for chessboard

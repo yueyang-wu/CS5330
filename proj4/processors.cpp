@@ -23,7 +23,7 @@ bool extractChessboardCorners(Mat &frame, Size patternSize, vector<Point2f> &cor
         Mat grayscale;
         cvtColor(frame, grayscale, COLOR_BGR2GRAY); // the input image for cornerSubPix must be single-channel
         Size subPixWinSize(10, 10);
-        TermCriteria termCrit(TermCriteria::COUNT|TermCriteria::EPS, 5, 0.03);
+        TermCriteria termCrit(TermCriteria::COUNT|TermCriteria::EPS, 1, 0.1);
         cornerSubPix(grayscale, corners, subPixWinSize, Size(-1, -1), termCrit);
     }
     return foundCorners;
@@ -44,6 +44,54 @@ bool extractArucoCorners(Mat &frame, vector<Point2f> &corners) {
     }
 
     return markerCorners.size() == 35; // successfully extract Aruco corners
+}
+
+void arucoOutsidePoints(Mat &frame, vector<Point2f> &outsidePoints) {
+    outsidePoints.resize(4, Point2f(0, 0));
+    vector<int> markerIds;
+    vector<std::vector<cv::Point2f>> markerCorners, rejectedCandidates;
+    Ptr<cv::aruco::DetectorParameters> parameters = aruco::DetectorParameters::create();
+    Ptr<cv::aruco::Dictionary> dictionary = aruco::getPredefinedDictionary(aruco::DICT_6X6_250);
+    aruco::detectMarkers(frame, dictionary, markerCorners, markerIds, parameters, rejectedCandidates);
+
+    for (int i = 0; i < markerIds.size(); i++) {
+        int idx = markerIds[i];
+        if (idx == 30) {
+            outsidePoints[0] = markerCorners[i][3];
+        } else if (idx == 0) {
+            outsidePoints[1] = markerCorners[i][0];
+        } else if (idx == 34) {
+            outsidePoints[2] = markerCorners[i][2];
+        } else if (idx == 4) {
+            outsidePoints[3] = markerCorners[i][1];
+        }
+    }
+}
+
+void overlayPicture(Mat &frame, Mat &displayedFrame, Mat &image) {
+    vector<Point2f> pts_dst;
+    arucoOutsidePoints(frame, pts_dst);
+
+    int height = image.size().height;
+    int width = image.size().width;
+    vector<Point2f> pts_src;
+    pts_src.push_back(Point2f(0, 0));
+    pts_src.push_back(Point2f(width, 0));
+    pts_src.push_back(Point2f(0, height));
+    pts_src.push_back(Point2f(width, height));
+
+    // Calculate Homography
+    Mat H = findHomography(pts_src, pts_dst);
+    // Warp source image to destination based on homography
+    Mat im_out;
+    warpPerspective(image, im_out, H, frame.size());
+    for (int i = 0; i < im_out.rows; i++) {
+        for (int j = 0; j < im_out.cols; j++) {
+            if (im_out.at<Vec3b>(i, j) != Vec3b(0, 0, 0)) {
+                displayedFrame.at<Vec3b>(i, j) = im_out.at<Vec3b>(i, j);
+            }
+        }
+    }
 }
 
 /*
