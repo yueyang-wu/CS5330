@@ -5,32 +5,42 @@
 # import statements
 import sys
 import torch
-import torch.nn as nn
+from torch import nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset
+from torch.utils.data import DataLoader
 import torchvision
-from torchvision import datasets
-from torchvision.transforms import ToTensor
+from torchvision import datasets, transforms
+from torchvision.transforms import ToTensor, Lambda
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 # class definitions
-class DataSet():
-    def __init__(self):
-        pass
-
-
 class MyNetwork(nn.Module):
     def __init__(self):
-        pass
+        super(MyNetwork, self).__init__()
+        self.layer_stack = nn.Sequential(
+            nn.Conv2d(1, 10, kernel_size=(5, 5)),
+            nn.MaxPool2d((2, 2)),
+            nn.ReLU(),
+            nn.Conv2d(10, 20, kernel_size=(5, 5)),
+            nn.Dropout(0.5),
+            nn.MaxPool2d((2, 2)),
+            nn.ReLU(),
+            nn.Flatten(),
+            nn.Linear(7 * 7 * 20, 50),
+            nn.ReLU(),
+            nn.Linear(50, 10),
+        )
 
-
-# computes a forward pass for the network
-# methods need a summary comment
-def forward(self, x):
-    return x
+    # computes a forward pass for the network
+    # methods need a summary comment
+    def forward(self, x):
+        x = self.layer_stack(x)
+        output = F.log_softmax(x)
+        return output
 
 
 # useful functions with a comment for each function
@@ -55,6 +65,8 @@ def train_network(arguments):
 def main(argv):
     # handle any command line arguments in argv
     # main function code
+    torch.manual_seed(42)
+    torch.backends.cudnn.enabled = False
 
     # load training and test data
     training_data = datasets.MNIST(root='data',
@@ -71,6 +83,32 @@ def main(argv):
     # plot the first 6 example digits
     plot_images(training_data)
 
+    # prepare data for training with DataLoader
+    train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
+    test_dataloader = DataLoader(test_data, batch_size=64, shuffle=True)
+
+    # transform
+    ds = datasets.MNIST(
+        root='data',
+        train=True,
+        download=True,
+        transform=ToTensor(),
+        target_transform=Lambda(lambda y: torch.zeros(10, dtype=torch.float).scatter_(0, torch.tensor(y), value=1))
+    )
+
+    # get the device
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Using {device} device")
+
+    # create an instance of MyNetwork and move it to the device and print its structure
+    model = MyNetwork().to(device)
+    print(model)
+
+    X = torch.rand(1, 28, 28, device=device)
+    logits = model(X)
+    pred_probab = nn.Softmax(dim=1)(logits)
+    y_pred = pred_probab.argmax(1)
+    print(f'Predicted class: {y_pred}')
     return
 
 
