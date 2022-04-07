@@ -10,6 +10,7 @@ cmake-build-debug/
 olympus/
 Proj03Examples/
 proj5/Pipfile.lock
+proj5/Pipfile
 proj5/data/
 proj5/data2/
 proj5/results/
