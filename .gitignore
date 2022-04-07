@@ -16,3 +16,4 @@ proj5/data2/
 proj5/results/
 proj5/model_weights.pth
 proj5/model.pth
+proj5/__pycache__/
