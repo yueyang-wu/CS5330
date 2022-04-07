@@ -21,25 +21,33 @@ import matplotlib.pyplot as plt
 class MyNetwork(nn.Module):
     def __init__(self):
         super(MyNetwork, self).__init__()
-        self.layer_stack = nn.Sequential(
-            nn.Conv2d(1, 10, kernel_size=(5, 5)),
-            nn.MaxPool2d((2, 2)),
-            nn.ReLU(),
-            nn.Conv2d(10, 20, kernel_size=(5, 5)),
-            nn.Dropout(0.5),
-            nn.MaxPool2d((2, 2)),
-            nn.ReLU(),
-            nn.Flatten(),
-            nn.Linear(7 * 7 * 20, 50),
-            nn.ReLU(),
-            nn.Linear(50, 10),
-        )
+        self.conv1 = nn.Conv2d(1, 10, kernel_size=(5, 5))
+        self.max_pool = nn.MaxPool2d((2, 2))
+        # nn.ReLU()
+        self.conv2 = nn.Conv2d(10, 20, kernel_size=(5, 5))
+        self.dropout = nn.Dropout(0.5)
+        # nn.MaxPool2d((2, 2))
+        # nn.ReLU()
+        # nn.Flatten()
+        self.fc1 = nn.Linear(320, 50)
+        # nn.ReLU()
+        self.fc2 = nn.Linear(50, 10)
 
     # computes a forward pass for the network
     # methods need a summary comment
     def forward(self, x):
-        x = self.layer_stack(x)
-        output = F.log_softmax(x)
+        x = self.conv1(x)
+        x = self.max_pool(x)
+        x = F.relu(x)
+        x = self.conv2(x)
+        x = self.dropout(x)
+        x = self.max_pool(x)
+        x = F.relu(x)
+        x = torch.flatten(x)
+        x = self.fc1(x)
+        x = F.relu(x)
+        x = self.fc2(x)
+        output = F.log_softmax(x, 0)
         return output
 
 
@@ -81,7 +89,7 @@ def main(argv):
                                )
 
     # plot the first 6 example digits
-    plot_images(training_data)
+    # plot_images(training_data)
 
     # prepare data for training with DataLoader
     train_dataloader = DataLoader(training_data, batch_size=64, shuffle=True)
@@ -106,9 +114,10 @@ def main(argv):
 
     X = torch.rand(1, 28, 28, device=device)
     logits = model(X)
-    pred_probab = nn.Softmax(dim=1)(logits)
-    y_pred = pred_probab.argmax(1)
-    print(f'Predicted class: {y_pred}')
+    print(X)
+    print(logits)
+    y_pred = logits.argmax()
+    print(f'Predicted value: {y_pred}')
     return
 
 
