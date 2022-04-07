@@ -9,6 +9,7 @@ import sys
 import torch
 from torch.utils.data import DataLoader
 import torchvision
+from torchvision import datasets, transforms
 
 # set output precision to 2
 torch.set_printoptions(precision=2)
@@ -31,7 +32,19 @@ def main(argv):
     first_ten_data, first_ten_label = utils.first_ten_output(test_loader, model)
 
     # plot the predictions for the first ten images
-    utils.plot_prediction(first_ten_data, first_ten_label, 3, 3)
+    utils.plot_prediction(first_ten_data, first_ten_label, 9, 3, 3)
+
+    # load custom digit data, apply the model, and plot the ten results
+    image_dir = '/Users/yueyangwu/Desktop/custom_digits'
+    custom_images = datasets.ImageFolder(image_dir,
+                                         transform=transforms.Compose([transforms.Resize((28, 28)),
+                                                                       transforms.Grayscale(),
+                                                                       transforms.functional.invert,
+                                                                       transforms.ToTensor()]))
+    custom_loader = DataLoader(custom_images)
+
+    first_ten_custom_data, first_ten_custom_label = utils.first_ten_output(custom_loader, model)
+    utils.plot_prediction(first_ten_custom_data, first_ten_custom_label, 10, 3, 4)
 
     return
 

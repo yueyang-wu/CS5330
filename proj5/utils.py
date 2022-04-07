@@ -2,10 +2,15 @@
 # Yueyang Wu
 
 # import statements
+import os
 import torch
+from torch.utils.data import Dataset
+from torch.utils.data import DataLoader
 from torch import nn
 import torch.nn.functional as F
+from torchvision.io import read_image
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 
 # define hyper-parameters
@@ -117,8 +122,8 @@ def first_ten_output(data, model):
     return first_ten_data, first_ten_label
 
 
-def plot_prediction(data_set, label_set, row, col):
-    for i in range(row * col):
+def plot_prediction(data_set, label_set, total, row, col):
+    for i in range(total):
         plt.subplot(row, col, i + 1)
         plt.tight_layout()
         plt.imshow(data_set[i], cmap='gray', interpolation='none')
