@@ -4,6 +4,7 @@
 # import statements
 import utils
 
+import ssl
 import sys
 import torch
 import torch.optim as optim
@@ -11,8 +12,6 @@ from torch.utils.data import DataLoader
 import torchvision
 
 # allow using unverified SSL due to some configuration issue
-import ssl
-
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
