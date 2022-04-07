@@ -2,15 +2,10 @@
 # Yueyang Wu
 
 # import statements
-import os
 import torch
-from torch.utils.data import Dataset
-from torch.utils.data import DataLoader
 from torch import nn
 import torch.nn.functional as F
-from torchvision.io import read_image
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 # define hyper-parameters
