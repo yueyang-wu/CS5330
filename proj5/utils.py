@@ -2,27 +2,19 @@
 # Yueyang Wu
 
 # import statements
-import sys
 import torch
 from torch import nn
 import torch.nn.functional as F
-import torch.optim as optim
-from torch.utils.data import Dataset
-from torch.utils.data import DataLoader
-import torchvision
-import torchvision.models as models
-from torchvision import datasets, transforms
-from torchvision.transforms import ToTensor, Lambda
 import numpy as np
 import matplotlib.pyplot as plt
 
 # define hyper-parameters
-n_epochs = 5
-batch_size_train = 64
-batch_size_test = 1000
-learning_rate = 0.01
-momentum = 0.5
-log_interval = 10
+N_EPOCHS = 5
+BATCH_SIZE_TRAIN = 64
+BATCH_SIZE_TEST = 1000
+LEARNING_RATE = 0.01
+MOMENTUM = 0.5
+LOG_INTERVAL = 10
 
 
 # model definition
@@ -49,7 +41,6 @@ class MyNetwork(nn.Module):
 def plot_images(data, row, col):
     examples = enumerate(data)
     batch_idx, (example_data, example_targets) = next(examples)
-    fig = plt.figure()
     for i in range(row * col):
         plt.subplot(row, col, i + 1)
         plt.tight_layout()
@@ -60,32 +51,32 @@ def plot_images(data, row, col):
     plt.show()
 
 
-def train(epoch, network, optimizer, train_loader, train_losses, train_counter):
-    network.train()
+def train(epoch, model, optimizer, train_loader, train_losses, train_counter):
+    model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
         optimizer.zero_grad()
-        output = network(data)
+        output = model(data)
         loss = F.nll_loss(output, target)
         loss.backward()
         optimizer.step()
-        if batch_idx % log_interval == 0:
+        if batch_idx % LOG_INTERVAL == 0:
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                 epoch, batch_idx * len(data), len(train_loader.dataset),
                        100. * batch_idx / len(train_loader), loss.item()))
             train_losses.append(loss.item())
             train_counter.append(
                 (batch_idx * 64) + ((epoch - 1) * len(train_loader.dataset)))
-            torch.save(network.state_dict(), 'results/model.pth')
+            torch.save(model.state_dict(), 'results/model.pth')
             torch.save(optimizer.state_dict(), 'results/optimizer.pth')
 
 
-def test(network, test_loader, test_losses):
-    network.eval()
+def test(model, test_loader, test_losses):
+    model.eval()
     test_loss = 0
     correct = 0
     with torch.no_grad():
         for data, target in test_loader:
-            output = network(data)
+            output = model(data)
             test_loss += F.nll_loss(output, target, reduction='sum').item()
             pred = output.data.max(1, keepdim=True)[1]
             correct += pred.eq(target.data.view_as(pred)).sum()
@@ -97,7 +88,6 @@ def test(network, test_loader, test_losses):
 
 
 def plot_curve(train_counter, train_losses, test_counter, test_losses):
-    fig = plt.figure()
     plt.plot(train_counter, train_losses, color='blue')
     plt.scatter(test_counter, test_losses, color='red')
     plt.legend(['Train Loss', 'Test Loss'], loc='upper right')
