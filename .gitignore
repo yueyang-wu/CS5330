@@ -18,3 +18,5 @@ proj5/model_weights.pth
 proj5/model.pth
 proj5/__pycache__/
 proj5/model_state_dict.pth
+proj5/custom_digits/
+proj5/greek/
