@@ -64,6 +64,7 @@ def main(argv):
 
     # save the model
     torch.save(network, 'model.pth')
+    torch.save(network.state_dict(), 'model_state_dict.pth')
 
     return
 

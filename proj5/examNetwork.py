@@ -4,14 +4,17 @@
 # import statements
 import numpy as np
 from matplotlib import pyplot as plt
+from torchvision.datasets import mnist
 
 import utils
 from utils import MyNetwork
+from utils import SubModel
 
 import sys
 import torch
 from torch.utils.data import DataLoader
 import torchvision
+import torch.nn.functional as F
 from torchvision import datasets, transforms
 import cv2
 
@@ -23,22 +26,7 @@ def main(argv):
 
     # for conv1 layer, print the filter weights and the shape
     # plot the 10 filters
-    filters = []
-    with torch.no_grad():
-        for i in range(10):
-            plt.subplot(3, 4, i + 1)
-            plt.tight_layout()
-            curr_filter = model.conv1.weight[i, 0]
-            filters.append(curr_filter)
-            print(f'filter {i + 1}')
-            print(curr_filter)
-            print(curr_filter.shape)
-            print('\n')
-            plt.imshow(curr_filter)
-            plt.title(f'Filter {i + 1}')
-            plt.xticks([])
-            plt.yticks([])
-        plt.show()
+    filters = utils.plot_ten_filters(model)
 
     # apply the 10 filters to the first training example image
     # load training data
@@ -52,23 +40,15 @@ def main(argv):
     #  get the first image
     first_image, first_label = next(iter(train_loader))
     squeezed_image = np.transpose(torch.squeeze(first_image, 1).numpy(), (1, 2, 0))
-    plt.imshow(squeezed_image)
-    plt.show()
 
-    with torch.no_grad():
-        items = []
-        for i in range(10):
-            items.append(filters[i])
-            filtered_image = cv2.filter2D(np.array(squeezed_image), ddepth=-1, kernel=np.array(filters[i]))
-            items.append(filtered_image)
-        for i in range(20):
-            plt.subplot(5, 4, i + 1)
-            plt.tight_layout()
-            plt.imshow(items[i])
-            # plt.imshow(cv2.filter2D(np.array(first_image), ddepth=-1, kernel=np.array(filters[i])))
-            plt.xticks([])
-            plt.yticks([])
-        plt.show()
+    utils.plot_filtered_images(filters, squeezed_image, 10, 20, 5, 4)
+
+    sub_model = SubModel()
+    sub_model.load_state_dict(torch.load('model_state_dict.pth'))
+    sub_model.eval()
+
+    truncated_filters = utils.plot_twenty_filters(sub_model)
+    utils.plot_filtered_images(truncated_filters, squeezed_image, 20, 40, 5, 8)
 
 
 if __name__ == "__main__":

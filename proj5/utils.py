@@ -2,6 +2,7 @@
 # Yueyang Wu
 
 # import statements
+import cv2
 import torch
 from torch import nn
 import torch.nn.functional as F
@@ -35,6 +36,18 @@ class MyNetwork(nn.Module):
         x = F.dropout(x, training=self.training)
         x = self.fc2(x)
         return F.log_softmax(x, 1)
+
+
+class SubModel(MyNetwork):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    # override the forward method
+    def forward(self, x):
+        x = F.relu(F.max_pool2d(self.conv1(x), 2))  # relu on max pooled results of conv1
+        x = F.relu(
+            F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))  # relu on max pooled results of dropout of conv2
+        return x
 
 
 # useful functions with a comment for each function
@@ -126,3 +139,60 @@ def plot_prediction(data_set, label_set, total, row, col):
         plt.xticks([])
         plt.yticks([])
     plt.show()
+
+
+def plot_ten_filters(model):
+    filters = []
+    with torch.no_grad():
+        for i in range(10):
+            plt.subplot(3, 4, i + 1)
+            plt.tight_layout()
+            curr_filter = model.conv1.weight[i, 0]
+            filters.append(curr_filter)
+            print(f'filter {i + 1}')
+            print(curr_filter)
+            print(curr_filter.shape)
+            print('\n')
+            plt.imshow(curr_filter)
+            plt.title(f'Filter {i + 1}')
+            plt.xticks([])
+            plt.yticks([])
+        plt.show()
+    return filters
+
+
+def plot_twenty_filters(model):
+    filters = []
+    with torch.no_grad():
+        for i in range(20):
+            plt.subplot(5, 4, i + 1)
+            plt.tight_layout()
+            curr_filter = model.conv2.weight[i, 0]
+            filters.append(curr_filter)
+            print(f'filter {i + 1}')
+            print(curr_filter)
+            print(curr_filter.shape)
+            print('\n')
+            plt.imshow(curr_filter)
+            plt.title(f'Filter {i + 1}')
+            plt.xticks([])
+            plt.yticks([])
+        plt.show()
+    return filters
+
+
+def plot_filtered_images(filters, image, n, total, row, col):
+    with torch.no_grad():
+        items = []
+        for i in range(n):
+            items.append(filters[i])
+            filtered_image = cv2.filter2D(np.array(image), ddepth=-1, kernel=np.array(filters[i]))
+            items.append(filtered_image)
+        for i in range(total):
+            plt.subplot(row, col, i + 1)
+            plt.tight_layout()
+            plt.imshow(items[i])
+            plt.xticks([])
+            plt.yticks([])
+        plt.show()
+
