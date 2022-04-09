@@ -2,21 +2,15 @@
 # Yueyang Wu
 
 # import statements
-import numpy as np
-from matplotlib import pyplot as plt
-from torchvision.datasets import mnist
-
 import utils
 from utils import MyNetwork
 from utils import SubModel
 
+import numpy as np
 import sys
 import torch
 from torch.utils.data import DataLoader
 import torchvision
-import torch.nn.functional as F
-from torchvision import datasets, transforms
-import cv2
 
 
 def main(argv):
@@ -41,12 +35,15 @@ def main(argv):
     first_image, first_label = next(iter(train_loader))
     squeezed_image = np.transpose(torch.squeeze(first_image, 1).numpy(), (1, 2, 0))
 
+    # plot the first images filtered by the 10 filters from layer 1
     utils.plot_filtered_images(filters, squeezed_image, 10, 20, 5, 4)
 
+    # load a sub model object and load the state dictionary
     sub_model = SubModel()
     sub_model.load_state_dict(torch.load('model_state_dict.pth'))
     sub_model.eval()
 
+    # apply the sub model on the first image and plot the filtered images
     truncated_filters = utils.plot_twenty_filters(sub_model)
     utils.plot_filtered_images(truncated_filters, squeezed_image, 20, 40, 5, 8)
 

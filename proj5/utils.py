@@ -2,6 +2,8 @@
 # Yueyang Wu
 
 # import statements
+import csv
+
 import cv2
 import torch
 from torch import nn
@@ -33,7 +35,6 @@ class MyNetwork(nn.Module):
         x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
         x = x.view(-1, 320)
         x = F.relu(self.fc1(x))
-        x = F.dropout(x, training=self.training)
         x = self.fc2(x)
         return F.log_softmax(x, 1)
 
@@ -47,6 +48,20 @@ class SubModel(MyNetwork):
         x = F.relu(F.max_pool2d(self.conv1(x), 2))  # relu on max pooled results of conv1
         x = F.relu(
             F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))  # relu on max pooled results of dropout of conv2
+        return x
+
+
+class DigitEmbeddingModel(MyNetwork):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    # override the forward method
+    def forward(self, x):
+        x = F.relu(F.max_pool2d(self.conv1(x), 2))
+        x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
+        x = x.view(-1, 320)
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
         return x
 
 
@@ -195,4 +210,27 @@ def plot_filtered_images(filters, image, n, total, row, col):
             plt.xticks([])
             plt.yticks([])
         plt.show()
+
+
+def write_to_csv(data):
+    intensity_values = open('intensity_values.csv', 'w')
+    intensity_values_writer = csv.writer(intensity_values)
+    category = open('category.csv', 'w')
+    category_writer = csv.writer(category)
+
+    intensity_values_header = []
+    for i in range(784):
+        intensity_values_header.append(str(i))
+    category_header = ['label']
+    intensity_values_writer.writerow(intensity_values_header)
+    category_writer.writerow(category_header)
+
+    for image, label in data:
+        row = []
+        image_np = image.numpy()
+        for x in np.nditer(image_np):
+            row.append(str(x))
+
+        intensity_values_writer.writerow(row)
+        category_writer.writerow([str(label)])
 

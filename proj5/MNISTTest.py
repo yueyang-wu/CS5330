@@ -35,7 +35,7 @@ def main(argv):
     utils.plot_prediction(first_ten_data, first_ten_label, 9, 3, 3)
 
     # load custom digit data, apply the model, and plot the ten results
-    image_dir = '/Users/yueyangwu/Desktop/custom_digits'
+    image_dir = '/Users/yueyangwu/Desktop/CS5330/hw/proj5/custom_digits'
     custom_images = datasets.ImageFolder(image_dir,
                                          transform=transforms.Compose([transforms.Resize((28, 28)),
                                                                        transforms.Grayscale(),
