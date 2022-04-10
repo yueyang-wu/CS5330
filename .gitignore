@@ -22,3 +22,6 @@ proj5/custom_digits/
 proj5/greek/
 proj5/*.csv
 proj5/custom_greek/
+proj5/curve/
+proj5/experiment_data/
+proj5/experiment_results.txt
