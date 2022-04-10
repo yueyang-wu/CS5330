@@ -61,7 +61,6 @@ class DigitEmbeddingModel(MyNetwork):
         x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
         x = x.view(-1, 320)
         x = F.relu(self.fc1(x))
-        x = self.fc2(x)
         return x
 
 
@@ -212,10 +211,11 @@ def plot_filtered_images(filters, image, n, total, row, col):
         plt.show()
 
 
-def write_to_csv(data):
-    intensity_values = open('intensity_values.csv', 'w')
+# name1 intensity values, name2 category
+def write_to_csv(data, filename1, filename2):
+    intensity_values = open(filename1, 'w')
     intensity_values_writer = csv.writer(intensity_values)
-    category = open('category.csv', 'w')
+    category = open(filename2, 'w')
     category_writer = csv.writer(category)
 
     intensity_values_header = []
@@ -234,3 +234,47 @@ def write_to_csv(data):
         intensity_values_writer.writerow(row)
         category_writer.writerow([str(label)])
 
+
+def project_greek(model, greek_dir):
+    outputs = []
+    greek_dir = greek_dir
+    with open(greek_dir) as greek_obj:
+        heading = next(greek_obj)
+        reader_obj = csv.reader(greek_obj)
+        for row in reader_obj:  # row -> list of str
+            row_float = []
+            for r in row:
+                row_float.append(float(r))
+            image_tensor = torch.Tensor(row_float)
+            resize_tensor = image_tensor.view(1, 28, 28)
+            output = model(resize_tensor)
+            outputs.append(output.detach().numpy()[0])
+    return outputs
+
+
+def ssd(arr1, arr2):
+    ans = 0
+    for i in range(len(arr1)):
+        ans += (arr1[i] - arr2[i]) ** 2
+    return ans
+
+
+def all_ssd(arr, arrays):
+    ans = []
+    for i in range(len(arrays)):
+        ans.append(ssd(arr, arrays[i]))
+    return ans
+
+
+# examples: the index of sample alpha, beta, and gamma from outputs
+def print_plot_ssd(outputs, examples, num_index):
+    index = []
+    for i in range(num_index):
+        index.append(i + 1)
+    for e in examples:
+        values = all_ssd(outputs[e], outputs)
+        print(values)
+        plt.plot(index, values)
+        plt.xlabel('index')
+        plt.ylabel('distance')
+        plt.show()

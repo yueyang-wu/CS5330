@@ -5,12 +5,8 @@
 from torchvision import datasets, transforms
 
 import utils
-from utils import MyNetwork
-from utils import SubModel
 
-import numpy as np
 import sys
-import csv
 import torch
 from torch.utils.data import DataLoader
 import torchvision
@@ -26,11 +22,47 @@ def main(argv):
                                                                transforms.ToTensor()]))
 
     # write dataset to csv files
-    utils.write_to_csv(greek)
+    utils.write_to_csv(greek, 'intensity_values.csv', 'category.csv')
 
+    # build a new model
+    digit_embedding_model = utils.DigitEmbeddingModel()
+    digit_embedding_model.load_state_dict(torch.load('model_state_dict.pth'))
+    digit_embedding_model.eval()
 
+    # load training data
+    train_loader = DataLoader(
+        torchvision.datasets.MNIST('data2', train=True, download=True,
+                                   transform=torchvision.transforms.Compose([
+                                       torchvision.transforms.ToTensor(),
+                                       torchvision.transforms.Normalize(
+                                           (0.1307,), (0.3081,))
+                                   ])))
+    #  get the first image
+    first_image, first_label = next(iter(train_loader))
+    output = digit_embedding_model(first_image)
+    print(output.shape)
 
+    # project greek digits into the embedding space
+    greek_dir = '/Users/yueyangwu/Desktop/CS5330/hw/proj5/intensity_values.csv'
+    outputs = utils.project_greek(digit_embedding_model, greek_dir)
 
+    # compute distance in the embedding space and plot the distances
+    utils.print_plot_ssd(outputs, [0, 9, 18], 27)
+
+    # load custom greek symbols
+    custom_image_dir = '/Users/yueyangwu/Desktop/CS5330/hw/proj5/custom_greek'
+    custom_greek = datasets.ImageFolder(custom_image_dir,
+                                        transform=transforms.Compose([transforms.Resize((28, 28)),
+                                                                      transforms.Grayscale(),
+                                                                      transforms.functional.invert,
+                                                                      transforms.ToTensor()]))
+
+    # write dataset to csv files
+    utils.write_to_csv(custom_greek, 'custom_intensity_values.csv', 'custom_category.csv')
+    custom_greek_dir = '/Users/yueyangwu/Desktop/CS5330/hw/proj5/custom_intensity_values.csv'
+    # apply the model and display the SSD of outputs
+    custom_outputs = utils.project_greek(digit_embedding_model, custom_greek_dir)
+    utils.print_plot_ssd(custom_outputs, [0, 3, 6], 9)
     return
 
 
