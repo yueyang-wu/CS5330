@@ -21,3 +21,4 @@ proj5/model_state_dict.pth
 proj5/custom_digits/
 proj5/greek/
 proj5/*.csv
+proj5/custom_greek/
