@@ -3,17 +3,12 @@ import sys
 
 import numpy as np
 import torch
-import torchvision
-from matplotlib import pyplot as plt
 from torch import nn
-
-
-# allow using unverified SSL due to some configuration issue
-from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 
 import utils
 
+# allow using unverified SSL due to some configuration issue
 ssl._create_default_https_context = ssl._create_unverified_context
 
 

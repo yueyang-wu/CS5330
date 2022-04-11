@@ -2,7 +2,6 @@
 # Yueyang Wu
 
 # import statements
-from matplotlib import pyplot as plt
 from torchvision import datasets, transforms
 
 import utils

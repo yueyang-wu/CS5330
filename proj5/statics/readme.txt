@@ -12,7 +12,7 @@
     PyCharm
 
 - Instructions for running your executables.
-    - There are two executables, none of them takes any parameters
+    - There are 6 executables, none of them takes any parameters
     - MNISTRecognition.py: for task 1, get data, train and save the model
     - MNISTTest.py: for task 1, load the model trained in MNISTRecognition and test on test dataset and custom written dataset
     - examNetwork.py: for task 2, exam the two convolution layers and plot the results
