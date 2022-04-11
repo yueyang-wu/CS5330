@@ -6,6 +6,7 @@ import csv
 
 import cv2
 import torch
+from numpy import linalg
 from torch import nn
 import torch.nn.functional as F
 import numpy as np
@@ -248,7 +249,8 @@ def project_greek(model, greek_dir):
             image_tensor = torch.Tensor(row_float)
             resize_tensor = image_tensor.view(1, 28, 28)
             output = model(resize_tensor)
-            outputs.append(output.detach().numpy()[0])
+            a = output.detach().numpy()[0]
+            outputs.append(a / linalg.norm(a))
     return outputs
 
 
@@ -267,14 +269,14 @@ def all_ssd(arr, arrays):
 
 
 # examples: the index of sample alpha, beta, and gamma from outputs
-def print_plot_ssd(outputs, examples, num_index):
+def print_plot_ssd(embedding, outputs, examples, num_index):
     index = []
     for i in range(num_index):
         index.append(i + 1)
     for e in examples:
-        values = all_ssd(outputs[e], outputs)
+        values = all_ssd(outputs[e], embedding)
         print(values)
-        plt.plot(index, values)
+        plt.scatter(index, values)
         plt.xlabel('index')
         plt.ylabel('distance')
         plt.show()

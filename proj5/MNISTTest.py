@@ -18,6 +18,7 @@ torch.set_printoptions(precision=2)
 def main(argv):
     # load the model
     model = torch.load('model.pth')
+    model.eval()
 
     # load test data
     test_loader = DataLoader(
@@ -40,7 +41,8 @@ def main(argv):
                                          transform=transforms.Compose([transforms.Resize((28, 28)),
                                                                        transforms.Grayscale(),
                                                                        transforms.functional.invert,
-                                                                       transforms.ToTensor()]))
+                                                                       transforms.ToTensor(),
+                                                                       transforms.Normalize((0.1307,), (0.3081,))]))
     custom_loader = DataLoader(custom_images)
 
     first_ten_custom_data, first_ten_custom_label = utils.first_ten_output(custom_loader, model)

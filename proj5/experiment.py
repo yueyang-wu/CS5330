@@ -1,9 +1,7 @@
-import cv2
 import torch
 import torchvision
 from torch import nn, optim
 import torch.nn.functional as F
-import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
 
@@ -96,7 +94,7 @@ def main():
             for num_of_conv in range(1, 4):
                 for conv_filter_size in [3, 5, 7]:
                     for dropout_rate in [0.3, 0.5]:
-                        filename = f'curve/{num_epochs}_{batch_size_train}_{num_of_conv}_{conv_filter_size}_{dropout_rate}.png '
+                        filename = f'curve/{num_epochs}_{batch_size_train}_{num_of_conv}_{conv_filter_size}_{dropout_rate}.png'
                         print('______________________________')
                         print(f'Number of Epochs: {num_epochs}')
                         print(f'Train Batch Size: {batch_size_train}')
