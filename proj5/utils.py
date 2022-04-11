@@ -156,33 +156,53 @@ def plot_prediction(data_set, label_set, total, row, col):
     plt.show()
 
 
-def plot_ten_filters(model):
-    filters = []
-    with torch.no_grad():
-        for i in range(10):
-            plt.subplot(3, 4, i + 1)
-            plt.tight_layout()
-            curr_filter = model.conv1.weight[i, 0]
-            filters.append(curr_filter)
-            print(f'filter {i + 1}')
-            print(curr_filter)
-            print(curr_filter.shape)
-            print('\n')
-            plt.imshow(curr_filter)
-            plt.title(f'Filter {i + 1}')
-            plt.xticks([])
-            plt.yticks([])
-        plt.show()
-    return filters
+# def plot_ten_filters(model):
+#     filters = []
+#     with torch.no_grad():
+#         for i in range(10):
+#             plt.subplot(3, 4, i + 1)
+#             plt.tight_layout()
+#             curr_filter = model.conv1.weight[i, 0]
+#             filters.append(curr_filter)
+#             print(f'filter {i + 1}')
+#             print(curr_filter)
+#             print(curr_filter.shape)
+#             print('\n')
+#             plt.imshow(curr_filter)
+#             plt.title(f'Filter {i + 1}')
+#             plt.xticks([])
+#             plt.yticks([])
+#         plt.show()
+#     return filters
+#
+#
+# def plot_twenty_filters(model):
+#     filters = []
+#     with torch.no_grad():
+#         for i in range(20):
+#             plt.subplot(5, 4, i + 1)
+#             plt.tight_layout()
+#             curr_filter = model.conv2.weight[i, 0]
+#             filters.append(curr_filter)
+#             print(f'filter {i + 1}')
+#             print(curr_filter)
+#             print(curr_filter.shape)
+#             print('\n')
+#             plt.imshow(curr_filter)
+#             plt.title(f'Filter {i + 1}')
+#             plt.xticks([])
+#             plt.yticks([])
+#         plt.show()
+#     return filters
 
 
-def plot_twenty_filters(model):
+def plot_filters(conv, total, row, col):
     filters = []
     with torch.no_grad():
-        for i in range(20):
-            plt.subplot(5, 4, i + 1)
+        for i in range(total):
+            plt.subplot(row, col, i + 1)
             plt.tight_layout()
-            curr_filter = model.conv2.weight[i, 0]
+            curr_filter = conv.weight[i, 0]
             filters.append(curr_filter)
             print(f'filter {i + 1}')
             print(curr_filter)

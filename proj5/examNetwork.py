@@ -20,7 +20,7 @@ def main(argv):
 
     # for conv1 layer, print the filter weights and the shape
     # plot the 10 filters
-    filters = utils.plot_ten_filters(model)
+    filters = utils.plot_filters(model.conv1, 10, 3, 4)
 
     # apply the 10 filters to the first training example image
     # load training data
@@ -44,7 +44,7 @@ def main(argv):
     sub_model.eval()
 
     # apply the sub model on the first image and plot the filtered images
-    truncated_filters = utils.plot_twenty_filters(sub_model)
+    truncated_filters = utils.plot_filters(sub_model.conv2, 20, 5, 4)
     utils.plot_filtered_images(truncated_filters, squeezed_image, 20, 40, 5, 8)
 
 
