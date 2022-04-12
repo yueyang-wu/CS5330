@@ -266,19 +266,13 @@ def print_plot_ssd(embedding, outputs, examples, num_index):
 # distances: array of all distances calculated by all_ssd
 # code to name: dictionary of code and name
 def knn(distances, category, k):
-    print('distances')
-    print(distances)
     sorted_idx = np.argsort(distances)
     codes = []
     for i in range(k):
         name_code = category[sorted_idx[i]]
         codes.append(name_code)
     count_dict = Counter(codes)
-    print('count dict')
-    print(count_dict)
     max_name_code = max(count_dict, key=count_dict.get)
-    print('pred')
-    print(get_class_name(max_name_code))
     return get_class_name(max_name_code)
 
 
