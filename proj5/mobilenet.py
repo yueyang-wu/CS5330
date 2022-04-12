@@ -1,3 +1,9 @@
+'''
+Yueyang Wu
+
+CS5330 Project 5 Extension 2
+'''
+
 import ssl
 import sys
 
@@ -12,16 +18,28 @@ import utils
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
+'''
+A deep network modified from the pre-trained mobilenet from PyTorch
+Only contains the first convolution layer of the original mobilenet network
+'''
 class MobilenetSubModel(nn.Module):
+    # initialize the model
     def __init__(self):
         super(MobilenetSubModel, self).__init__()
         model = torch.hub.load('pytorch/vision:v0.10.0', 'mobilenet_v2', pretrained=True)
         self.conv1 = list(model.features)[0][0] # only keep the first conv layer
 
+    # compute a forward pass of the first convolution layer
     def forward(self, x):
         return self.conv1(x)
 
 
+'''
+Initialize the modified mobilenet network
+Load an image of a dog
+Apply the first 32 filters of the first convolution layer to the dog image
+Plot the 32 filters and the 32 filtered dog images
+'''
 def main(argv):
     # initialize a model, set to eval mode
     mobilenet = MobilenetSubModel()

@@ -1,5 +1,9 @@
-# Your name here and a short header
-# Yueyang Wu
+"""
+Yueyang Wu
+
+This file contains some pre-defined hyper-parameters,
+model definition, and helper functions definition
+"""
 
 # import statements
 import csv
@@ -23,7 +27,17 @@ LOG_INTERVAL = 10
 
 
 # model definition
+
+# A deep network with the following layers:
+# A convolution layer with 10 5x5 filters
+# A max pooling layer with a 2x2 window and a ReLU function applied.
+# A convolution layer with 20 5x5 filters
+# A dropout layer with a 0.5 dropout rate (50%)
+# A max pooling layer with a 2x2 window and a ReLU function applied
+# A flattening operation followed by a fully connected Linear layer with 50 nodes and a ReLU function on the output
+# A final fully connected Linear layer with 10 nodes and the log_softmax function applied to the output.
 class MyNetwork(nn.Module):
+    # initialize the network layers
     def __init__(self):
         super(MyNetwork, self).__init__()
         self.conv1 = nn.Conv2d(1, 10, kernel_size=5)
@@ -32,28 +46,44 @@ class MyNetwork(nn.Module):
         self.fc1 = nn.Linear(320, 50)
         self.fc2 = nn.Linear(50, 10)
 
+    # compute a forward pass for the network
     def forward(self, x):
-        x = F.relu(F.max_pool2d(self.conv1(x), 2))
-        x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
-        x = x.view(-1, 320)
-        x = F.relu(self.fc1(x))
-        x = self.fc2(x)
-        return F.log_softmax(x, 1)
+        x = F.relu(F.max_pool2d(self.conv1(x), 2))  # relu on max pooled results of conv1
+        x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))  # relu on max pooled results of dropout of conv2
+        x = x.view(-1, 320)  # flatten operation
+        x = F.relu(self.fc1(x))  # relu on fully connected linear layer with 50 nodes
+        x = self.fc2(x)  # fully connect linear layer with 10 nodes
+        return F.log_softmax(x, 1)  # apply log_softmax()
 
 
+# A truncated deep network contains the first two convolution layers of MyNetwork:
+# A convolution layer with 10 5x5 filters
+# A max pooling layer with a 2x2 window and a ReLU function applied.
+# A convolution layer with 20 5x5 filters
+# A dropout layer with a 0.5 dropout rate (50%)
+# A max pooling layer with a 2x2 window and a ReLU function applied
 class SubModel(MyNetwork):
+    # initialize the network layers, inherit from MyNetwork
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
     # override the forward method
     def forward(self, x):
-        x = F.relu(F.max_pool2d(self.conv1(x), 2))  # relu on max pooled results of conv1
+        x = F.relu(F.max_pool2d(self.conv1(x), 2))
         x = F.relu(
-            F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))  # relu on max pooled results of dropout of conv2
+            F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
         return x
 
 
+# A deep network inherits MyNetwork, which terminates at the Dense layer with 50 outputs:
+# A convolution layer with 10 5x5 filters
+# A max pooling layer with a 2x2 window and a ReLU function applied.
+# A convolution layer with 20 5x5 filters
+# A dropout layer with a 0.5 dropout rate (50%)
+# A max pooling layer with a 2x2 window and a ReLU function applied
+# A flattening operation followed by a fully connected Linear layer with 50 nodes and a ReLU function on the output
 class DigitEmbeddingModel(MyNetwork):
+    # initialize the network layers, inherit from MyNetwork
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -67,6 +97,14 @@ class DigitEmbeddingModel(MyNetwork):
 
 
 # useful functions with a comment for each function
+
+'''
+The function plots images
+
+@:parameter data: the images to be plotted
+@:parameter row: number of rows in the plot
+@:parameter col: number of columns in the plot
+'''
 def plot_images(data, row, col):
     examples = enumerate(data)
     batch_idx, (example_data, example_targets) = next(examples)
@@ -80,6 +118,16 @@ def plot_images(data, row, col):
     plt.show()
 
 
+'''
+The function trains the model and save the model and optimizer
+
+@:parameter epoch: number of epochs of the training process
+@:parameter model: the model to be trained
+@:parameter optimizer: the optimizer used when training
+@:parameter train_loader: the training data
+@:parameter train_losses: array to record the train losses
+@:parameter train_counter: array to record the train counter
+'''
 def train(epoch, model, optimizer, train_loader, train_losses, train_counter):
     model.train()
     for batch_idx, (data, target) in enumerate(train_loader):
@@ -99,6 +147,13 @@ def train(epoch, model, optimizer, train_loader, train_losses, train_counter):
             torch.save(optimizer.state_dict(), 'results/optimizer.pth')
 
 
+'''
+The function tests the model and print the accuracy information
+
+@:parameter model: the model to be tested
+@:parameter test_loader: the test data
+@:parameter test_losses: array to record test losses
+'''
 def test(model, test_loader, test_losses):
     model.eval()
     test_loss = 0
@@ -116,6 +171,14 @@ def test(model, test_loader, test_losses):
         100. * correct / len(test_loader.dataset)))
 
 
+'''
+The function plots curves of the training loses and testing losses
+
+@:parameter train_counter: array of train counter
+@:parameter train_losses: array of train losses
+@:parameter test_counter: array of test counter
+@:parameter test_losses: array of test losses
+'''
 def plot_curve(train_counter, train_losses, test_counter, test_losses):
     plt.plot(train_counter, train_losses, color='blue')
     plt.scatter(test_counter, test_losses, color='red')
@@ -125,6 +188,14 @@ def plot_curve(train_counter, train_losses, test_counter, test_losses):
     plt.show()
 
 
+'''
+The function apply model on dataset and get the first 10 data and the labels
+@:parameter data: the testing data
+@:parameter model: the model used
+
+@:return first_ten_data: array contains the first 10 data
+@:return first_ten_label: array contains the label of the first 10 data
+'''
 def first_ten_output(data, model):
     first_ten_data = []
     first_ten_label = []
@@ -146,6 +217,15 @@ def first_ten_output(data, model):
     return first_ten_data, first_ten_label
 
 
+'''
+The function plots the image and their prediction values
+
+@:parameter data_set: the image to be plotted
+@:parameter label_set: the labels of the dataset
+@:parameter total: total number of data to be plotted
+@:parameter row: number of rows in the plot
+@:parameter col: number of columns in the plot
+'''
 def plot_prediction(data_set, label_set, total, row, col):
     for i in range(total):
         plt.subplot(row, col, i + 1)
@@ -157,6 +237,16 @@ def plot_prediction(data_set, label_set, total, row, col):
     plt.show()
 
 
+'''
+The function plots some filters
+
+@:parameter conv: the convolutation layer from a model which contains the filters to be plotted
+@:parameter total: total number of filters to be plotted
+@:parameter row: number of rows in the plot
+@:parameter col: number of columns in the plot
+
+@:return filters:; array of all the filters plotted
+'''
 def plot_filters(conv, total, row, col):
     filters = []
     with torch.no_grad():
@@ -177,6 +267,16 @@ def plot_filters(conv, total, row, col):
     return filters
 
 
+'''
+The function plots filters and filtered images
+
+@:parameter filters: the filters to be plotted
+@:parameter image: the image to be filtered
+@:parameter n: the total number of filters
+@:parameter total: total number of images in the plot
+@:parameter row: number of rows in the plot
+@:parameter col: number of columns in the plot
+'''
 def plot_filtered_images(filters, image, n, total, row, col):
     with torch.no_grad():
         items = []
@@ -193,7 +293,13 @@ def plot_filtered_images(filters, image, n, total, row, col):
         plt.show()
 
 
-# name1 intensity values, name2 category
+'''
+The function take some labeled images, and write their intensity values and category to two csv files
+
+@:parameter data: the labeled images
+@:parameter filename1: the csv file path to write the intensity values
+@:parameter filename2: the csv file path to write the categories
+'''
 def write_to_csv(data, filename1, filename2):
     intensity_values = open(filename1, 'w')
     intensity_values_writer = csv.writer(intensity_values)
@@ -217,6 +323,14 @@ def write_to_csv(data, filename1, filename2):
         category_writer.writerow([str(label)])
 
 
+'''
+The function applies a model to the given image(read the intensity values from csv file) to get element vectors
+
+@:parameter model: the model to be applied
+@:parameter greek_dir: the csv file contains the intensity values
+
+@:return outputs: array contains the element vectors
+'''
 def project_greek(model, greek_dir):
     outputs = []
     greek_dir = greek_dir
@@ -235,6 +349,14 @@ def project_greek(model, greek_dir):
     return outputs
 
 
+'''
+The function computes the sum-squared distance of two arrays
+
+@:parameter arr1: the first array
+@:parameter arr2: the second array
+
+@:return ans: the ssd of the two arrays
+'''
 def ssd(arr1, arr2):
     ans = 0
     for i in range(len(arr1)):
@@ -242,6 +364,14 @@ def ssd(arr1, arr2):
     return ans
 
 
+'''
+The function computes the ssd values between on array and some other arrays
+
+@:parameter arr: the array to be computed
+@:parameter arrays: an array of all the other arrays
+
+@:return ans: an array contains all the ssd values between arr and the other arrays
+'''
 def all_ssd(arr, arrays):
     ans = []
     for i in range(len(arrays)):
@@ -249,7 +379,14 @@ def all_ssd(arr, arrays):
     return ans
 
 
-# examples: the index of sample alpha, beta, and gamma from outputs
+'''
+The function plots the ssd values computeed by all_ssd() as a dot plot
+
+@:parameter embedding: the output values got after applying models to images
+@:parameter outputs: the output values got after applying models to images
+@:parameter examples: the index of sample alpha, beta, and gamma from outputs
+@:parameter num_index: the length of x axis
+'''
 def print_plot_ssd(embedding, outputs, examples, num_index):
     index = []
     for i in range(num_index):
@@ -263,8 +400,15 @@ def print_plot_ssd(embedding, outputs, examples, num_index):
         plt.show()
 
 
-# distances: array of all distances calculated by all_ssd
-# code to name: dictionary of code and name
+'''
+The function classifies the image category using KNN classifier
+
+@:parameter distances: array of all distances calculated by all_ssd()
+@:parameter category: array of category of the training data
+@:parameter k: the K value in KNN classifier
+
+@return: the category name
+'''
 def knn(distances, category, k):
     sorted_idx = np.argsort(distances)
     codes = []
@@ -276,6 +420,13 @@ def knn(distances, category, k):
     return get_class_name(max_name_code)
 
 
+'''
+The function gets the category name of greek letters given the name code
+
+@:parameter code: the given code
+
+@:return: the corresponding name in string
+'''
 def get_class_name(code):
     name_dict = {1: 'alpha', 2: 'beta', 3: 'gamma', 4: 'delta', 5: 'epsilon', 6: 'zeta', 7: 'eta',
                  8: 'theta', 9: 'iota', 10: 'kappa', 11: 'lambda', 12: 'mu', 13: 'nu', 14: 'xi',

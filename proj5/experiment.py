@@ -1,3 +1,9 @@
+'''
+Yueyang Wu
+
+CS5330 Project 5 Task 4
+'''
+
 import torch
 import torchvision
 from torch import nn, optim
@@ -10,6 +16,20 @@ import utils
 batch_size_test = 64
 
 
+# class definition
+
+'''
+A deep network takes different number of convolution layers, different filter sizes of the convolution layer, and different dropout rate
+It contains the following layers:
+A convolution layer with 10 5x5 filters
+A max pooling layer with a 2x2 window and a ReLU function applied.
+A convolution layer with 20 5x5 filters
+A dropout layer (rate will be passed by parameter when initialize the model)
+A max pooling layer with a 2x2 window and a ReLU function applied
+Some convolution layers with different filter sizes(pass by parameter when initialize the model)
+A flattening operation followed by a fully connected Linear layer with 50 nodes and a ReLU function on the output
+A final fully connected Linear layer with 10 nodes and the log_softmax function applied to the output.
+'''
 class ExperimentNetwork(nn.Module):
     def __init__(self, num_of_conv, conv_filter_size, dropout_rate):
         super(ExperimentNetwork, self).__init__()
@@ -22,12 +42,18 @@ class ExperimentNetwork(nn.Module):
         self.fc1 = nn.Linear(self.get_fc1_input_size(), 50)
         self.fc2 = nn.Linear(50, 10)
 
+    '''
+    The function gets the input size for the first fully connected layer
+    '''
     def get_fc1_input_size(self):
         fc1_input_size = self.input_size / 2
         fc1_input_size = fc1_input_size / 2
         fc1_input_size = fc1_input_size * fc1_input_size * 20
         return int(fc1_input_size)
 
+    '''
+    The function computes a forward path for the network
+    '''
     def forward(self, x):
         x = F.relu(F.max_pool2d(self.conv1(x), 2))
         x = F.relu(F.max_pool2d(self.conv2_drop(self.conv2(x)), 2))
@@ -40,6 +66,19 @@ class ExperimentNetwork(nn.Module):
         return F.log_softmax(x, 1)
 
 
+# helper functions
+
+'''
+The function loads training and test data, initializes a network, trains the network.
+The function prints the model accuracy and plots the training and testing losses.
+
+@:parameter num_epochs: number of epochs of the training process
+@:parameter batch_size_train: the batch size of the traning data
+@:parameter num_of_conv: the number of convolution layers in the model
+@:parameter conv_filter_size: the filter size in the convolution layers
+@:parameter dropout_rate: the dropout rate of the model
+@:parameter filename: the path to save the plots of the training and testing losses
+'''
 def experiment(num_epochs, batch_size_train, num_of_conv, conv_filter_size, dropout_rate, filename):
     # load test and training data
     train_loader = DataLoader(
@@ -79,6 +118,14 @@ def experiment(num_epochs, batch_size_train, num_of_conv, conv_filter_size, drop
     plot_curve(train_counter, train_losses, test_counter, test_losses, filename)
 
 
+'''
+The function plots curves of the training loses and testing losses
+
+@:parameter train_counter: array of train counter
+@:parameter train_losses: array of train losses
+@:parameter test_counter: array of test counter
+@:parameter test_losses: array of test losses
+'''
 def plot_curve(train_counter, train_losses, test_counter, test_losses, filename):
     plt.plot(train_counter, train_losses, color='blue')
     plt.scatter(test_counter, test_losses, color='red')
@@ -88,6 +135,16 @@ def plot_curve(train_counter, train_losses, test_counter, test_losses, filename)
     plt.savefig(filename)
 
 
+# main function
+
+'''
+Run 72 experiments using experiment() by modifying the parameters, and display the results
+epoch sizes: 3, 5
+training batch sizes: 64, 128
+the number of convolution layers: add an additional 1 - 3 convolution layers
+convolution layer filter size: 3, 5, 7
+dropout rate: 0.3, 0.5
+'''
 def main():
     for num_epochs in [3, 5]:
         for batch_size_train in [64, 128]:

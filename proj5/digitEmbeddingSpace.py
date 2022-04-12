@@ -1,17 +1,32 @@
-# Your name here and a short header
-# Yueyang Wu
+'''
+Yueyang Wu
+
+CS5330 Project 5 Task 3
+'''
 
 # import statements
-from torchvision import datasets, transforms
-
-import utils
-
 import sys
 import torch
 from torch.utils.data import DataLoader
 import torchvision
+from torchvision import datasets, transforms
+
+import utils
 
 
+'''
+Load the given Greek dataset, which contains examples of alpha, beta, and gamma(3 for each)
+Write the intensity values and category of the images to two csv files
+Load a digit embedding model, which inherits MyNetwork and terminates at the Dense layer with 50 outputs
+Load the MNIST training dataset, apply the model to the first image and print out the shape of the result
+
+Apply the model to the Greek dataset and get the element vectors
+Compute the ssd of some example images and plot the result
+
+Load a custom Greek digit dataset
+Apply the model to the custom Greek dataset and get the element vectors
+Compute the ssd of the custom images and plot the result
+'''
 def main(argv):
     # load greek dataset
     image_dir = '/Users/yueyangwu/Desktop/CS5330/hw/proj5/greek'

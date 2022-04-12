@@ -1,5 +1,8 @@
-# Your name here and a short header
-# Yueyang Wu
+'''
+Yueyang Wu
+
+CS5330 Project 5 Task 1
+'''
 
 # import statements
 import utils
@@ -15,6 +18,14 @@ from torchvision import datasets, transforms
 torch.set_printoptions(precision=2)
 
 
+'''
+Load the model trained and saved by MNISTRecognition.py
+Load the MNIST test data
+Get the first ten test image and their predictions, plot the results
+
+Load the custom 0 - 9 digits, apply the trained model
+Plot the custom digits and their predictions
+'''
 def main(argv):
     # load the model
     model = torch.load('model.pth')

@@ -1,5 +1,8 @@
-# Your name here and a short header
-# Yueyang Wu
+'''
+Yueyang Wu
+
+CS5330 Project 5 Task 1
+'''
 
 # import statements
 import utils
@@ -15,7 +18,12 @@ import torchvision
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-# main function (yes, it needs a comment too)
+'''
+Load the MNIST training and testing dataset
+Plot the first 6 images in the training dataset
+Train and test the model, plot the training curve
+Save the model and its state dict
+'''
 def main(argv):
     # make the network code repeatable
     random_seed = 1

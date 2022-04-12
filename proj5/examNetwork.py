@@ -1,5 +1,8 @@
-# Your name here and a short header
-# Yueyang Wu
+'''
+Yueyang Wu
+
+CS5330 Project 5 Task 2
+'''
 
 # import statements
 import utils
@@ -13,6 +16,18 @@ from torch.utils.data import DataLoader
 import torchvision
 
 
+'''
+Load the model trained by MNISTRecognition.py
+Plot the 10 filters in the first convolution layer of the model
+
+Load the MNIST training data
+Apply the 10 filters to the first image in the training dataset
+Plot the 10 filters and 10 filtered images
+
+Load a truncated model from the previous model
+Apply the 20 filters from the second convolution layer of this model to the first image from the training dataset
+Plot the 20 filters and the 20 filtered images
+'''
 def main(argv):
     # load and print the model
     model = torch.load('model.pth')

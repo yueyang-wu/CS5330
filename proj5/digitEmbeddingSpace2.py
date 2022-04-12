@@ -1,5 +1,8 @@
-# Your name here and a short header
-# Yueyang Wu
+'''
+Yueyang Wu
+
+CS5330 Project 5 Extension 3
+'''
 
 # import statements
 import csv
@@ -11,6 +14,18 @@ from torchvision import datasets, transforms
 import utils
 
 
+'''
+Load a digit embedding model, which inherits MyNetwork and terminates at the Dense layer with 50 outputs
+Load a full set of Greek letters training dataset, which contains examples of all the 24 Greek letters (10 for each)
+Write the intensity values and category of the images to two csv files
+Apply the model to the dataset, and get the element vectors
+
+Load a full set of Greek letters testing dataset, which contains examples of all the 24 Greek letters (4 for each)
+For each image, apply the model on it and get teh element vector of the image
+Apply KNN classifier on the element vector of the image and the element vectors of the training dataset, 
+then get the prediction value of the testing image
+Plot the testing image and their predicted labels
+'''
 def main(argv):
     # build a new model
     digit_embedding_model = utils.DigitEmbeddingModel()
