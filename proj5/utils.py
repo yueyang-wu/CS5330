@@ -3,6 +3,7 @@
 
 # import statements
 import csv
+from collections import Counter
 
 import cv2
 import torch
@@ -150,7 +151,7 @@ def plot_prediction(data_set, label_set, total, row, col):
         plt.subplot(row, col, i + 1)
         plt.tight_layout()
         plt.imshow(data_set[i], cmap='gray', interpolation='none')
-        plt.title('Prediction: {}'.format(label_set[i]))
+        plt.title('Pred: {}'.format(label_set[i]))
         plt.xticks([])
         plt.yticks([])
     plt.show()
@@ -260,3 +261,30 @@ def print_plot_ssd(embedding, outputs, examples, num_index):
         plt.xlabel('index')
         plt.ylabel('distance')
         plt.show()
+
+
+# distances: array of all distances calculated by all_ssd
+# code to name: dictionary of code and name
+def knn(distances, category, k):
+    print('distances')
+    print(distances)
+    sorted_idx = np.argsort(distances)
+    codes = []
+    for i in range(k):
+        name_code = category[sorted_idx[i]]
+        codes.append(name_code)
+    count_dict = Counter(codes)
+    print('count dict')
+    print(count_dict)
+    max_name_code = max(count_dict, key=count_dict.get)
+    print('pred')
+    print(get_class_name(max_name_code))
+    return get_class_name(max_name_code)
+
+
+def get_class_name(code):
+    name_dict = {1: 'alpha', 2: 'beta', 3: 'gamma', 4: 'delta', 5: 'epsilon', 6: 'zeta', 7: 'eta',
+                 8: 'theta', 9: 'iota', 10: 'kappa', 11: 'lambda', 12: 'mu', 13: 'nu', 14: 'xi',
+                 15: 'omicron', 16: 'pi', 17: 'rho', 18: 'sigma', 19: 'tau', 20: 'upsilon',
+                 21: 'phi', 22: 'chi', 23: 'psi', 24: 'omega'}
+    return name_dict.get(code + 1)
