@@ -12,13 +12,15 @@
     PyCharm
 
 - Instructions for running your executables.
-    - There are 6 executables, none of them takes any parameters
+    - There are 7 executables, none of them takes any parameters
     - MNISTRecognition.py: for task 1, get data, train and save the model
     - MNISTTest.py: for task 1, load the model trained in MNISTRecognition and test on test dataset and custom written dataset
     - examNetwork.py: for task 2, exam the two convolution layers and plot the results
     - digitEmbeddingSpace.py: for task 3, create a data embedding space using the greek symbol dataset, and compute the distances
     - experiment.py: for task 4, exam the deep network by modifying some different aspects
     - mobilenet.py: for extension 2, load mobilenet from PyTorch and evaluate the first convolution layer
+    - digitEmbeddingSpace2.py: for extension 3, use the same truncated model as in task 3.
+                                Load a full set of Greek letters, build a KNN classifier, and recognize the Greek letters
 
     - There is also an utils.py file, which contains the hyper-parameters, Models and helper functions
 
